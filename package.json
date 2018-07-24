@@ -1,0 +1,40 @@
+{
+  "name": "name_project",
+  "version": "0.0.0",
+  "description": "__DESCRIPTION__",
+  "scripts": {
+    "start": "gulp clean && gulp",
+    "build": "gulp clean && gulp bundle"
+  },
+  "repository": {
+    "type": "git",
+    "url": "__URL_GITLAB__"
+  },
+  "author": {
+    "name": "Elijah Smolin",
+    "email": "is.smolin@ya.ru",
+    "url": "https://github.com/elsmolin"
+  },
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "fancybox": "^3.0.1",
+    "jquery": "^3.3.1",
+    "slick-carousel": "1.8.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-copy": "^1.1.0",
+    "gulp-html-beautify": "^1.0.1",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-rollup": "^2.16.2",
+    "gulp-sass": "^4.0.1",
+    "node-sass": "^4.9.0",
+    "pug": "^2.0.0-rc.4",
+    "rollup-plugin-babel": "^3.0.7"
+  }
+}

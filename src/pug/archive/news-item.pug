@@ -1,0 +1,16 @@
+mixin news-item(item)
+  article.news-item
+    a(href="./article.html").news-item--picture
+      .picture--wrapper
+        img.img-fluid(src="./img/rectangle-copy-bitmap-mask-copy-copy-copy@3x.jpg", alt="")
+      .hover-block
+        span
+          i.dl-views
+          | 186 736
+        span
+          i.dl-like
+          | 243
+    a(href="./article.html").h3 Приключения начинаются. Квест «Джуманджи»
+    .text Итак, вы купили или получили в подарок сертификат на квест «Джуманджи». Что вас ждет?
+
++news-item(item)

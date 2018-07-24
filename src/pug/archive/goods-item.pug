@@ -1,0 +1,23 @@
+mixin goods-item(item)
+  article.goods-item
+    picture
+      source(media="(min-width: 1200px)", srcset="./img/bitmap@2x.png")
+      source(media="(min-width: 415px)", srcset="./img/bitmap.png")
+      img(src="./img/bitmap@2x.png", alt="").img-fluid
+      .labels
+        a(href="./goods-card.html").label.hit хит
+        a(href="./goods-card.html").label.new new
+        a(href="./goods-card.html").label.discount -15%
+    .description
+      a(href="./goods-card.html").h3 Спа-программа «Спортивный ароматический ойл-массаж»
+      .text Всего лишь несколько нехитрых процедур.
+      .price 500 &#8212; 1000 ₽
+      .buttons
+        a(href="./goods-card.html").btn.btn-link 
+          i.dl-sertificat
+          span Сертификат
+        a(href="./goods-card.html").btn.btn-link 
+          i.dl-card
+          span Карта
+
++goods-item(item)

@@ -1,0 +1,32 @@
+nav.header-submenu
+  .submenu--city#submenu--city(style={'display': 'none'})
+    .container
+      .row
+        .col-xl-6
+          .h2 Изменение города
+          ul.list-inline
+            li.list-inline-item.active Москва
+            li.list-inline-item Санкт-Петербург
+            li.list-inline-item Калининград
+            li.list-inline-item
+              label(for="search_city") или воспользуйтесь поиском
+          input(name="search_city" type="text" placeholder="Поиск")#search_city.form-control
+  .container
+    .left
+      a(href="#" data-dc-toggle="#submenu--city").city
+        i.dl-location
+        span.h3 Москва
+      a(href="tel:+78005551889").phone 8 (800) 555-18-89
+      a(href="#").h3 Доставка и оплата
+    a(href="./main.html").logo
+      img(src="./img/logo.png", srcset="./img/logo@2x.png, ./img/logo@3x.png" alt="")
+    .right
+      a(href="./card-activation.html").h3 Активация
+      a(href="./reminders.html").h3 Корпоративным клентам
+      a(href="./login.html")
+        i.dl-in
+        span.h3 Войти
+      a(href="./basket.html" data-basket-qty="3")#btn-basket.btn-basket
+        i.dl-basket
+        span.h3 Корзина
+        span.badge 3

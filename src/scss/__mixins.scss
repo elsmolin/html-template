@@ -1,0 +1,89 @@
+// buttons
+// @mixin button($color, $size) {
+// 	display: inline-flex;
+// 	align-items: center;
+// 	justify-content: center;
+// 	outline: none;
+// 	@if $color == 'red' {
+// 		border: solid 1px $link-color;
+// 		background-color: $link-color;
+// 		color: $color-white;
+// 	}
+//   @if $color == 'green' {
+// 		border: solid 1px $color-green;
+// 		background-color: $color-green;
+// 		color: $color-white;
+// 	}
+//   @if $color == 'white' {	
+// 		border: solid 1px $link-color-hover;
+// 		background-color: transparent;
+// 		color: $color-dark-gray;
+// 	}
+//   @if $color == 'disable' {	
+// 		border: solid 1px $link-color-hover;
+// 		background-color: $link-color-hover;
+// 		color: $color-gray;
+// 	}
+// 	height: #{$size}px;
+// 	border-radius: 14px;
+// 	@if $size == 64 {
+// 		padding: 0 60px;
+// 	}
+// 	@if $size == 48 {
+// 		padding: 0 30px;
+// 	}
+// 	@if $size == 40 {
+// 		padding: 0 20px;
+// 	}
+// 	cursor: pointer;
+// 	font-weight: bold;
+// 	font-family: $font;
+// 	font-size: 18px;
+
+// 	&:hover {
+// 		@if $color == 'red' {
+// 			border: solid 1px #ef2c61;
+// 			background-color: #ef2c61;
+// 			color: $color-white;
+// 		}
+// 		@if $color == 'green' {
+// 			border: solid 1px #95ba32;
+// 			background-color: #95ba32;
+// 			color: $color-white;
+// 		}
+// 		@if $color == 'white' {
+// 			border: solid 1px $link-color;
+// 			background-color: transparent;
+// 			color: $link-color;
+// 		}
+// 		@if $color == 'disable' {	
+// 			border: solid 1px $link-color-hover;
+// 			background-color: $link-color-hover;
+// 			color: $color-gray;
+// 		}
+// 	}
+
+// 	&:active, &:focus {
+// 		box-shadow: none;
+// 		@if $color == 'red' {
+// 			border: solid 1px #d61248;
+// 			background-color: #d61248;
+// 			color: $color-white;
+// 		}
+// 		@if $color == 'green' {
+// 			border: solid 1px #95ba32;
+// 			background-color: #95ba32;
+// 			color: $color-white;
+// 		}
+// 		@if $color == 'white' {
+// 			border: solid 1px $link-color;
+// 			background-color: rgba($color: $link-color, $alpha: .1);
+// 			color: $link-color;
+// 		}
+// 		@if $color == 'disable' {	
+// 			border: solid 1px $link-color-hover;
+// 			background-color: $link-color-hover;
+// 			color: $color-gray;
+// 		}
+// 	}
+// }

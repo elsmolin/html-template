@@ -1,0 +1,25 @@
+block global_vars
+  include ./_global_vars.pug
+
+block local_vars
+  - var title = "default title"
+
+html
+  head
+    //- head
+    include ./head.pug
+  body
+    block navbar
+      //- header
+      //- include ./header-submenu.pug
+      //- include ./header-menu.pug
+    block bread_crumbs
+      //- bread-crumbs
+      //- include ./bread-crumbs.pug
+    main.content
+      //- content page
+      block content
+        h1 Default content
+    block footer
+      //- footer
+      include ./footer.pug

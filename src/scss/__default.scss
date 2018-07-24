@@ -1,0 +1,245 @@
+* {
+  outline: none !important;
+}
+
+html {
+  // scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: $font;
+  font-size: $font-size;
+  color: $font-color;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6,
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font;
+  font-weight: bold;
+  color: $font-color;
+  line-height: $font-line-height;
+  font-size: $font-size-h1;
+}
+
+.h2, h2 {
+  font-size: $font-size-h2;
+}
+
+.h3, h3 {
+  font-size: $font-size-h3;
+}
+
+.h4, h4 {
+  font-size: $font-size-h4;
+}
+
+.h5, h5 {
+  font-size: $font-size-h5;
+}
+
+.h6, h6 {
+  font-size: $font-size-h6;
+}
+
+a {
+  color: $link-color;
+  font-size: $font-size;
+  
+  &:hover {
+    color: $link-color-hover;
+  }
+}
+
+.container {
+  max-width: $max-width-container-mobile;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 576px) {
+    max-width: $max-width-container-sm;
+  }
+
+  @media (min-width: 768px) {
+    max-width: $max-width-container-tablet;
+  }
+
+  @media (min-width: 992px) {
+    max-width: $max-width-container-lg;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: $max-width-container-desktop;
+  }
+
+  @media (min-width: 1900px) {
+    max-width: $max-width-container-retina;
+  }
+}
+
+.content {
+  width: 100%;
+  flex-grow: 1;
+}
+
+.picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #f2f3f6;
+
+  &:empty {
+    background-image: url('../img/no_photo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+}
+
+input[type=number] {
+  text-align: center;
+  -moz-appearance:textfield;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    display: none;
+  }
+}
+
+input[type="date"] {
+  &::-webkit-inner-spin-button {
+    display: none;
+  }
+
+  &::-webkit-calendar-picker-indicator {
+    // color: transparent;
+    // background-image: url('../img/icon-calendare.png');
+    // background-size: contain;
+    // background-position: center;
+    // background-repeat: no-repeat;
+    // background-color: transparent;
+    // margin-right: 5px;
+  }
+}
+
+.was-validated {
+
+  .form-control {
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:valid:focus,
+    &:valid {
+      border: $border;
+      box-shadow: none;
+    }
+
+    &:invalid:focus,
+    &:invalid {
+      border: $border;
+      box-shadow: none;
+    }
+  }
+
+  .valid-feedback {
+    color: $font-color;
+  }
+
+  .invalid-feedback {
+    color: $font-color;
+  }
+}
+
+.form-control {
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: $border;
+  font-weight: 300;
+  height: 60px;
+  font-size: $font-size;
+  padding: .375rem 1.5rem;
+
+  & ~ i {
+    position: absolute;
+    top: 30px;
+    transform: translateY(-50%);
+    right: 20px;
+    font-weight: bold;
+    color: #ed1550;
+    display: none;
+  }
+
+  & ~ .valid-feedback,
+  & ~ .input-description,
+  & ~ .invalid-feedback {
+    display: none;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: $font-line-height;
+    margin-top: 7px;
+  }
+
+  & ~ .input-description {
+    display: block;
+    color: $font-color-secondary;
+  }
+
+  &:not([value=""]):not(.ui-autocomplete-input):valid {
+    border: $border;
+    padding-right: 50px;
+
+    & ~ .dl-success {
+      display: inline-block;
+    }
+
+    & ~ .valid-feedback {
+      display: block;
+      color: $font-color;
+    }
+  }
+
+  &:not([value=""]):not(:focus):invalid {
+    border: $border;
+    padding-right: 50px;
+
+    & ~ .dl-delet {
+      display: inline-block;
+    }
+
+    & ~ .invalid-feedback {
+      display: block;
+      color: $font-color;
+    }
+  }
+
+  &:focus {
+    border: $border;
+    box-shadow: none;
+  }
+
+  &::placeholder {
+    color: $font-color-secondary;
+    font-size: $font-size;
+    font-weight: 300;
+  }
+}
+
+select {
+  // background-image: url('.../img/icon-arrow-down.png');
+  // background-repeat: no-repeat;
+  // background-position: 100% center;
+  // appearance: none;
+
+  &::-ms-expand {
+    display: none;
+  }
+}
