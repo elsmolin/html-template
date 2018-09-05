@@ -161,7 +161,7 @@ gulp.task('sass', function () {
 
 gulp.task('pug', function () {
   gulp.src(consts.src.pug)
-      .pipe(gulpPug())
+      .pipe(gulpPug(pugOptions))
       .pipe(gulp.dest(consts.destDev.html))
 });
 
