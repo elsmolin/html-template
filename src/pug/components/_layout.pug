@@ -11,15 +11,13 @@ html
   body
     block navbar
       //- header
-      //- include ./header-submenu.pug
-      //- include ./header-menu.pug
+      include ./header.pug
     block bread_crumbs
       //- bread-crumbs
       //- include ./bread-crumbs.pug
-    main.content
-      //- content page
-      block content
-        h1 Default content
+    //- content page
+    block content
+      h1 Default content
     block footer
       //- footer
       include ./footer.pug
