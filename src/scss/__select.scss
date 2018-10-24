@@ -1,0 +1,10 @@
+select {
+  background-image: url('.../img/icon-arrow-down.png');
+  background-repeat: no-repeat;
+  background-position: 100% center;
+  appearance: none;
+
+  &::-ms-expand {
+    display: none;
+  }
+}

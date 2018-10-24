@@ -1,4 +1,4 @@
-/* FONTS SETTING */
+// FONTS SETTING
 // $url_1: url('../fonts/MuseoSansCyrl-100.ttf');
 
 // @font-face {
@@ -8,11 +8,9 @@
 // 	font-style: normal;
 // }
 
-/* ICOMOON */
-
-/* MY VARS */
-$max-width-container-mobile: 320px;
-$max-width-container-sm: 320px;
+// MY VARS
+$max-width-container-mobile: 375px;
+$max-width-container-sm: 375px;
 $max-width-container-tablet: 768px;
 $max-width-container-lg: 768px;
 $max-width-container-desktop: 1200px;
@@ -21,22 +19,20 @@ $max-width-container-retina: 1200px;
 $color-primary: #5B436E;
 $color-secondary: #62BCB4;
 $color-alt: #B278B6;
-// $color-gradient: radial-gradient(circle farthest-side at 0px 0, $color-secondary 0%, transparent 300px), radial-gradient(circle farthest-side at 100% 100%, $color-third 0%, $color-primary 300px), $color-primary;
 
 // ---styles---
 
 // shadows
-$shadow-position: 0 0;
-$shadow-width: 0;
-$shadow-blur: 5px;
+$shadow-params: 0 0 5px 0;
+$shadow-params-secondary: 0 0 10px 0;
 $shadow-color: $color-alt;
 $shadow-color-secondary: $color-secondary;
-$shadow: $shadow-position $shadow-width $shadow-blur $shadow-color;
-$shadow-secondary: $shadow-position $shadow-width $shadow-blur $shadow-color-secondary;
+$shadow: $shadow-params $shadow-color;
+$shadow-secondary: $shadow-params-secondary $shadow-color-secondary;
 
 // font
 $font-path: "../fonts" !default;
-$font: MuseoSansCyrl, "Open Sans";
+$font: Arial, "Open Sans";
 $font-color: $color-alt;
 $font-color-secondary: $color-secondary;
 $font-size-h1: 32px;
@@ -46,25 +42,13 @@ $font-size-h4: 20px;
 $font-size-h5: 18px;
 $font-size-h6: 16px;
 $font-size: 16px;
-$font-line-height-lg: 1.75;
-$font-line-height: normal;
-$font-line-height-md: 1.25;
-$font-line-height-sm: 1;
 
 // color-link
 $link-color: $color-primary;
-$link-color-secondary: $color-primary;
 $link-color-hover: $color-secondary;
 
 // border
-$border-width-light: 1px;
-$border-width-regular: 3px;
-$border-width-bold: 5px;
-$border-style: solid;
 $border-color: $color-primary;
 $border-color-secondary: $color-secondary;
-$border: $border-width-light $border-style $border-color;
-$border-secondary: $border-width-light $border-style $border-color-secondary;
-
-// background
-// $bg-color: $color-gradient
+$border: 1px solid $border-color;
+$border-secondary: 1px solid $border-color-secondary;

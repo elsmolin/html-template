@@ -2,13 +2,22 @@ extends ./components/_layout.pug
 
 block local_vars
   - var title = "Список страниц"
+  - 
+    var bread_crumbs = [
+      {
+        href: './main.html',
+        text: 'Главная'
+      },
+      {
+        href: './main.html',
+        text: 'Главная'
+      }
+    ]
 
 //- block bread_crumbs
   
 block content
   .container
     ul.list-unstyled
-      li
-        a(href="./main.html") Главная
       li
         a(href="./main.html") Главная

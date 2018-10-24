@@ -3,21 +3,65 @@ block global_vars
 
 block local_vars
   - var title = "default title"
+  - 
+    var bread_crumbs = [
+      {
+        href: './main.html',
+        text: 'Главная'
+      },
+      {
+        href: './main.html',
+        text: 'Главная'
+      }
+    ]
 
-html
+<!DOCTYPE html>
+html(lang="ru")
   head
-    //- head
-    include ./head.pug
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(http-equiv="X-UA-Compatible" content="ie=edge")
+    link(rel="shortcut icon" href="./img/favicon.png" type="image/png")
+    
+    title [COMPANY_NAME] | #{title}
+
+    //- Bootstrap
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css")
+    //- Slick 1.8.1
+    link(rel="stylesheet" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css")
+    //- FancyBox
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.css")
+    //- jQuery UI
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css")
+    //- YaMap
+    script(src="https://api-maps.yandex.ru/2.1/?load=package.full&lang=ru-RU" type="text/javascript")
+
+    //- CustomeCSS
+    link(rel="stylesheet", href="./css/index.css")
   body
-    block navbar
-      //- header
-      include ./header.pug
+    header.default--header
+      block navbar
+        include ./header.pug
     block bread_crumbs
-      //- bread-crumbs
-      //- include ./bread-crumbs.pug
-    //- content page
-    block content
-      h1 Default content
-    block footer
-      //- footer
-      include ./footer.pug
+      include ./bread-crumbs.pug
+    main.default--main
+      block content
+        h1 Default content
+    footer.default--footer
+      block footer
+        include ./footer.pug
+
+    //- jQuery
+    script(src="https://code.jquery.com/jquery-3.3.1.min.js")
+    //- jQuery UI
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js")
+    //- Bootstrap
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js")
+    //- Slick
+    script(src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.js")
+    //- FancyBox
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.js")
+    
+    //- CustomeJS
+    script(src="./js/index.js")

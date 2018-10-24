@@ -1,0 +1,7 @@
+nav.bread-crumbs
+  .container
+    ul.list-unstyled.list-inline.bread-crumbs--list
+      each item, index in bread_crumbs
+        li.list-inline-item.bread-crumbs--item(class=`${index == bread_crumbs.length - 1 ? 'bread-crumbs--current': ''}`)
+          a(href= item.href)= item.text
+          i.dl-arrow-right

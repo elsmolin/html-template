@@ -1,17 +1,23 @@
+/* components */
 @import './scss/__variables.scss';
-@import './scss/__mixins.scss';
 @import './scss/style.scss';  // icomoon
 @import './scss/__default.scss';
+@import './scss/__grid.scss';
+@import './scss/__button.scss';
+@import './scss/__text.scss';
+@import './scss/__carousel.scss';
+@import './scss/__datepicker.scss';
+@import './scss/__form.scss';
+@import './scss/__popup.scss';
+@import './scss/__select.scss';
+@import './scss/__slider.scss';
+@import './scss/__tooltip.scss';
 
-/* components */
-// @import './scss/_header-menu.scss';
-// @import './scss/_header-submenu.scss';
-// @import './scss/_bread-crumbs.scss';
-// @import './scss/_footer.scss';
-// @import './scss/_goods-item.scss';
-// @import './scss/_news-item.scss';
-// @import './scss/_pagination.scss';
+/* blocks */
+@import './scss/_header.scss';
+@import './scss/_footer.scss';
+@import './scss/_bread-crumbs.scss';
+@import './scss/_pagination.scss';
+@import './scss/_goods-item.scss';
 
 /* pages */
-
-/* во всех scss пути к картинкам/шрифтам относительно этого файла */
