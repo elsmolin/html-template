@@ -1,0 +1,13 @@
+$font-path: "../fonts/" !default;
+$font-name: MuseoSansCyrl !default;
+$font-name-second: Arial !default;
+$font-name-alt: 'Open Sans' !default;
+
+$url_1: url('#{$font-path}MuseoSansCyrl-100.ttf');
+
+@font-face {
+	font-family: $font-name;
+	src: $url_1;
+	font-weight: 100;
+	font-style: normal;
+}

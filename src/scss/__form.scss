@@ -33,13 +33,17 @@ input[type="date"] {
     }
 
     &:valid:focus,
-    &:valid {
+    &:valid,
+    &.is-valid,
+    &:required:not(.is-empty) {
       border: solid 1px #0f0;
       box-shadow: none;
     }
 
     &:invalid:focus,
-    &:invalid {
+    &:invalid,
+    &.is-invalid,
+    &.is-empty:required  {
       border: solid 1px #f00;
       box-shadow: none;
     }
@@ -63,16 +67,6 @@ input[type="date"] {
   font-size: 16px;
   padding: .375rem 1.5rem;
 
-  & ~ i {
-    position: absolute;
-    top: 30px;
-    transform: translateY(-50%);
-    right: 20px;
-    font-weight: bold;
-    color: #ed1550;
-    display: none;
-  }
-
   & ~ .valid-feedback,
   & ~ .input-description,
   & ~ .invalid-feedback {
@@ -89,27 +83,11 @@ input[type="date"] {
   & ~ .input-description {
     display: block;
     color: #999;
-
-    a {
-      // color: $color-link;
-      text-decoration: underline;
-      // margin: 0 3px;
-      font-size: 12px;
-      font-weight: 300;
-
-      &:hover {
-        color: #f00;
-      }
-    }
   }
 
-  &:not([value=""]):not(.ui-autocomplete-input):valid {
+  &:not(.is-empty):not(.ui-autocomplete-input):valid {
     border: solid 1px #0f0;
     padding-right: 50px;
-
-    & ~ .dl-success {
-      display: inline-block;
-    }
 
     & ~ .valid-feedback {
       display: block;
@@ -117,13 +95,9 @@ input[type="date"] {
     }
   }
 
-  &:not([value=""]):not(:focus):invalid {
+  &:not(.is-empty):not(:focus):invalid {
     border: solid 1px #f00;
     padding-right: 50px;
-
-    & ~ .dl-delet {
-      display: inline-block;
-    }
 
     & ~ .invalid-feedback {
       display: block;
@@ -136,6 +110,11 @@ input[type="date"] {
     box-shadow: none;
   }
 
+  &:disabled,
+  &.disabled {
+    opacity: 0.5;
+  }
+
   &::placeholder {
     color: #ddd;
     font-size: 16px;
@@ -144,56 +123,65 @@ input[type="date"] {
 }
 
 .custom-radio {
-  display: inline-flex;
-  margin-right: 25px;
-  padding-left: 0;
-
-  @media (max-width: 767px) {
-    margin-right: 10px;
-  }
 
   .custom-control-label {
-    display: flex;
-    align-items: baseline;
-    position: relative;
-    cursor: pointer;
 
     &::after {
-      display: none;
-    }
 
+    }
     &::before {
-      display: inline-flex;
-      position: static;
-      align-self: flex-start;
-      flex-shrink: 0;
-      margin-right: 5px;
-      width: 25px;
-      height: 25px;
-      border-radius: 100px;
-      border: solid 1px #a6ce38;
-      background-color: #fff;
+      
+    }
+    &:hover {
+
+      &::after {
+  
+      }
+      &::before {
+        
+      }
     }
   }
 
-  .custom-control-input {
-    &:checked ~ .custom-control-label::after {
-      display: flex;
-      border-radius: 100%;
-      top: 5px;
-      left: 5px;
-      background-image: unset;
-      width: 15px;
-      height: 15px;
-      object-fit: contain;
-      border-radius: 100px;
-      background-color: #a6ce38;
-    }
+  .custom-control-input:checked ~ .custom-control-label {
 
-    &:checked ~ .custom-control-label::before {
-      box-shadow: none;
-      background-color: #fff;
-      border: solid 2px #a6ce38;
+    &::after {
+
+    }
+    &::before {
+
+    }
+  }
+}
+
+.custom-checkbox {
+
+  .custom-control-label {
+
+    &::after {
+
+    }
+    &::before {
+      
+    }
+    &:hover {
+
+      &::after {
+  
+      }
+      &::before {
+        
+      }
+    }
+  }
+
+  .custom-control-input:checked ~ .custom-control-label {
+
+    &::after {
+
+    }
+    &::before {
+
     }
   }
 }

@@ -1,28 +1,40 @@
+$text-title-sizes: (
+  h1: 32px,
+  h2: 28px,
+  h3: 24px,
+  h4: 20px,
+  h5: 18px,
+  h6: 16px,
+);
+$text-size: $font-size;
+
+$text-link-color: $color-primary;
+$text-link-color-hover: $color-secondary;
+
+
 .h1, .h2, .h3, .h4, .h5, .h6,
 h1, h2, h3, h4, h5, h6 {
   font-family: $font;
   font-weight: bold;
   color: $font-color;
   line-height: 1.5;
-  font-size: $font-size-h1;
 }
 
-.h2, h2 {
-  font-size: $font-size-h2;
+@each $key, $value in $text-title-sizes {
+  #{$key}, .#{$key} {
+    font-size: $value;
+  }
 }
 
-.h3, h3 {
-  font-size: $font-size-h3;
+a {
+  font-family: $font;
+  color: $text-link-color;  
+  &:hover {
+    color: $text-link-color-hover;
+  }
 }
 
-.h4, h4 {
-  font-size: $font-size-h4;
-}
-
-.h5, h5 {
-  font-size: $font-size-h5;
-}
-
-.h6, h6 {
-  font-size: $font-size-h6;
+p {
+  font-family: $font;
+  font-size: $text-size;
 }

@@ -1,0 +1,64 @@
+$button-heights: (
+  sm: 16px,
+  md: 20px,
+  lg: 24px
+);
+$button-border-radiuses: (
+  sm: 2px,
+  md: 4px,
+  lg: 6px
+);
+$button-font-sizes: (
+  sm: 14px,
+  md: 16px,
+  lg: 18px
+);
+// $button-themes: (
+//   primary: #fff,
+//   success: #fff,
+//   danger: #fff,
+//   link: #fff,
+// );
+
+
+.btn {
+  &--custom {
+    height: map-get($map: $button-heights, $key: md);
+    font-size: map-get($map: $button-font-sizes, $key: md);
+    border-radius: map-get($map: $button-border-radiuses, $key: md);
+    border: 1px solid #444;
+    cursor: pointer;
+    @each $key, $value in $button-heights {
+      &.btn-#{$key} {
+        height: map-get($map: $button-heights, $key: $key);
+        font-size: map-get($map: $button-font-sizes, $key: $key);
+        border-radius: map-get($map: $button-border-radiuses, $key: $key);
+      }
+    }
+    // @each $key, $value in $button-themes {
+    //   &.btn-#{$key} {
+    //     background-color: $value;
+    //     border-color: $value;
+    //     color: #fff;
+    //     &:hover {
+    //       background-color: darken($color: $value, $amount: 7.5%);
+    //       border-color: darken($color: $value, $amount: 10%);
+    //     }
+    //     &:focus {
+    //       background-color: darken($color: $value, $amount: 10%);
+    //       border-color: darken($color: $value, $amount: 12.5%);
+    //     }
+    //     &:active,
+    //     &.active {
+    //       background-color: darken($color: $value, $amount: 10%);
+    //       border-color: darken($color: $value, $amount: 12.5%);
+    //     }
+    //   }
+    // }
+    &.disabled,
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}

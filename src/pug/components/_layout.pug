@@ -16,7 +16,7 @@ block local_vars
     ]
 
 <!DOCTYPE html>
-html(lang="ru")
+html(lang="ru").no-js
   head
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1")
@@ -25,20 +25,27 @@ html(lang="ru")
     
     title [COMPANY_NAME] | #{title}
 
+    //- Modernizr
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js")
     //- Bootstrap
-    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css")
-    //- Slick 1.8.1
-    link(rel="stylesheet" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css")
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css")
+    //- Slick
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css")
     //- FancyBox
-    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css")
     //- jQuery UI
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css")
+    //- Ion.RangeSlider
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.2.0/css/ion.rangeSlider.min.css")
+    //- Air Datepicker
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/css/datepicker.min.css")
     //- YaMap
     script(src="https://api-maps.yandex.ru/2.1/?load=package.full&lang=ru-RU" type="text/javascript")
 
     //- CustomeCSS
     link(rel="stylesheet", href="./css/index.css")
-  body
+    
+  body.default
     header.default--header
       block navbar
         include ./header.pug
@@ -56,12 +63,16 @@ html(lang="ru")
     //- jQuery UI
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js")
     //- Bootstrap
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js")
-    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js")
     //- Slick
-    script(src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js")
     //- FancyBox
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js")
+    //- Ion.RangeSlider
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.2.0/js/ion.rangeSlider.min.js")
+    //- Air Datepicker
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.min.js")
     
     //- CustomeJS
     script(src="./js/index.js")
