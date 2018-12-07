@@ -20,8 +20,10 @@ html(lang="ru").no-js
   head
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(name="format-detection" content="telephone=no")
     meta(http-equiv="X-UA-Compatible" content="ie=edge")
-    link(rel="shortcut icon" href="./img/favicon.png" type="image/png")
+    meta(http-equiv="cache-control" content="no-cache")
+    link(rel="shortcut icon" href=`./img/favicon.png?v=${Date.now()}` type="image/png")
     
     title [COMPANY_NAME] | #{title}
 
@@ -41,7 +43,7 @@ html(lang="ru").no-js
     script(src="https://api-maps.yandex.ru/2.1/?load=package.full&lang=ru-RU" type="text/javascript")
 
     //- CustomeCSS
-    link(rel="stylesheet", href="./css/index.css")
+    link(rel="stylesheet", href=`./css/index.css?v=${Date.now()}`)
     
   body.default
     block popups
@@ -75,4 +77,4 @@ html(lang="ru").no-js
     script(src="./js/jquery.inputmask.bundle.js")
     
     //- CustomeJS
-    script(src="./js/index.js")
+    script(src=`./js/index.js?v=${Date.now()}`)
