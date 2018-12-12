@@ -14,13 +14,7 @@ input[type="date"] {
   }
 
   &::-webkit-calendar-picker-indicator {
-    // color: transparent;
-    // background-image: url('../img/icon-calendare.png');
-    // background-size: contain;
-    // background-position: center;
-    // background-repeat: no-repeat;
-    // background-color: transparent;
-    // margin-right: 5px;
+    
   }
 }
 
@@ -36,7 +30,6 @@ input[type="date"] {
     &:valid,
     &.is-valid,
     &:required:not(.is-empty) {
-      border: solid 1px #0f0;
       box-shadow: none;
     }
 
@@ -44,144 +37,137 @@ input[type="date"] {
     &:invalid,
     &.is-invalid,
     &.is-empty:required  {
-      border: solid 1px #f00;
       box-shadow: none;
     }
   }
-
-  .valid-feedback {
-    color: #0f0;
-  }
-
-  .invalid-feedback {
-    color: #f00;
-  }
 }
 
-.form-control {
-  border-radius: 4px;
-  background-color: #ffffff;
-  border: solid 1px #cccccc;
-  font-weight: 300;
-  height: 60px;
-  font-size: 16px;
-  padding: .375rem 1.5rem;
+.form {
+  &-group {
 
-  & ~ .valid-feedback,
-  & ~ .input-description,
-  & ~ .invalid-feedback {
-    display: none;
-    font-size: 12px;
+  }
+  &-control {
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: solid 1px #cccccc;
     font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    margin-top: 7px;
-  }
-
-  & ~ .input-description {
-    display: block;
-    color: #999;
-  }
-
-  &:not(.is-empty):not(.ui-autocomplete-input):valid {
-    border: solid 1px #0f0;
-    padding-right: 50px;
-
-    & ~ .valid-feedback {
-      display: block;
-      color: #0f0;
-    }
-  }
-
-  &:not(.is-empty):not(:focus):invalid {
-    border: solid 1px #f00;
-    padding-right: 50px;
-
-    & ~ .invalid-feedback {
-      display: block;
-      color: #f00;
-    }
-  }
-
-  &:focus {
-    border: solid 1px #333333;
-    box-shadow: none;
-  }
-
-  &:disabled,
-  &.disabled {
-    opacity: 0.5;
-  }
-
-  &::placeholder {
-    color: #ddd;
+    height: 60px;
     font-size: 16px;
-    font-weight: 300;
+    padding: .375rem 1.5rem;
+  
+    & ~ .valid-feedback,
+    & ~ .input-description,
+    & ~ .invalid-feedback {
+      display: none;
+      font-size: 12px;
+      font-weight: 300;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      margin-top: 7px;
+    }
+  
+    & ~ .input-description {
+      display: block;
+      color: #999;
+    }
+  
+    &:not(.is-empty):not(.ui-autocomplete-input):valid {
+      padding-right: 50px;
+  
+      & ~ .valid-feedback {
+        display: block;
+      }
+    }
+  
+    &:not(.is-empty):not(:focus):invalid {
+      padding-right: 50px;
+  
+      & ~ .invalid-feedback {
+        display: block;
+      }
+    }
+  
+    &:focus {
+      border: solid 1px #333333;
+      box-shadow: none;
+    }
+  
+    &:disabled,
+    &.disabled {
+      opacity: 0.5;
+    }
+  
+    &::placeholder {
+      color: #ddd;
+      font-size: 16px;
+      font-weight: 300;
+    }
   }
 }
 
-.custom-radio {
-
-  .custom-control-label {
-
-    &::after {
-
-    }
-    &::before {
-      
-    }
-    &:hover {
-
+.custom {
+  &-radio {
+  
+    .custom-control-label {
+  
       &::after {
   
       }
       &::before {
         
       }
+      &:hover {
+  
+        &::after {
+    
+        }
+        &::before {
+          
+        }
+      }
+    }
+  
+    .custom-control-input:checked ~ .custom-control-label {
+  
+      &::after {
+  
+      }
+      &::before {
+  
+      }
     }
   }
-
-  .custom-control-input:checked ~ .custom-control-label {
-
-    &::after {
-
-    }
-    &::before {
-
-    }
-  }
-}
-
-.custom-checkbox {
-
-  .custom-control-label {
-
-    &::after {
-
-    }
-    &::before {
-      
-    }
-    &:hover {
-
+  &-checkbox {
+  
+    .custom-control-label {
+  
       &::after {
   
       }
       &::before {
         
       }
+      &:hover {
+  
+        &::after {
+    
+        }
+        &::before {
+          
+        }
+      }
     }
-  }
-
-  .custom-control-input:checked ~ .custom-control-label {
-
-    &::after {
-
-    }
-    &::before {
-
+  
+    .custom-control-input:checked ~ .custom-control-label {
+  
+      &::after {
+  
+      }
+      &::before {
+  
+      }
     }
   }
 }
