@@ -45,18 +45,18 @@ html(lang="ru").no-js
     //- CustomeCSS
     link(rel="stylesheet", href=`./css/index.css?v=${Date.now()}`)
     
-  body.default
+  body.body__global
     block popups
       include ./popups.pug
-    header.default--header
+    header.header__wrapper-global
       block navbar
         include ./header.pug
     block bread_crumbs
       include ./bread-crumbs.pug
-    main.default--main
+    main.main__wrapper-global
       block content
         h1 Default content
-    footer.default--footer
+    footer.footer__wrapper-global
       block footer
         include ./footer.pug
 

@@ -1,20 +1,16 @@
-$color-primary: blue;
-$color-secondary: red;
-$color-alt: green;
-
-$font: $font-name, $font-name-second, $font-name-alt !default;
-$font-color: $color-alt !default;
+$font: $font-name-1, $font-name-2, $font-name-3 !default;
+$font-color: #4a4a4a !default;
 $font-size: 16px !default;
 
-$shadow-params: 0 0 5px 0;
-$shadow-params-secondary: 0 0 10px 0;
-$shadow-color: $color-alt;
-$shadow-color-secondary: $color-secondary;
-$shadow: $shadow-params $shadow-color;
-$shadow-secondary: $shadow-params-secondary $shadow-color-secondary;
+$shadow-params: 0 0 5px 0 !default;
+$shadow-params-secondary: 0 0 10px 0 !default;
+$shadow-color: #4a4a4a !default;
+$shadow-color-secondary: #000 !default;
+$shadow: $shadow-params $shadow-color !default;
+$shadow-secondary: $shadow-params-secondary $shadow-color-secondary !default;
 
-$border-color: $color-primary;
-$border-color-secondary: $color-secondary;
+$border-color: #e5e5e5 !default;
+$border-color-secondary: #000 !default;
 
 
 * {
@@ -37,23 +33,26 @@ body {
   height: 100%;
 }
 
-.default {
+.body__global {
   font-family: $font;
   font-size: $font-size;
   color: $font-color;
   display: flex;
   flex-direction: column;
-  // scroll-behavior: smooth;
   overflow-x: hidden;
-  &--header,
-  &--footer {
-    background-color: #999;
-    flex: 0 0 auto;
-  }
-  &--main {
-    flex: 1 0 auto;
-  }
-  &--footer {
+}
+.header__wrapper-global,
+.footer__wrapper-global {
+  flex: 0 0 auto;
+}
+.header__wrapper-global {
+  @media screen and (min-width: $desktop) {
 
   }
+}
+.main__wrapper-global {
+  flex: 1 0 auto;
+}
+.footer__wrapper-global {
+
 }

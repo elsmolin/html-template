@@ -1,7 +1,7 @@
 $button-heights: (
-  sm: 16px,
-  md: 20px,
-  lg: 24px
+  sm: 28px,
+  md: 40px,
+  lg: 60px
 );
 $button-border-radiuses: (
   sm: 2px,
@@ -13,21 +13,27 @@ $button-font-sizes: (
   md: 16px,
   lg: 18px
 );
-// $button-themes: (
-//   primary: #fff,
-//   success: #fff,
-//   danger: #fff,
-//   link: #fff,
-// );
 
 
 .btn {
-  &--custom {
+  &__custom {
     height: map-get($map: $button-heights, $key: md);
     font-size: map-get($map: $button-font-sizes, $key: md);
     border-radius: map-get($map: $button-border-radiuses, $key: md);
     border: 1px solid #444;
+    background-color: #444;
     cursor: pointer;
+    color: #E5E5E5;
+    padding: 0 12px;
+    text-decoration: none;
+    line-height: 1;
+    font-weight: bold;
+    width: 100%;
+    box-shadow: 0px 4px 4px #000;
+    @media screen and (min-width: $desktop) {
+      padding: 0 24px;
+      width: auto;
+    }
     @each $key, $value in $button-heights {
       &.btn-#{$key} {
         height: map-get($map: $button-heights, $key: $key);
@@ -35,30 +41,56 @@ $button-font-sizes: (
         border-radius: map-get($map: $button-border-radiuses, $key: $key);
       }
     }
-    // @each $key, $value in $button-themes {
-    //   &.btn-#{$key} {
-    //     background-color: $value;
-    //     border-color: $value;
-    //     color: #fff;
-    //     &:hover {
-    //       background-color: darken($color: $value, $amount: 7.5%);
-    //       border-color: darken($color: $value, $amount: 10%);
-    //     }
-    //     &:focus {
-    //       background-color: darken($color: $value, $amount: 10%);
-    //       border-color: darken($color: $value, $amount: 12.5%);
-    //     }
-    //     &:active,
-    //     &.active {
-    //       background-color: darken($color: $value, $amount: 10%);
-    //       border-color: darken($color: $value, $amount: 12.5%);
-    //     }
-    //   }
-    // }
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      border: 1px solid #E5E5E5;
+      background-color: #E5E5E5;
+      color: #444;
+    }
+    &.active,
+    &:active {
+      text-decoration: none;
+      color: #444;
+    }
     &.disabled,
     &:disabled {
       opacity: 0.5;
       cursor: not-allowed;
+    }
+    &.btn-primary {
+      color: #E5E5E5;
+      border: 1px solid #E5E5E5;
+      background-color: #3B7EBB;
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        color: #3B7EBB;
+        border: 1px solid #3B7EBB;
+        background-color: #E5E5E5;
+      }
+      &.active,
+      &:active {
+        text-decoration: none;
+        color: #E5E5E5;
+      }
+    }
+    &.btn-outline {
+      color: #E5E5E5;
+      border: 1px solid #E5E5E5;
+      background-color: transparent;
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        background-color: #E5E5E5;
+        color: #444;
+      }
+      &.active,
+      &:active {
+        text-decoration: none;
+        background-color: #E5E5E5;
+        color: #444;
+      }
     }
   }
 }
