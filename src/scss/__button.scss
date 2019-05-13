@@ -16,10 +16,10 @@ $button-font-sizes: (
 
 
 .btn {
-  &__custom {
-    height: map-get($map: $button-heights, $key: md);
-    font-size: map-get($map: $button-font-sizes, $key: md);
-    border-radius: map-get($map: $button-border-radiuses, $key: md);
+  &_custom {
+    height: 45px;
+    font-size: 12px;
+    border-radius: 0;
     border: 1px solid #444;
     background-color: #444;
     cursor: pointer;
@@ -30,28 +30,34 @@ $button-font-sizes: (
     font-weight: bold;
     width: 100%;
     box-shadow: 0px 4px 4px #000;
-    @media screen and (min-width: $desktop) {
-      padding: 0 24px;
-      width: auto;
-    }
-    @each $key, $value in $button-heights {
-      &.btn-#{$key} {
-        height: map-get($map: $button-heights, $key: $key);
-        font-size: map-get($map: $button-font-sizes, $key: $key);
-        border-radius: map-get($map: $button-border-radiuses, $key: $key);
-      }
-    }
     &:hover,
     &:focus {
+      border: 1px solid #2f4045;
+      background-color: #2f4045;
+      color: #fff;
+      box-shadow: none;
+      outline: none;
       text-decoration: none;
-      border: 1px solid #E5E5E5;
-      background-color: #E5E5E5;
-      color: #444;
     }
     &.active,
     &:active {
       text-decoration: none;
-      color: #444;
+      border: 1px solid #f4f5f6;
+      background-color: #f4f5f6;
+      color: #2f4045;
+      box-shadow: none;
+      outline: none;
+    }
+    @media screen and (min-width: $desktop) {
+      &:hover,
+      &:active {
+        text-decoration: none;
+        border: 1px solid #f4f5f6;
+        background-color: #f4f5f6;
+        color: #2f4045;
+        box-shadow: none;
+        outline: none;
+      }
     }
     &.disabled,
     &:disabled {
@@ -90,6 +96,13 @@ $button-font-sizes: (
         text-decoration: none;
         background-color: #E5E5E5;
         color: #444;
+      }
+    }
+    @each $key, $value in $button-heights {
+      &.btn-#{$key} {
+        height: map-get($map: $button-heights, $key: $key);
+        font-size: map-get($map: $button-font-sizes, $key: $key);
+        border-radius: map-get($map: $button-border-radiuses, $key: $key);
       }
     }
   }

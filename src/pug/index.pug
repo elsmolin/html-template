@@ -1,20 +1,11 @@
 extends ./components/_layout.pug
 
 block local_vars
+  - var pageType = "index"
+  - var pageClass = "index__page"
   - var title = "Список страниц"
-  - 
-    var bread_crumbs = [
-      {
-        href: './main.html',
-        text: 'Главная'
-      },
-      {
-        href: './main.html',
-        text: 'Главная'
-      }
-    ]
-
-//- block bread_crumbs
+  
+block bread_crumbs
   
 block content
   .container

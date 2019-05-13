@@ -1,6 +1,7 @@
 /node_modules
 
-/dist
+/dist/img
+/dist/fonts
 /build
 /components
 /img

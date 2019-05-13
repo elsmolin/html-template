@@ -1,11 +1,13 @@
 nav.bread-crumbs
-  .container
-    ul.list-unstyled.list-inline.bread-crumbs--list
-      each item, index in bread_crumbs
-        li.list-inline-item.bread-crumbs--item(itemprop="itemListElement" itemscope
-        itemtype="http://schema.org/ListItem" class=`${index == bread_crumbs.length - 1 ? 'bread-crumbs--current': ''}`)
-          a(href= item.href itemprop="item").bread-crumbs--link
-            span(itemprop="name").bread-crumbs--name= item.text
-          meta(itemprop="position" content=`${index + 1}`)
-          span.bread-crumbs--decoration
-            i.dl-arrow-right
+  ul.list-unstyled.list-inline.bread-crumbs__list
+    each item, index in bread_crumbs
+      li.list-inline-item.bread-crumbs__item(itemprop="itemListElement" itemscope
+      itemtype="http://schema.org/ListItem" class=`${index == bread_crumbs.length - 1 ? 'bread-crumbs__current': ''}`)
+        if index === bread_crumbs.length - 1
+          span(itemprop="item").bread-crumbs__link
+            span(itemprop="name").bread-crumbs__name= item.text
+        else
+          a(href= item.href itemprop="item").bread-crumbs__link
+            span(itemprop="name").bread-crumbs__name= item.text
+        meta(itemprop="position" content=`${index + 1}`)
+        span.bread-crumbs__decoration /

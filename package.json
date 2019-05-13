@@ -4,7 +4,8 @@
   "description": "__DESCRIPTION__",
   "scripts": {
     "start": "gulp clean && gulp",
-    "build": "gulp clean && gulp bundle"
+    "build": "gulp clean && gulp bundle",
+    "page": "gulp clean && gulp --env"
   },
   "repository": {
     "type": "git",
@@ -15,26 +16,20 @@
     "email": "is.smolin@ya.ru",
     "url": "https://github.com/elsmolin"
   },
-  "dependencies": {
-    "bootstrap": "^4.0.0",
-    "fancybox": "^3.0.1",
-    "jquery": "^3.3.1",
-    "slick-carousel": "1.8.1"
-  },
   "devDependencies": {
-    "babel-core": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-preset-es2015-rollup": "^3.0.0",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^5.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
     "gulp-clean": "^0.4.0",
-    "gulp-copy": "^1.1.0",
+    "gulp-copy": "^4.0.1",
     "gulp-html-beautify": "^1.0.1",
-    "gulp-imagemin": "^4.1.0",
+    "gulp-imagemin": "^5.0.3",
     "gulp-pug": "^4.0.1",
     "gulp-rollup": "^2.16.2",
-    "gulp-sass": "^4.0.1",
-    "node-sass": "^4.9.0",
-    "pug": "^2.0.0-rc.4",
-    "rollup-plugin-babel": "^3.0.7"
+    "gulp-sass": "^4.0.2",
+    "node-sass": "^4.12.0",
+    "pug": "^2.0.3",
+    "rollup-plugin-babel": "^4.3.2"
   }
 }

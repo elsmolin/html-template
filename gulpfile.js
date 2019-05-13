@@ -20,12 +20,12 @@ var gulpImg = require('gulp-imagemin');
 var consts = {
   src: {
     js: './src/index.js',
-    jsOther: './src/js/third/*',
+    jsOther: './src/js/third/**',
     sass: './src/index.scss',
+    css: './src/css/**',
     pug: './src/pug/*.pug',
-    img: './src/img/*',
-    fonts: './src/fonts/*',
-    html: './build/tmp/*',
+    img: './src/img/**',
+    fonts: './src/fonts/**',
   },
   destDev: {
     js: './dist/js',
@@ -38,8 +38,6 @@ var consts = {
     js: ['./src/js/*.js', './src/index.js'],
     sass: ['./src/scss/*.scss', './src/index.scss'],
     pug: ['./src/pug/**/*.pug'],
-    img: './src/img/*',
-    fonts: './src/fonts/*',
   }
 }
 
@@ -78,11 +76,15 @@ var cleanOptions = {
   read: false
 }
 
+/* Если надо править отдельную страницу */
+if (gutil.env.env) {
+  const page = gutil.env.env
+
+  consts.src.pug = `./src/pug/${page}.pug`
+  consts.watch.pug = [`./src/pug/${page}.pug`, './src/pug/components/*.pug']
+}
 
 /* Main Tasks */
-/**
- * 1. gulp
- */
 
 gulp.task('default', [
   'sass',
@@ -91,41 +93,47 @@ gulp.task('default', [
   'fonts',
   'js',
   'watch',
+  'copyfiles'
+]);
+
+gulp.task('page', [
+  'sass',
+  'pug',
+  'img',
+  'fonts',
+  'js',
+  'watch',
+  'copyfiles'
 ]);
 
 
 /* Sub Tasks */
-/**
- * 1. clean
- * 2. fonts
- * 3. img
- * 4. js
- * 5. sass
- * 6. pug
- * 7. watch
- */
 
 gulp.task('clean', function() {
   gulp.src('./dist', cleanOptions)
       .pipe(clean())
 })
 
-gulp.task('fonts', function() {
+gulp.task('copyfiles', function() {
+  /* Шрифты */
   gulp.src(consts.src.fonts)
       .pipe(gulp.dest(consts.destDev.fonts))
-})
-
-gulp.task('img', function() {
+  /* Изображения */
   gulp.src(consts.src.img)
-      .pipe(gulpImg())
+      // .pipe(gulpImg())
       .pipe(gulp.dest(consts.destDev.img))
+  /* Сторонние библиотеки */
+  /* Скрипты */
+  gulp.src(consts.src.jsOther)
+      .pipe(gulp.dest(consts.destDev.js));
+  /* Стили */
+  gulp.src(consts.src.css)
+      .pipe(gulp.dest(consts.destDev.css))
 })
 
 gulp.task('js', function() {
   gulp.src(consts.src.js)
       .pipe(gulpRollup(rollupOptions))
-      .pipe(gulp.dest(consts.destDev.js));
-  gulp.src(consts.src.jsOther)
       .pipe(gulp.dest(consts.destDev.js));
 });
 
@@ -144,9 +152,8 @@ gulp.task('pug', function () {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(consts.watch.fonts, ['fonts'])
+  gulp.watch([consts.src.fonts, consts.src.css, consts.src.jsOther, consts.src.img], ['copyfiles'])
   gulp.watch(consts.watch.sass, ['sass'])
-  gulp.watch(consts.watch.img, ['img'])
   gulp.watch(consts.watch.js, ['js'])
   gulp.watch(consts.watch.pug, ['pug'])
 })
