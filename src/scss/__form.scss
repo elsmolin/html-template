@@ -99,6 +99,10 @@ input[type="date"] {
       opacity: 0.5;
     }
   
+    &:read-only {
+      opacity: 0.5;
+    }
+  
     &::placeholder {
       color: #ddd;
       font-size: 16px;

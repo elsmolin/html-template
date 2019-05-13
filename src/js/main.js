@@ -1,5 +1,19 @@
-const main = () => {
-  
-}
+import { screenWidth } from './_helpfullJS';
 
-export default main
+
+export const main = () => {
+
+  /* Resize компонента main */
+  $(window).resize(() => {
+    if (screenWidth == $(window).width()) return
+    
+    screenWidth = $(window).width()
+
+    // ToDo...
+  })
+
+  /* Scroll компонента main */
+  $(window).scroll(() => {
+
+  })
+}

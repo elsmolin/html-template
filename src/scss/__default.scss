@@ -33,26 +33,29 @@ body {
   height: 100%;
 }
 
-.body__global {
+.body_global {
   font-family: $font;
   font-size: $font-size;
   color: $font-color;
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  &.scroll-disabled {
+    overflow: hidden;
+  }
 }
-.header__wrapper-global,
-.footer__wrapper-global {
+.header_wrapper_global,
+.footer_wrapper_global {
   flex: 0 0 auto;
 }
-.header__wrapper-global {
+.header_wrapper_global {
   @media screen and (min-width: $desktop) {
 
   }
 }
-.main__wrapper-global {
+.main_wrapper_global {
   flex: 1 0 auto;
 }
-.footer__wrapper-global {
+.footer_wrapper_global {
 
 }

@@ -45,18 +45,18 @@ html(lang="ru").no-js
     //- CustomeCSS
     link(rel="stylesheet", href=`./css/index.css?v=${Date.now()}`)
     
-  body.body__global(onload="" data-page-custom-type= pageType class= pageClass)
+  body.body_global(onload="" data-page-custom-type= pageType class= pageClass)
     block popups
       include ./popups.pug
-    header.header__wrapper-global
+    header.header_wrapper_global
       block navbar
         include ./header.pug
     block bread_crumbs
       include ./bread-crumbs.pug
-    main.main__wrapper-global
+    main.main_wrapper_global
       block content
         h1 Default content
-    footer.footer__wrapper-global
+    footer.footer_wrapper_global
       block footer
         include ./footer.pug
 
