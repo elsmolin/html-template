@@ -1,9 +1,16 @@
-export let screenWidth = $(window).width()
-// Кроссбраузерное определение высоты (iOS высчитывает иначе)
-export let windowHeight = Math.max($(window).height(), window.innerHeight)
+/**
+ * Вспомогательный код
+ */
+
+
+/**
+ * Кроссбраузерное определение высоты (iOS высчитывает иначе)
+ * @returns {Number} Высота окна браузера
+ */
+export const windowHeight = () => Math.max($(window).height(), window.innerHeight);
 
 /* RegExp */
-export const regexNumberOnly = /\d+/g
+export const regexNumberOnly = /\d+/g;
 
 /* Настройки для попапов */
 export const settingsPopup = {
@@ -20,8 +27,7 @@ export const settingsPopup = {
     //   },
     // }
   }
-}
-
+};
 
 /**
  * Вырезает все символы кроме цифр и возвращает последние
@@ -35,15 +41,15 @@ export const filterPhoneNumber = (inputValue, phoneLength=10) => {
   const startIndex = numbers.length - phoneLength
   const value = numbers.slice(startIndex, numbers.length)
   return value
-}
+};
 
 /**
  * Проверка экрана на альбомную ориентацию
  * @param {String} orientation screen.msOrientation || screen.mozOrientation || (screen.orientation || {}).type
  * @returns {Boolean}
  */
-export const checkScreenIsLandscape = (orientation) => {
-  const orientation = orientation || screen.msOrientation || screen.mozOrientation || (screen.orientation || {}).type
+export const checkScreenIsLandscape = ($orientation) => {
+  const orientation = $orientation || screen.msOrientation || screen.mozOrientation || (screen.orientation || {}).type
 
   if (orientation === "landscape-primary") {
     if (screen.orientation.angle === 0) return false  // Если компьютер
@@ -56,7 +62,7 @@ export const checkScreenIsLandscape = (orientation) => {
     console.log("The orientation API isn't supported in this browser :(");
     return true
   }
-}
+};
 
 /**
  * Отменяем дефолтный сабмит формы по нажатию Enter
@@ -70,4 +76,4 @@ export const triggerClickOfSubmitButton = (eventForm) => {
   if (eventForm.keyCode == 13) {
     $(this).find('[type="submit"]').trigger('click')
   }
-}
+};

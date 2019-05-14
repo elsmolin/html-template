@@ -1,3 +1,6 @@
+/**
+ * InputMask плагин
+ */
 import { filterPhoneNumber } from './_helpfullJS';
 
 
@@ -13,9 +16,9 @@ export const inputmask = () => {
       return filterPhoneNumber(pastedValue)
     }
   })
-}
+};
 
 export const reInitInputMask = () => {
   $('[type="tel"]').inputmask('remove').val('');
   inputmask()
-}
+};

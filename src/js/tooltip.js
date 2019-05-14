@@ -1,7 +1,9 @@
-import { screenWidth } from './_helpfullJS';
-
-
+/**
+ * Bootstrap 4: Tooltip
+ */
 export const tooltip = () => {
+  let screenWidth = $(window).width()
+
   $('[data-toggle="tooltip_custom"]').tooltip({
     trigger: "hover",
     template: '<div class="tooltip tooltip_custom" role="tooltip"><div class="tooltip-inner"></div></div>'
@@ -15,7 +17,7 @@ export const tooltip = () => {
 
     reInitTooltipCustom()
   })
-}
+};
 
 export const reInitTooltipCustom = () => {
   $('[data-toggle="tooltip_custom"]').tooltip('dispose')
@@ -23,4 +25,4 @@ export const reInitTooltipCustom = () => {
     trigger: "hover",
     template: '<div class="tooltip tooltip__custom" role="tooltip"><div class="tooltip-inner"></div></div>'
   })
-}
+};

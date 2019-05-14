@@ -1,7 +1,8 @@
-import { screenWidth } from './_helpfullJS';
-
-
+/**
+ * Главная страница
+ */
 export const main = () => {
+  let screenWidth = $(window).width()
 
   /* Resize компонента main */
   $(window).resize(() => {
@@ -16,4 +17,4 @@ export const main = () => {
   $(window).scroll(() => {
 
   })
-}
+};

@@ -1,0 +1,14 @@
+/* Кастомный скролл Chrome & Safari */
+.element {
+  &::-webkit-scrollbar {  // Обёртка главной !important
+    width: 4px;
+  }
+  &::-webkit-scrollbar-track {  // Главная
+    background-color: green;
+    // border: 4px solid green;
+  }
+  &::-webkit-scrollbar-thumb {  // Ползунок
+    background-color: blue;
+    border-radius: 5px;
+  }
+}

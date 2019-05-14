@@ -1,15 +1,13 @@
 {
-  "name": "name_project",
-  "version": "0.0.0",
-  "description": "__DESCRIPTION__",
+  "name": "template_html",
+  "version": "2.0.0",
+  "description": "Шаблон для верстки",
   "scripts": {
-    "start": "gulp clean && gulp",
-    "build": "gulp clean && gulp bundle",
-    "page": "gulp clean && gulp --env"
+    "start": "gulp"
   },
   "repository": {
     "type": "git",
-    "url": "__URL_GITLAB__"
+    "url": "https://github.com/elsmolin/html-template"
   },
   "author": {
     "name": "Elijah Smolin",
@@ -17,19 +15,21 @@
     "url": "https://github.com/elsmolin"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-preset-es2015-rollup": "^3.0.0",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/register": "^7.4.4",
+    "browser-sync": "^2.26.5",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^6.1.0",
     "gulp-clean": "^0.4.0",
-    "gulp-copy": "^4.0.1",
     "gulp-html-beautify": "^1.0.1",
     "gulp-imagemin": "^5.0.3",
     "gulp-pug": "^4.0.1",
-    "gulp-rollup": "^2.16.2",
     "gulp-sass": "^4.0.2",
     "node-sass": "^4.12.0",
     "pug": "^2.0.3",
+    "rollup": "^1.11.3",
     "rollup-plugin-babel": "^4.3.2"
   }
 }

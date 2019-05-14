@@ -1,3 +1,6 @@
+/**
+ * FancyBox плагин
+ */
 import { settingsPopup } from './_helpfullJS';
 
 
@@ -19,7 +22,7 @@ export const popup = () => {
 
     $.fancybox.open(curSettings)
   })
-}
+};
 
 /**
  * Попап вывода сообщения пользователю с выбором действия
@@ -60,4 +63,4 @@ export const popupMessage = ($message={ title: 'Default title', text: 'Lorem ips
       }
     }
   })
-}
+};

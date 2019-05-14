@@ -14,88 +14,181 @@ $button-font-sizes: (
   lg: 18px
 );
 
+$button-color-default: #2f4045;
+$button-color-default-hover: #2f4045;
+$button-color-default-active: #2f4045;
+$button-color-default-background: #2f4045;
+$button-color-link: #2f4045;
+$button-color-link-hover: #2f4045;
+
+$button-color-primary: #007bff;
+$button-color-primary-hover: #007bff;
+$button-color-primary-active: #007bff;
+$button-color-primary-background: #007bff;
+$button-color-secondary: #6c757d;
+$button-color-secondary-hover: #6c757d;
+$button-color-secondary-active: #6c757d;
+$button-color-secondary-background: #6c757d;
+$button-color-success: #28a745;
+$button-color-success-hover: #28a745;
+$button-color-success-active: #28a745;
+$button-color-success-background: #28a745;
+$button-color-danger: #dc3545;
+$button-color-danger-hover: #dc3545;
+$button-color-danger-active: #dc3545;
+$button-color-danger-background: #dc3545;
+$button-color-warning: #ffc107;
+$button-color-warning-hover: #ffc107;
+$button-color-warning-active: #ffc107;
+$button-color-warning-background: #ffc107;
+$button-color-info: #17a2b8;
+$button-color-info-hover: #17a2b8;
+$button-color-info-active: #17a2b8;
+$button-color-info-background: #17a2b8;
+$button-color-light: #f8f9fa;
+$button-color-light-hover: #f8f9fa;
+$button-color-light-active: #f8f9fa;
+$button-color-light-background: #f8f9fa;
+$button-color-dark: #343a40;
+$button-color-dark-hover: #343a40;
+$button-color-dark-active: #343a40;
+$button-color-dark-background: #343a40;
+
+$button-types: ('primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark');
+$button-colors: ($button-color-primary, $button-color-secondary, $button-color-success, $button-color-danger, $button-color-warning, $button-color-info, $button-color-light, $button-color-dark);
+$button-hovers: ($button-color-primary-hover, $button-color-secondary-hover, $button-color-success-hover, $button-color-danger-hover, $button-color-warning-hover, $button-color-info-hover, $button-color-light-hover, $button-color-dark-hover);
+$button-actives: ($button-color-primary-active, $button-color-secondary-active, $button-color-success-active, $button-color-danger-active, $button-color-warning-active, $button-color-info-active, $button-color-light-active, $button-color-dark-active);
+$button-background: ($button-color-primary-background, $button-color-secondary-background, $button-color-success-background, $button-color-danger-background, $button-color-warning-background, $button-color-info-background, $button-color-light-background, $button-color-dark-background);
+
+// zip - перемешать списки и образовать новые
+$buttons: zip($button-types, $button-colors, $button-hovers, $button-actives, $button-background);
+
 
 .btn {
   &_custom {
     height: 45px;
     font-size: 12px;
     border-radius: 0;
-    border: 1px solid #444;
-    background-color: #444;
-    cursor: pointer;
-    color: #E5E5E5;
-    padding: 0 12px;
+    padding: 0 .75rem;
+    border: 1px solid $button-color-default-background;
+    background: $button-color-default-background;
+    color: $button-color-default;
     text-decoration: none;
-    line-height: 1;
-    font-weight: bold;
-    width: 100%;
-    box-shadow: 0px 4px 4px #000;
+    user-select: none;
     &:hover,
     &:focus {
-      border: 1px solid #2f4045;
-      background-color: #2f4045;
-      color: #fff;
-      box-shadow: none;
-      outline: none;
+      border: 1px solid $button-color-default-background;
+      background: $button-color-default-background;
+      color: $button-color-default;
       text-decoration: none;
     }
     &.active,
     &:active {
+      border: 1px solid $button-color-default-active;
+      background: $button-color-default-active;
+      color: $button-color-default-active;
       text-decoration: none;
-      border: 1px solid #f4f5f6;
-      background-color: #f4f5f6;
-      color: #2f4045;
-      box-shadow: none;
-      outline: none;
     }
     @media screen and (min-width: $desktop) {
-      &:hover,
-      &:active {
+      &:hover {
+        border: 1px solid $button-color-default-hover;
+        background: $button-color-default-hover;
+        color: $button-color-default-hover;
+        cursor: pointer;
         text-decoration: none;
-        border: 1px solid #f4f5f6;
-        background-color: #f4f5f6;
-        color: #2f4045;
-        box-shadow: none;
-        outline: none;
       }
     }
     &.disabled,
     &:disabled {
       opacity: 0.5;
-      cursor: not-allowed;
+      pointer-events: none;
     }
-    &.btn-primary {
-      color: #E5E5E5;
-      border: 1px solid #E5E5E5;
-      background-color: #3B7EBB;
+    &.btn-link {
+      border: 1px solid $button-color-link-hover;
+      background: $button-color-link-hover;
+      color: $button-color-link-hover;
       &:hover,
       &:focus {
+        border: 1px solid $button-color-link-hover;
+        background: $button-color-link-hover;
+        color: $button-color-link-hover;
         text-decoration: none;
-        color: #3B7EBB;
-        border: 1px solid #3B7EBB;
-        background-color: #E5E5E5;
       }
       &.active,
       &:active {
+        border: 1px solid $button-color-link-hover;
+        background: $button-color-link-hover;
+        color: $button-color-link-hover;
         text-decoration: none;
-        color: #E5E5E5;
+      }
+      @media screen and (min-width: $desktop) {
+        &:hover {
+          border: 1px solid $button-color-link-hover;
+          background: $button-color-link-hover;
+          color: $button-color-link-hover;
+          cursor: pointer;
+          text-decoration: none;
+        }
       }
     }
-    &.btn-outline {
-      color: #E5E5E5;
-      border: 1px solid #E5E5E5;
-      background-color: transparent;
-      &:hover,
-      &:focus {
-        text-decoration: none;
-        background-color: #E5E5E5;
-        color: #444;
+    @each $type, $color, $hover, $active, $background in $buttons {
+      &.btn-#{$type} {
+        border: 1px solid $color;
+        background: $color;
+        color: $color;
+        &:hover,
+        &:focus {
+          border: 1px solid $hover;
+          background: $hover;
+          color: $hover;
+          text-decoration: none;
+        }
+        &.active,
+        &:active {
+          border: 1px solid $active;
+          background: $active;
+          color: $active;
+          text-decoration: none;
+        }
+        @media screen and (min-width: $desktop) {
+          &:hover {
+            border: 1px solid $hover;
+            background: $hover;
+            color: $hover;
+            cursor: pointer;
+            text-decoration: none;
+          }
+        }
       }
-      &.active,
-      &:active {
-        text-decoration: none;
-        background-color: #E5E5E5;
-        color: #444;
+    }
+    @each $type, $color, $hover, $active, $background in $buttons {
+      &.btn-outline-#{$type} {
+        border: 1px solid $color;
+        background: rgba($color: $color, $alpha: 0);
+        color: $color;
+        &:hover,
+        &:focus {
+          border: 1px solid $hover;
+          background: $hover;
+          color: $hover;
+          text-decoration: none;
+        }
+        &.active,
+        &:active {
+          border: 1px solid $active;
+          background: $active;
+          color: $active;
+          text-decoration: none;
+        }
+        @media screen and (min-width: $desktop) {
+          &:hover {
+            border: 1px solid $hover;
+            background: $hover;
+            color: $hover;
+            cursor: pointer;
+            text-decoration: none;
+          }
+        }
       }
     }
     @each $key, $value in $button-heights {

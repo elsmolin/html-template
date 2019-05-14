@@ -1,8 +1,11 @@
+/**
+ * Нативные формы
+ */
 export const form = () => {
   $('body').on('click', '[js-clear-input]', function () {
     $(this).parent().find('input, textarea').val(undefined).addClass('is-empty-input').trigger('focus')
   })
-}
+};
 
 /* Функция для маркировки пустых полей ввода на странице */
 export const isEmptyInputFields = () => {
@@ -18,4 +21,4 @@ export const isEmptyInputFields = () => {
       }
     })
   })
-}
+};

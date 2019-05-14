@@ -1,31 +1,11 @@
-$font: $font-name-1, $font-name-2, $font-name-3 !default;
-$font-color: #4a4a4a !default;
-$font-size: 16px !default;
-
-$shadow-params: 0 0 5px 0 !default;
-$shadow-params-secondary: 0 0 10px 0 !default;
-$shadow-color: #4a4a4a !default;
-$shadow-color-secondary: #000 !default;
-$shadow: $shadow-params $shadow-color !default;
-$shadow-secondary: $shadow-params-secondary $shadow-color-secondary !default;
-
-$border-color: #e5e5e5 !default;
-$border-color-secondary: #000 !default;
-
-
 * {
   outline: none !important;
-  // &::-webkit-scrollbar {  // Обёртка главной !important
-  //   width: 4px;
-  // }
-  // &::-webkit-scrollbar-track {  // Главная
-  //   background-color: green;
-  //   // border: 4px solid green;
-  // }
-  // &::-webkit-scrollbar-thumb {  // Ползунок
-  //   background-color: blue;
-  //   border-radius: 5px;
-  // }
+  &:hover,
+  &:focus,
+  &.active,
+  &:active {
+    outline: none !important;
+  }
 }
 
 html,

@@ -1,3 +1,6 @@
+/**
+ * Карусели
+ */
 export const carousel = () => {
   // if ($('#carousel_main')[0]) {
   //   $('#carousel_main').slick({
@@ -21,4 +24,4 @@ export const carousel = () => {
   //     ]
   //   })
   // }
-}
+};

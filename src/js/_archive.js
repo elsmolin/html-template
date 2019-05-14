@@ -1,13 +1,18 @@
 /**
+ * Суровый код ждущий своего часа
+ */
+
+
+/**
  * Анимация полёта
  * @param {HTMLElement} $this Элемент, вызывающий анимацию
  * полёта
  * @extends [data-parent] Где искать элемент полёта.
- * Необязателен. По умолчанию ищет в, инициализирующем событие,
+ * Необязателен. По умолчанию ищет в, инициализирующего событие,
  * элементе
  * @extends [data-target] Куда произойдёт полёт
  * @extends [data-element] Что полетит
- * @example <button data-target="#basket" data-parent=".parent-class" data-element=".fly-element">
+ * @example <button data-target="#basket" data-parent=".parent-class" data-element=".fly-element" onclick="window.flyAnimation(this)"></button>
  */
 const flyAnimation = ($this) => {
   if ($($this).hasClass('animation')) return
