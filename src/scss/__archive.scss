@@ -12,3 +12,14 @@
     border-radius: 5px;
   }
 }
+
+/* Шпаргалки по медиа */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /* IE10+ CSS styles go here */
+}
+@media screen and (min-color-index:0) and (-webkit-min-device-pixel-ratio:0) {
+  /* Safari 6.1-10.0 (not 10.1) CSS styles go here */
+}
+@media not all and (min-resolution:.001dpcm) {
+  /* Safari 11+ CSS styles go here */
+}

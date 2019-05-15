@@ -1,3 +1,4 @@
+/* Кнопки */
 $button-heights: (
   sm: 28px,
   md: 40px,
@@ -63,6 +64,10 @@ $button-background: ($button-color-primary-background, $button-color-secondary-b
 // zip - перемешать списки и образовать новые
 $buttons: zip($button-types, $button-colors, $button-hovers, $button-actives, $button-background);
 
+
+[role="button"] {
+  user-select: none;
+}
 
 .btn {
   &_custom {

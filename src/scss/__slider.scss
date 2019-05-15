@@ -1,0 +1,33 @@
+/* Стили для слайдера */
+.irs {
+  &.irs--flat {
+    .irs-bar,
+    .irs-line {
+      
+      &:hover {
+        
+      }
+    }
+    .irs-line {
+      
+    }
+    .irs-bar {
+      
+    }
+    .irs-handle {
+      
+      &:hover {
+        > i {
+          &:first-child {
+            
+          }
+        }
+      }
+      > i {
+        &:first-child {
+          
+        }
+      }
+    }
+  }
+}

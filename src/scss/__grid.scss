@@ -1,10 +1,25 @@
+/* Корректировка сетки проекта */
 .container-fluid {
-  padding-left: 15px;
-  padding-right: 15px;
   @media screen and (min-width: $desktop) {
     max-width: $desktop;
   }
   @media screen and (min-width: $retina) {
     max-width: $retina;
+  }
+}
+
+.d-xxl-none {
+  @media (min-width: $retina) {
+    display: none !important;
+  }
+}
+.d-xxl-block {
+  @media (min-width: $retina) {
+    display: block !important;
+  }
+}
+.d-xxl-flex {
+  @media (min-width: $retina) {
+    display: flex !important;
   }
 }

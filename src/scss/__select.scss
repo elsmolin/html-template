@@ -1,4 +1,50 @@
+/* Кастомный селект */
 select::-ms-expand {
   display: none;
 }
 
+.selectize-control {
+  &.customselect {
+
+    .selectize-input {
+      
+      &::after {
+        
+      }
+      &.not-full {
+        > input {
+          
+        }
+      }
+      &.focus {
+        
+        &::after {
+          
+        }
+      }
+      &.input-active {
+
+      }
+      &.dropdown-active {
+        &::after {
+          
+        }
+      }
+      > input {
+        &::placeholder {
+          
+        }
+      }
+    }
+    .selectize-dropdown {
+      
+      .option,
+      .optgroup-header {
+        
+        &[data-selectable] {
+          
+        }
+      }
+    }
+  }
+}

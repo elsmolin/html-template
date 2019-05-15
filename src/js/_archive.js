@@ -82,3 +82,44 @@ const flyAnimation = ($this) => {
     }
   }, 400);
 }
+
+/**
+ * Кроссбраузерное определение высоты (iOS высчитывает иначе)
+ * @returns {Number} Высота окна браузера
+ */
+const windowHeight = () => Math.max($(window).height(), window.innerHeight);
+
+/**
+ * Проверка экрана на альбомную ориентацию
+ * @param {String} orientation screen.msOrientation || screen.mozOrientation || (screen.orientation || {}).type
+ * @returns {Boolean}
+ */
+const checkScreenIsLandscape = ($orientation) => {
+  const orientation = $orientation || screen.msOrientation || screen.mozOrientation || (screen.orientation || {}).type
+
+  if (orientation === "landscape-primary") {
+    if (screen.orientation.angle === 0) return false  // Если компьютер
+    if (screen.orientation.angle === 90) return true  // Если устройство мобильное
+  } else if (orientation === "landscape-secondary") {
+    return true
+  } else if (orientation === "portrait-secondary" || orientation === "portrait-primary") {
+    return false
+  } else if (orientation === undefined) {
+    console.log("The orientation API isn't supported in this browser :(");
+    return true
+  }
+};
+
+/**
+ * Отменяем дефолтный сабмит формы по нажатию Enter
+ * и вызываем кастомный обработчик подтверждения формы
+ * по клику
+ * @param {Event} eventForm
+ * @example <form onsubmit="window.triggerClickOfSubmitButton(event)">
+ */
+const triggerClickOfSubmitButton = (eventForm) => {
+  eventForm.preventDefault()
+  if (eventForm.keyCode == 13) {
+    $(this).find('[type="submit"]').trigger('click')
+  }
+};

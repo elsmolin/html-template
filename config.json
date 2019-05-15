@@ -1,0 +1,25 @@
+{
+  "name_project": "Название проекта",
+  "js": [
+    "jquery.min.js",
+    "popper.min.js",
+    "bootstrap.min.js",
+    "jquery.inputmask.bundle.js",
+    "index.js"
+  ],
+  "jsProd": [
+    "jquery.min.js",
+    "popper.min.js",
+    "bootstrap.min.js",
+    "jquery.inputmask.bundle.js",
+    "index.js"
+  ],
+  "css": [
+    "bootstrap.min.css",
+    "index.css"
+  ],
+  "cssProd": [
+    "bootstrap.min.css",
+    "index.css"
+  ]
+}

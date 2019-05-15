@@ -1,30 +1,32 @@
-# Git
-Добавляем локальную ветку, которая отслеживает изменения удаленной ветки:
-    
-`git branch --track <local_branch_name> origin/<remote_branch_name>`
-
-Чтобы получить весь список доступных веток:
-    
-`git branch --all`
-
-И выбрать `origin/<remote_branch_name>` нужную ветку при необходимости. Более подробно смотри [здесь](https://githowto.com/ru/adding_a_tracking_branch)
+# Оглавление
+1. [Сборка](#Сборка)
+1. [Доступные команды](#Доступные-команды)
+1. [Структура](#Структура)
+1. [Мини документация](#Мини-документация)
 
 # Сборка
-1. Установить [NodeJS](https://nodejs.org/en/download/ "Скачать LTS"), если нет. Как обновить NodeJS смотреть [здесь](https://ru.stackoverflow.com/questions/632988/%D0%9A%D0%B0%D0%BA-%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-nodejs))
-2. `npm install / yarn install` Установить все зависимости (запустить команду из директории, где расположен `package.json`)
-3. Запустить команду из списка [Доступные команды](#Доступные-команды)
-4. Готовые файлы будут расположены в папке `./dist`
+1. Установить [NodeJS](https://nodejs.org/en/download/) или [обновить](https://ru.stackoverflow.com/a/632989) NodeJS.
+1. Установить [Python 2.7](https://www.python.org/downloads/ "Выбрать из списка внизу сайта"). Необходим для node-sass.
+1. Установить [Visual Studio Build Tools 2017](https://docs.microsoft.com/ru-ru/visualstudio/msbuild/msbuild). Там должна быть ссылка [Скачать MSBuild без Visual Studio](https://visualstudio.microsoft.com/downloads/?q=build+tools), скачиваем и устанавливаем
+"Visual C++ Build Tools" (Основные настройки и "Пакет SDK для Windows 10 (x.x.x.x)")
+1. Открываем терминал под админом
+1. `npm rm gulp -g` - Удалить глобальную версию gulp
+1. `npm install gulp-cli -g` - Нужен для Gulp v4+
 
 # Доступные команды
-1. `npm start`
+1. `yarn` или `npm install` - Установить все зависимости. [Yarn](https://yarnpkg.com/ru/docs/install "Скачать Yarn")
+1. `yarn start` или `npm start` - Режим разработчика
+1. `yarn build` или `npm run build` - Production (В основном для внедряющего)
 
-# Зависимости проекта
-1. [jquery 3.3.1](#link)
-1. [jquery ui 1.12.1](#link)
-1. [slick-carousel 1.9.0](#link)
-1. [fancybox 3.5.2](#link)
-1. [bootstrap 4.1.3](#link)
-1. [ion-rangeslider 2.2.0](#link)
-1. [air-datepicker 2.2.3](#link)
-1. [modernizr 2.8.3](#link)
-1. [yandex map kit 2.1](#link)
+# Структура
+`./config.json` - Настройки проекта и порядок подключения файлов
+`./dist/` - Папка с готовой сборкой
+`./src/css/` - Стили сторонних библиотек
+`./src/fonts_icons/` - Бэкап для IcoMoon
+`./src/scss/__archive.scss` - Стили которые могут пригодиться
+`./src/js/third/` - Сторонние библиотеки
+`./src/js/_archive.js` - Функции которые могут пригодиться
+`./src/js/_reusableFuntions.js` - Глобальные функции проекта
+
+# Мини документация
+ToDo...

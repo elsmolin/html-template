@@ -1,3 +1,4 @@
+/* Типография */
 $title-size-1: 32px;
 $title-size-2: 28px;
 $title-size-3: 24px;
@@ -65,14 +66,25 @@ h1, h2, h3, h4, h5, h6 {
 a {
   font-size: inherit;
   color: $link-color;
-  &:hover {
+  user-select: none;
+  &:hover,
+  &:focus {
+    color: $link-color;
+  }
+  &.active,
+  &:active {
     color: $link-color-hover;
+  }
+  @media screen and (min-width: $desktop) {
+    &:hover {
+      color: $link-color-hover;
+    }
   }
 }
 
 p {
-  font-size: $text-size;
+  font-size: inherit;
   @media screen and (min-width: $desktop) {
-    font-size: $text-size;
+    font-size: inherit;
   }
 }

@@ -3,7 +3,7 @@
  */
 export const form = () => {
   $('body').on('click', '[js-clear-input]', function () {
-    $(this).parent().find('input, textarea').val(undefined).addClass('is-empty-input').trigger('focus')
+    $(this).parent().find('input, textarea').val(undefined).addClass('is-empty-input')
   })
 };
 
