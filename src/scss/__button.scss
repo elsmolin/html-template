@@ -1,3 +1,6 @@
+@import './__my__vars.scss';
+
+
 /* Кнопки */
 $button-heights: (
   sm: 28px,
@@ -15,51 +18,96 @@ $button-font-sizes: (
   lg: 18px
 );
 
-$button-color-default: #2f4045;
-$button-color-default-hover: #2f4045;
-$button-color-default-active: #2f4045;
-$button-color-default-background: #2f4045;
-$button-color-link: #2f4045;
-$button-color-link-hover: #2f4045;
+$button-color-default: $color-default;
+$button-color-default-hover: $color-default;
+$button-color-default-active: $color-default;
+$button-color-default-background: $color-default;
+$button-color-link: $link-color;
+$button-color-link-hover: $link-color-hover;
 
-$button-color-primary: #007bff;
-$button-color-primary-hover: #007bff;
-$button-color-primary-active: #007bff;
-$button-color-primary-background: #007bff;
-$button-color-secondary: #6c757d;
-$button-color-secondary-hover: #6c757d;
-$button-color-secondary-active: #6c757d;
-$button-color-secondary-background: #6c757d;
-$button-color-success: #28a745;
-$button-color-success-hover: #28a745;
-$button-color-success-active: #28a745;
-$button-color-success-background: #28a745;
-$button-color-danger: #dc3545;
-$button-color-danger-hover: #dc3545;
-$button-color-danger-active: #dc3545;
-$button-color-danger-background: #dc3545;
-$button-color-warning: #ffc107;
-$button-color-warning-hover: #ffc107;
-$button-color-warning-active: #ffc107;
-$button-color-warning-background: #ffc107;
-$button-color-info: #17a2b8;
-$button-color-info-hover: #17a2b8;
-$button-color-info-active: #17a2b8;
-$button-color-info-background: #17a2b8;
-$button-color-light: #f8f9fa;
-$button-color-light-hover: #f8f9fa;
-$button-color-light-active: #f8f9fa;
-$button-color-light-background: #f8f9fa;
-$button-color-dark: #343a40;
-$button-color-dark-hover: #343a40;
-$button-color-dark-active: #343a40;
-$button-color-dark-background: #343a40;
+$button-color-primary: $color-primary;
+$button-color-primary-hover: $color-primary;
+$button-color-primary-active: $color-primary;
+$button-color-primary-background: $color-primary;
+$button-color-secondary: $color-secondary;
+$button-color-secondary-hover: $color-secondary;
+$button-color-secondary-active: $color-secondary;
+$button-color-secondary-background: $color-secondary;
+$button-color-success: $color-success;
+$button-color-success-hover: $color-success;
+$button-color-success-active: $color-success;
+$button-color-success-background: $color-success;
+$button-color-danger: $color-danger;
+$button-color-danger-hover: $color-danger;
+$button-color-danger-active: $color-danger;
+$button-color-danger-background: $color-danger;
+$button-color-warning: $color-warning;
+$button-color-warning-hover: $color-warning;
+$button-color-warning-active: $color-warning;
+$button-color-warning-background: $color-warning;
+$button-color-info: $color-info;
+$button-color-info-hover: $color-info;
+$button-color-info-active: $color-info;
+$button-color-info-background: $color-info;
+$button-color-light: $color-light;
+$button-color-light-hover: $color-light;
+$button-color-light-active: $color-light;
+$button-color-light-background: $color-light;
+$button-color-dark: $color-dark;
+$button-color-dark-hover: $color-dark;
+$button-color-dark-active: $color-dark;
+$button-color-dark-background: $color-dark;
 
-$button-types: ('primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark');
-$button-colors: ($button-color-primary, $button-color-secondary, $button-color-success, $button-color-danger, $button-color-warning, $button-color-info, $button-color-light, $button-color-dark);
-$button-hovers: ($button-color-primary-hover, $button-color-secondary-hover, $button-color-success-hover, $button-color-danger-hover, $button-color-warning-hover, $button-color-info-hover, $button-color-light-hover, $button-color-dark-hover);
-$button-actives: ($button-color-primary-active, $button-color-secondary-active, $button-color-success-active, $button-color-danger-active, $button-color-warning-active, $button-color-info-active, $button-color-light-active, $button-color-dark-active);
-$button-background: ($button-color-primary-background, $button-color-secondary-background, $button-color-success-background, $button-color-danger-background, $button-color-warning-background, $button-color-info-background, $button-color-light-background, $button-color-dark-background);
+$button-types: (
+  'primary',
+  'secondary',
+  // 'success',
+  // 'danger',
+  // 'warning',
+  // 'info',
+  // 'light',
+  // 'dark'
+);
+$button-colors: (
+  $button-color-primary,
+  $button-color-secondary,
+  // $button-color-success,
+  // $button-color-danger,
+  // $button-color-warning,
+  // $button-color-info,
+  // $button-color-light,
+  // $button-color-dark
+);
+$button-hovers: (
+  $button-color-primary-hover,
+  $button-color-secondary-hover,
+  // $button-color-success-hover,
+  // $button-color-danger-hover,
+  // $button-color-warning-hover,
+  // $button-color-info-hover,
+  // $button-color-light-hover,
+  // $button-color-dark-hover
+);
+$button-actives: (
+  $button-color-primary-active,
+  $button-color-secondary-active,
+  // $button-color-success-active,
+  // $button-color-danger-active,
+  // $button-color-warning-active,
+  // $button-color-info-active,
+  // $button-color-light-active,
+  // $button-color-dark-active
+);
+$button-background: (
+  $button-color-primary-background,
+  $button-color-secondary-background,
+  // $button-color-success-background,
+  // $button-color-danger-background,
+  // $button-color-warning-background,
+  // $button-color-info-background,
+  // $button-color-light-background,
+  // $button-color-dark-background
+);
 
 // zip - перемешать списки и образовать новые
 $buttons: zip($button-types, $button-colors, $button-hovers, $button-actives, $button-background);

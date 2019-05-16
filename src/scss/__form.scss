@@ -1,190 +1,108 @@
-/* Стили для форм */
+@import './__my__vars.scss';
+@import './__form-custom.scss';
+@import './__form-validated.scss';
+
+/* Стили для формы */
+$color: $form-text-color;
+$margin-top: $form-text-margin-top;
+$padding-column: $form-column-padding;
+
+// убираем возможность выделения текста
 label {
   user-select: none;
 }
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  display: none;
-}
 
+// убираем нативные кнопки у input[type=number]
 input[type=number] {
   text-align: center;
   -moz-appearance:textfield;
-}
-
-input[type="date"] {
-  &::-webkit-inner-spin-button {
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
     display: none;
   }
+}
 
-  &::-webkit-calendar-picker-indicator {
-    
+.form-row {
+  margin-left: -#{$padding-column};
+  margin-right: -#{$padding-column};
+  > [class*=col-] {
+    padding-left: #{$padding-column};
+    padding-right: #{$padding-column};
   }
 }
 
-.was-validated {
+.form-text {
+  display: block;
+  margin-top: $margin-top;
+}
 
-  .form-control {
+.text-muted {
+  color: $color !important;
+}
 
-    &:focus {
-      box-shadow: none;
+.form-group {
+  margin-bottom: 0;
+  &.style-default {
+    margin-bottom: 10px;
+    @media screen and (min-width: $tablet) {
+      margin-bottom: 15px;
     }
-
-    &:valid:focus,
-    &:valid,
-    &.is-valid,
-    &:required:not(.is-empty) {
-      box-shadow: none;
-    }
-
-    &:invalid:focus,
-    &:invalid,
-    &.is-invalid,
-    &.is-empty:required  {
-      box-shadow: none;
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 }
 
-.form {
-  &-group {
-    margin-bottom: 0;
-    &.style-default {
-      margin-bottom: 10px;
-      @media screen and (min-width: $tablet) {
-        margin-bottom: 15px;
-      }
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-  &-control {
-    border-radius: 4px;
-    background-color: #ffffff;
-    border: solid 1px #cccccc;
-    font-weight: 300;
-    height: 60px;
-    font-size: 16px;
+.form-control {
+  &.style-default {
+    height: 46px;
     padding: .375rem 1.5rem;
-  
-    & ~ .valid-feedback,
-    & ~ .input-description,
-    & ~ .invalid-feedback {
-      display: none;
-      font-size: 12px;
-      font-weight: 300;
-      font-style: normal;
-      font-stretch: normal;
-      line-height: normal;
-      letter-spacing: normal;
-      margin-top: 7px;
-    }
-  
-    & ~ .input-description {
-      display: block;
-      color: #999;
-    }
-  
-    &:not(.is-empty):not(.ui-autocomplete-input):valid {
-      padding-right: 50px;
-  
-      & ~ .valid-feedback {
-        display: block;
-      }
-    }
-  
-    &:not(.is-empty):not(:focus):invalid {
-      padding-right: 50px;
-  
-      & ~ .invalid-feedback {
-        display: block;
-      }
-    }
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: $form-background;
+    border: 1px solid $form-border-color;
+    color: $form-color;
   
     &:focus {
-      border: solid 1px #333333;
-      box-shadow: none;
+      border: 1px solid $form-border-color-focus;
     }
   
     &:disabled,
     &.disabled {
       opacity: 0.5;
+      pointer-events: none;
+      user-select: none;
     }
   
     &:read-only {
-      opacity: 0.5;
+      pointer-events: none;
+      background: rgba($color: $form-background, $alpha: 0);
+      border: 1px solid rgba($color: $form-border-color, $alpha: 0);
     }
   
     &::placeholder {
-      color: #ddd;
-      font-size: 16px;
-      font-weight: 300;
+      color: $form-color-placeholder;
+      font-size: inherit;
+      font-weight: inherit;
     }
+  }
+  &.form-control-lg {
+    height: 60px;
+    padding: .375rem 1.5rem;
+    border-radius: 9px;
+    font-size: 16px;
+    font-weight: 300;
+  }
+  &.form-control-sm {
+    height: 30px;
+    padding: .375rem 1.5rem;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 300;
   }
 }
 
-.custom {
-  &-radio {
-  
-    .custom-control-label {
-  
-      &::after {
-  
-      }
-      &::before {
-        
-      }
-      &:hover {
-  
-        &::after {
-    
-        }
-        &::before {
-          
-        }
-      }
-    }
-  
-    .custom-control-input:checked ~ .custom-control-label {
-  
-      &::after {
-  
-      }
-      &::before {
-  
-      }
-    }
-  }
-  &-checkbox {
-  
-    .custom-control-label {
-  
-      &::after {
-  
-      }
-      &::before {
-        
-      }
-      &:hover {
-  
-        &::after {
-    
-        }
-        &::before {
-          
-        }
-      }
-    }
-  
-    .custom-control-input:checked ~ .custom-control-label {
-  
-      &::after {
-  
-      }
-      &::before {
-  
-      }
-    }
-  }
+textarea.form-control {
+  height: auto;
 }

@@ -8,6 +8,12 @@
   }
 }
 
+.col-auto {
+  flex: 0 0 auto;
+  width: auto;
+  max-width: 100%;
+}
+
 .d-xxl-none {
   @media (min-width: $retina) {
     display: none !important;

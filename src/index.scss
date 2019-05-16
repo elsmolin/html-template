@@ -1,26 +1,30 @@
-/* components */
 @import './scss/__my__vars.scss';
+/*---ICOMOON---*/
+@import './scss/style.scss';
+
+/*---CHUNKS---*/
 @import './scss/__fonts.scss';
-@import './scss/style.scss';  // icomoon
 @import './scss/__default.scss';
 @import './scss/__grid.scss';
 @import './scss/__button.scss';
 @import './scss/__text.scss';
+@import './scss/__form.scss';
+@import './scss/__tooltip.scss';
+
+/*---PLUGINS---*/
 @import './scss/__carousel.scss';
 @import './scss/__datepicker.scss';
-@import './scss/__form.scss';
 @import './scss/__popup.scss';
 @import './scss/__select.scss';
 @import './scss/__slider.scss';
-@import './scss/__tooltip.scss';
 
-/* blocks */
+/*---CUSTOM_COMPONENTS---*/
 @import './scss/_header.scss';
 @import './scss/_footer.scss';
 @import './scss/_bread-crumbs.scss';
 @import './scss/_pagination.scss';
 @import './scss/_product.scss';
 
-/* pages */
+/*---PAGES---*/
 @import './scss/index.scss';
 @import './scss/main.scss';

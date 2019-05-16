@@ -1,63 +1,63 @@
 /* Типография */
-$title-size-1: 32px;
-$title-size-2: 28px;
-$title-size-3: 24px;
-$title-size-4: 20px;
-$title-size-5: 18px;
-$title-size-6: 16px;
+$text-title-size-1: $title-size-1;
+$text-title-size-2: $title-size-2;
+$text-title-size-3: $title-size-3;
+$text-title-size-4: $title-size-4;
+$text-title-size-5: $title-size-5;
+$text-title-size-6: $title-size-6;
 $text-size: $font-size;
 $link-size: $font-size;
 
-$title-color: $font-color;
+$text-title-color: $font-color;
 $text-color: $font-color;
-$link-color: #e5e5e5;
-$link-color-hover: #000;
+$text-link-color: $link-color;
+$text-link-color-hover: $link-color-hover;
 
 
 .h1, .h2, .h3, .h4, .h5, .h6,
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
-  color: $title-color;
+  color: $text-title-color;
   line-height: 1.5;
 }
 
 .h1, h1 {
-  font-size: $title-size-1;
+  font-size: $title-size-1 * .8;
   @media screen and (min-width: $desktop) {
     font-size: $title-size-1;
   }
 }
 
 .h2, h2 {
-  font-size: $title-size-2;
+  font-size: $title-size-2 * .8;
   @media screen and (min-width: $desktop) {
     font-size: $title-size-2;
   }
 }
 
 .h3, h3 {
-  font-size: $title-size-3;
+  font-size: $title-size-3 * .8;
   @media screen and (min-width: $desktop) {
     font-size: $title-size-3;
   }
 }
 
 .h4, h4 {
-  font-size: $title-size-4;
+  font-size: $title-size-4 * .8;
   @media screen and (min-width: $desktop) {
     font-size: $title-size-4;
   }
 }
 
 .h5, h5 {
-  font-size: $title-size-5;
+  font-size: $title-size-5 * .8;
   @media screen and (min-width: $desktop) {
     font-size: $title-size-5;
   }
 }
 
 .h6, h6 {
-  font-size: $title-size-6;
+  font-size: $title-size-6 * .8;
   @media screen and (min-width: $desktop) {
     font-size: $title-size-6;
   }
@@ -65,19 +65,22 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
   font-size: inherit;
-  color: $link-color;
+  color: $text-link-color;
   user-select: none;
+  text-decoration: underline;
   &:hover,
   &:focus {
-    color: $link-color;
+    color: $text-link-color;
   }
   &.active,
   &:active {
-    color: $link-color-hover;
+    color: $text-link-color-hover;
+    text-decoration: none;
   }
   @media screen and (min-width: $desktop) {
     &:hover {
-      color: $link-color-hover;
+      color: $text-link-color-hover;
+      text-decoration: none;
     }
   }
 }

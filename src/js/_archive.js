@@ -1,7 +1,27 @@
-/**
+/*!
  * Суровый код ждущий своего часа
  */
 
+
+/**
+ * Функция плавного скролла к якорю
+ * @param {Event} $event
+ * @param {Element} $this
+ * @example <a href="//url#anchor" data-header=".header-fixed" onclick="window.smoothScroll(event, this)">Anchor</a>
+ */
+const smoothScroll = ($event, $this) => {
+  $event.preventDefault()
+  const $fixedHeaderClass = $($this).data('header')
+  const $href = $($this).attr('href').split('#')
+  const $id = $href.pop()
+  const $fixedHeader = $($fixedHeaderClass)
+  const $heightNavbar = $fixedHeader[0] ? $fixedHeader.height() : 0
+  const scrollTop = $(`#${$id}`).offset().top - $heightNavbar
+
+  $('body, html').animate({
+    scrollTop
+  }, 1000)
+}
 
 /**
  * Анимация полёта

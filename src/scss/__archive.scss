@@ -23,3 +23,73 @@
 @media not all and (min-resolution:.001dpcm) {
   /* Safari 11+ CSS styles go here */
 }
+
+/* 3D Перевертышь */
+.spinner_wrapper {
+  position: relative;
+  perspective: 1000px;
+  &.spinned {
+    .spinner_wrapper__front {
+      transform: rotateY(180deg);
+      // @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      //   /* IE10+ CSS styles go here */
+      //   z-index: -1;
+      //   opacity: 0;
+      // }
+      // @media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) {
+      //   z-index: -1;
+      //   opacity: 0;
+      // }
+      // @media not all and (min-resolution:.001dpcm) {
+      //   z-index: -1;
+      //   opacity: 0;
+      // }
+    }
+    .spinner_wrapper__back {
+      transform: rotateY(360deg);
+      // @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      //   /* IE10+ CSS styles go here */
+      //   backface-visibility: visible;
+      //   z-index: 1;
+      //   opacity: 1;
+      // }
+    }
+  }
+  .spinner_wrapper__back,
+  .spinner_wrapper__front {
+    transform-style: preserve-3d;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    backface-visibility: hidden;
+    transition: transform .4s ease-in-out;
+  }
+  .spinner_wrapper__front {
+    transform: rotateY(0);
+    background-color: #fff;
+    // @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    //   /* IE10+ CSS styles go here */
+    //   z-index: 1;
+    //   opacity: 1;
+    // }
+    // @media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) {
+    //   z-index: 1;
+    //   opacity: 1;
+    // }
+    // @media not all and (min-resolution:.001dpcm) {
+    //   z-index: 1;
+    //   opacity: 1;
+    // }
+  }
+  .spinner_wrapper__back {
+    transform: rotateY(180deg);
+    background-color: #fff;
+    // @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    //   /* IE10+ CSS styles go here */
+    //   z-index: -1;
+    //   opacity: 0;
+    // }
+  }
+}

@@ -1,0 +1,199 @@
+/* Стили для валидации формы */
+@import './__my__vars.scss';
+
+
+$valid-color: $form-text-color-valid;
+$valid-color-unchecked: $form-text-color-unchecked-valid;
+$invalid-color: $form-text-color-invalid;
+$invalid-color-unchecked: $form-text-color-unchecked-invalid;
+$margin-top: $form-text-margin-top;
+$font-size: $form-text-font-size;
+
+// [novalidate]
+
+// This disables the browser default feedback
+// tooltips, but still provides access to the form validation
+// APIs in JavaScript
+
+// form-control, textarea.form-control :invalid
+.was-validated .form-control:invalid,
+.form-control.is-invalid {
+  border-color: $invalid-color;
+  padding-right: calc(1.5em + .75rem);
+  // background-image: url(../img/favicon.png);
+  background-repeat: no-repeat;
+  background-position: center right calc(.375em + .1875rem);
+  background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+}
+
+// form-control, textarea.form-control :valid
+.was-validated .form-control:valid,
+.form-control.is-valid {
+  border-color: $valid-color;
+  padding-right: calc(1.5em + .75rem);
+  // background-image: url(../img/favicon.png);
+  background-repeat: no-repeat;
+  background-position: center right calc(.375em + .1875rem);
+  background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+}
+
+
+// textarea :invalid:valid
+.was-validated textarea.form-control:valid,
+.was-validated textarea.form-control:invalid,
+textarea.form-control.is-valid,
+textarea.form-control.is-invalid {
+  padding-right: calc(1.5em + .75rem);
+  background-position: top calc(.375em + .1875rem) right calc(.375em + .1875rem);
+}
+
+
+// custom-checkbox, custom-radio Текст :valid
+.custom-control-input.is-valid ~ .custom-control-label,
+.was-validated .custom-control-input:valid ~ .custom-control-label {
+  color: $valid-color;
+}
+// custom-checkbox, custom-radio Плашка :valid
+.custom-control-input.is-valid ~ .custom-control-label::before,
+.was-validated .custom-control-input:valid ~ .custom-control-label::before {
+  border-color: $valid-color-unchecked;
+}
+// custom-checkbox, custom-radio Плашка, когда :checked:valid
+.custom-control-input.is-valid:checked ~ .custom-control-label::before,
+.was-validated .custom-control-input:valid:checked ~ .custom-control-label::before {
+  border-color: $valid-color;
+  background-color: $valid-color;
+}
+
+// custom-checkbox, custom-radio Текст :invalid
+.custom-control-input.is-invalid ~ .custom-control-label,
+.was-validated .custom-control-input:invalid ~ .custom-control-label {
+  color: $invalid-color;
+}
+// custom-checkbox, custom-radio Плашка :invalid
+.custom-control-input.is-invalid ~ .custom-control-label::before,
+.was-validated .custom-control-input:invalid ~ .custom-control-label::before {
+  border-color: $invalid-color;
+}
+
+
+// custom-select :invalid
+.custom-select.is-invalid,
+.was-validated .custom-select:invalid {
+  border-color: $invalid-color;
+  padding-right: calc((1em + .75rem) * 3 / 4 + 1.75rem);
+  // background: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e) no-repeat right .75rem center/8px 10px,url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc354…%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E) #fff no-repeat center right 1.75rem/calc(.75em + .375rem) calc(.75em + .375rem);
+}
+// custom-select :valid
+.custom-select.is-valid,
+.was-validated .custom-select:valid {
+  border-color: $valid-color;
+  padding-right: calc((1em + .75rem) * 3 / 4 + 1.75rem);
+  // background: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e) no-repeat right .75rem center/8px 10px,url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc354…%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E) #fff no-repeat center right 1.75rem/calc(.75em + .375rem) calc(.75em + .375rem);
+}
+
+
+// custom-file :valid
+.custom-file-input.is-valid ~ .custom-file-label,
+.was-validated .custom-file-input:valid ~ .custom-file-label {
+  border-color: $valid-color;
+}
+// custom-file :invalid
+.custom-file-input.is-invalid ~ .custom-file-label,
+.was-validated .custom-file-input:invalid ~ .custom-file-label {
+  border-color: $invalid-color;
+}
+
+
+// form-text
+.valid-tooltip {
+  position: absolute;
+  top: 100%;
+  z-index: 5;
+  display: none;
+  max-width: 100%;
+  padding: .25rem .5rem;
+  margin-top: .1rem;
+  font-size: .875rem;
+  line-height: 1.5;
+  color: $color-white;
+  background-color: rgba($color: $valid-color, $alpha: .9);
+  border-radius: .25rem;
+}
+.invalid-tooltip {
+  position: absolute;
+  top: 100%;
+  z-index: 5;
+  display: none;
+  max-width: 100%;
+  padding: .25rem .5rem;
+  margin-top: .1rem;
+  font-size: .875rem;
+  line-height: 1.5;
+  color: $color-white;
+  background-color: rgba($color: $invalid-color, $alpha: .9);
+  border-radius: .25rem;
+}
+.valid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: $margin-top;
+  font-size: $font-size;
+  color: $valid-color;
+}
+.invalid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: $margin-top;
+  font-size: $font-size;
+  color: $invalid-color;
+}
+
+.form-control.is-invalid ~ .invalid-feedback,
+.form-control.is-invalid ~ .invalid-tooltip,
+.was-validated .form-control:invalid ~ .invalid-feedback,
+.was-validated .form-control:invalid ~ .invalid-tooltip {
+  display: block;
+}
+.form-control.is-valid ~ .valid-feedback,
+.form-control.is-valid ~ .valid-tooltip,
+.was-validated .form-control:valid ~ .valid-feedback,
+.was-validated .form-control:valid ~ .valid-tooltip {
+  display: block;
+}
+.custom-control-input.is-invalid ~ .invalid-feedback,
+.custom-control-input.is-invalid ~ .invalid-tooltip,
+.was-validated .custom-control-input:invalid ~ .invalid-feedback,
+.was-validated .custom-control-input:invalid ~ .invalid-tooltip {
+  display: block;
+}
+.custom-control-input.is-valid ~ .valid-feedback,
+.custom-control-input.is-valid ~ .valid-tooltip,
+.was-validated .custom-control-input:valid ~ .valid-feedback,
+.was-validated .custom-control-input:valid ~ .valid-tooltip {
+  display: block;
+}
+.custom-select.is-invalid ~ .invalid-feedback,
+.custom-select.is-invalid ~ .invalid-tooltip,
+.was-validated .custom-select:invalid ~ .invalid-feedback,
+.was-validated .custom-select:invalid ~ .invalid-tooltip {
+  display: block;
+}
+.custom-select.is-valid ~ .valid-feedback,
+.custom-select.is-valid ~ .valid-tooltip,
+.was-validated .custom-select:valid ~ .valid-feedback,
+.was-validated .custom-select:valid ~ .valid-tooltip {
+  display: block;
+}
+.custom-file-input.is-invalid ~ .invalid-feedback,
+.custom-file-input.is-invalid ~ .invalid-tooltip,
+.was-validated .custom-file-input:invalid ~ .invalid-feedback,
+.was-validated .custom-file-input:invalid ~ .invalid-tooltip {
+  display: block;
+}
+.custom-file-input.is-valid ~ .valid-feedback,
+.custom-file-input.is-valid ~ .valid-tooltip,
+.was-validated .custom-file-input:valid ~ .valid-feedback,
+.was-validated .custom-file-input:valid ~ .valid-tooltip {
+  display: block;
+}

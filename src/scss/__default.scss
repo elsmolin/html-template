@@ -1,3 +1,20 @@
+@import './__my__vars.scss';
+
+
+:root {
+  --white: $color-white;
+  --black: $color-black;
+  --default: $color-default;
+  --primary: $color-primary;
+  --secondary: $color-secondary;
+  --success: $color-success;
+  --danger: $color-danger;
+  --warning: $color-warning;
+  --info: $color-info;
+  --light: $color-light;
+  --dark: $color-dark;
+}
+
 * {
   outline: none !important;
   &::after,
