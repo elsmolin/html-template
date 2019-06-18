@@ -33,7 +33,7 @@ $title-size-5: 18px;
 $title-size-6: 16px;
 
 $link-color: $color-primary;
-$link-color-hover: $color-primary;
+$link-color-hover: darken($color: $color-primary, $amount: 15%);
 
 $form-color: $color-default !default;
 $form-color-secondary: $color-white !default;

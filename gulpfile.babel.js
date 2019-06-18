@@ -18,7 +18,7 @@ const { task, series, watch } = gulp
 
 const PRODUCTION = !!(yargs.argv.production);  // --production флаг
 const CONFIG_PATH = './config.json'
-const CONFIG = JSON.parse(fs.readFileSync(CONFIG_PATH).toString());
+let CONFIG = JSON.parse(fs.readFileSync(CONFIG_PATH).toString());
 const MAIN_JS = 'index.js'
 const MAIN_SCSS = 'index.scss'
 const REMOTE_PATH = './dist'
@@ -158,13 +158,14 @@ function pug() {
 function injectFiles() {
   let styles = ''
   let scripts = ''
+  CONFIG = JSON.parse(fs.readFileSync(CONFIG_PATH).toString())
 
   CONFIG[PRODUCTION ? 'cssProd' : 'css'].forEach(cssLib => {
-    styles += `<link rel="stylesheet" href="./css/${cssLib}?v=${Date.now()}">`
+    styles += `<link rel="stylesheet" href="./css/${cssLib}">`
   });
 
   CONFIG[PRODUCTION ? 'jsProd' : 'js'].forEach(jsLib => {
-    scripts += `<script src="./js/${jsLib}?v=${Date.now()}"></script>`
+    scripts += `<script src="./js/${jsLib}"></script>`
   });
 
   return gulp.src(`${REMOTE_PATH}/*.html`)

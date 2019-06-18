@@ -68,20 +68,9 @@ a {
   color: $text-link-color;
   user-select: none;
   text-decoration: underline;
-  &:hover,
-  &:focus {
-    color: $text-link-color;
-  }
-  &.active,
-  &:active {
+  &:hover {
     color: $text-link-color-hover;
     text-decoration: none;
-  }
-  @media screen and (min-width: $desktop) {
-    &:hover {
-      color: $text-link-color-hover;
-      text-decoration: none;
-    }
   }
 }
 
