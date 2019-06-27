@@ -1,13 +1,10 @@
 /**
  * Bootstrap 4: Tooltip
  */
-export const tooltip = () => {
+export const tooltipInit = () => {
   let screenWidth = $(window).width()
 
-  $('[data-toggle="tooltip_custom"]').tooltip({
-    trigger: "hover",
-    template: '<div class="tooltip tooltip_custom" role="tooltip"><div class="tooltip-inner"></div></div>'
-  })
+  initTooltipCustom()
 
   /* Resize компонента tooltip */
   $(window).resize(function() {
@@ -15,14 +12,18 @@ export const tooltip = () => {
     
     screenWidth = $(window).width()
 
-    reInitTooltipCustom()
+    initTooltipCustom()
   })
 };
 
-export const reInitTooltipCustom = () => {
-  $('[data-toggle="tooltip_custom"]').tooltip('dispose')
+const initTooltipCustom = () => {
   $('[data-toggle="tooltip_custom"]').tooltip({
     trigger: "hover",
     template: '<div class="tooltip tooltip__custom" role="tooltip"><div class="tooltip-inner"></div></div>'
   })
+  console.log('Tooltip:[data-toggle="tooltip_custom"] - перезапущен')
 };
+
+export const tooltip = {
+  initTooltipCustom
+}

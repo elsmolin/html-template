@@ -1,7 +1,7 @@
 /**
  * Главная страница
  */
-export const main = () => {
+export const mainInit = () => {
   let screenWidth = $(window).width()
 
   /* Resize компонента main */

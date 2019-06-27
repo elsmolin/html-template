@@ -1,7 +1,7 @@
 /**
  * Шапка
  */
-export const header = () => {
+export const headerInit = () => {
   /* Отображение мобильного меню */
   $('body').on('click', '[js-mobile-menu-toggler]', function() {
     $('#header_mobile_menu').toggleClass('customshow')

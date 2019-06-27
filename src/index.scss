@@ -4,11 +4,13 @@
 
 /*---CHUNKS---*/
 @import './scss/__fonts.scss';
-@import './scss/__default.scss';
+@import './scss/__reset.scss';
 @import './scss/__grid.scss';
-@import './scss/__button.scss';
 @import './scss/__text.scss';
+@import './scss/__button.scss';
 @import './scss/__form.scss';
+@import './scss/__form-custom.scss';
+@import './scss/__form-validated.scss';
 @import './scss/__tooltip.scss';
 
 /*---PLUGINS---*/

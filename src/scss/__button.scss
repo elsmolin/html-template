@@ -1,58 +1,71 @@
 @import './__my__vars.scss';
 
 /* Кнопки */
-$button-height: 40px;
-$button-border-radius: 0;
-$button-font-size: 16px;
+$b-height: 40px;
+$b-border-radius: 0;
+$b-font-size: $font-size !default;
+$b-disable: 0.5;
+$b-border: 1px;
+$b-padding-v: 0;
+$b-padding-h: .75rem;
 
-$button-heights: (
-  sm: $button-height * .75,
-  md: $button-height,
-  lg: $button-height * 1.25
+$b-heights: (
+  sm: $b-height * .75,
+  md: $b-height,
+  lg: $b-height * 1.25
 );
-$button-border-radiuses: (
-  sm: $button-border-radius * .75,
-  md: $button-border-radius,
-  lg: $button-border-radius * 1.25
+$b-border-radiuses: (
+  sm: $b-border-radius * .75,
+  md: $b-border-radius,
+  lg: $b-border-radius * 1.25
 );
-$button-font-sizes: (
-  sm: $button-font-size * .75,
-  md: $button-font-size,
-  lg: $button-font-size * 1.25
+$b-font-sizes: (
+  sm: $b-font-size * .75,
+  md: $b-font-size,
+  lg: $b-font-size * 1.25
 );
 
-$link: $color-primary;
-$link-hover: darken($color: $color-primary, $amount: 15%);
+$link-color: $link-color !default;
+$link-color-hover: $link-color-hover !default;
 
 $default-text: $color-white;
-$default-hover: lighten($color: $color-default, $amount: 15%);
+$default-hover: lighten($color: $color-default, $amount: 10%);
+$default-active: lighten($color: $color-default, $amount: 15%);
 $default-color: $color-default;
 $primary-text: $color-white;
-$primary-hover: darken($color: $color-primary, $amount: 15%);
+$primary-hover: darken($color: $color-primary, $amount: 10%);
+$primary-active: darken($color: $color-primary, $amount: 15%);
 $primary-color: $color-primary;
 // $secondary-text: $color-secondary;
 // $secondary-hover: $color-secondary;
+// $secondary-active: $color-secondary;
 // $secondary-color: $color-secondary;
 // $success-text: $color-success;
 // $success-hover: $color-success;
+// $success-active: $color-success;
 // $success-color: $color-success;
 // $danger-text: $color-danger;
 // $danger-hover: $color-danger;
+// $danger-active: $color-danger;
 // $danger-color: $color-danger;
 // $warning-text: $color-warning;
 // $warning-hover: $color-warning;
+// $warning-active: $color-warning;
 // $warning-color: $color-warning;
 // $info-text: $color-info;
 // $info-hover: $color-info;
+// $info-active: $color-info;
 // $info-color: $color-info;
 // $light-text: $color-light;
 // $light-hover: $color-light;
+// $light-active: $color-light;
 // $light-color: $color-light;
 // $dark-text: $color-dark;
 // $dark-hover: $color-dark;
+// $dark-active: $color-dark;
 // $dark-color: $color-dark;
 
-$button-types: (
+$b-types: (
   'primary',
   // 'secondary',
   // 'success',
@@ -62,7 +75,7 @@ $button-types: (
   // 'light',
   // 'dark'
 );
-$button-texts: (
+$b-texts: (
   $primary-text,
   // $secondary-text,
   // $success-text,
@@ -72,7 +85,7 @@ $button-texts: (
   // $light-text,
   // $dar-textk
 );
-$button-hovers: (
+$b-hovers: (
   $primary-hover,
   // $secondary-hover,
   // $success-hover,
@@ -82,7 +95,17 @@ $button-hovers: (
   // $light-hover,
   // $dark-hover
 );
-$button-colors: (
+$b-actives: (
+  $primary-active,
+  // $secondary-active,
+  // $success-active,
+  // $danger-active,
+  // $warning-active,
+  // $info-active,
+  // $light-active,
+  // $dark-active
+);
+$b-colors: (
   $primary-color,
   // $secondary-color,
   // $success-color,
@@ -94,155 +117,167 @@ $button-colors: (
 );
 
 // zip - перемешать списки и образовать новые
-$buttons: zip($button-types, $button-texts, $button-hovers, $button-colors);
+$bs: zip($b-types, $b-texts, $b-hovers, $b-actives, $b-colors);
 
 
-[role="button"] {
+[role="b-utton"] {
   user-select: none;
 }
 
 .btn {
   &_custom {
-    height: $button-height;
-    font-size: $button-font-size;
-    border-radius: $button-border-radius;
-    padding: 0 .75rem;
-    border: 1px solid $default-color;
+    height: $b-height;
+    font-size: $b-font-size;
+    border-radius: $b-border-radius;
+    padding: $b-padding-v $b-padding-h;
+    border: $b-border solid $default-color;
     background: $default-color;
     color: $default-text;
     text-decoration: none;
     user-select: none;
     box-shadow: none !important;
-    &:hover,
     &:focus {
-      border: 1px solid $default-color;
+      border: $b-border solid $default-color;
       background: $default-color;
       color: $default-text;
       text-decoration: none;
     }
-    &.active:not(.disabled):not(:disabled),
-    &:active:not(.disabled):not(:disabled),
-    &.active,
-    &:active {
-      border: 1px solid $default-hover;
-      background: $default-hover;
+    &:hover {
+      border: $b-border solid $default-color;
+      background: $default-color;
       color: $default-text;
       text-decoration: none;
-    }
-    @media screen and (min-width: $desktop) {
-      &:hover {
-        border: 1px solid $default-hover;
+      @media screen and (min-width: $desktop) {
+        border: $b-border solid $default-hover;
         background: $default-hover;
         color: $default-text;
         cursor: pointer;
         text-decoration: none;
       }
     }
+    &.active:not(.disabled):not(:disabled),
+    &:active:not(.disabled):not(:disabled),
+    &.active,
+    &:active {
+      border: $b-border solid $default-active;
+      background: $default-active;
+      color: $default-text;
+      text-decoration: none;
+    }
+    
     &.disabled,
     &:disabled {
-      opacity: 0.5;
+      opacity: $b-disable;
       pointer-events: none;
     }
+
     &.btn-link {
-      border: 1px solid rgba($color: $color-black, $alpha: 0);
-      background: rgba($color: $color-black, $alpha: 0);
-      color: $link;
+      border: $b-border solid rgba($color: $default-color, $alpha: 0);
+      background: rgba($color: $default-color, $alpha: 0);
+      color: $link-color;
       text-decoration: underline;
-      &:hover,
-      &:focus {
-        border: 1px solid rgba($color: $color-black, $alpha: 0);
-        background: rgba($color: $color-black, $alpha: 0);
-        color: $link;
-        text-decoration: underline;
-      }
       &.active:not(.disabled):not(:disabled),
       &:active:not(.disabled):not(:disabled),
       &.active,
-      &:active {
-        border: 1px solid rgba($color: $color-black, $alpha: 0);
-        background: rgba($color: $color-black, $alpha: 0);
-        color: $link-hover;
-        text-decoration: none;
+      &:active
+      &:focus {
+        border: $b-border solid rgba($color: $default-color, $alpha: 0);
+        background: rgba($color: $default-color, $alpha: 0);
+        color: $link-color;
+        text-decoration: underline;
       }
-      @media screen and (min-width: $desktop) {
-        &:hover {
-          border: 1px solid rgba($color: $color-black, $alpha: 0);
-          background: rgba($color: $color-black, $alpha: 0);
-          color: $link-hover;
+      &:hover {
+        border: $b-border solid rgba($color: $default-color, $alpha: 0);
+        background: rgba($color: $default-color, $alpha: 0);
+        color: $link-color;
+        text-decoration: underline;
+        @media screen and (min-width: $desktop) {
+          border: $b-border solid rgba($color: $default-color, $alpha: 0);
+          background: rgba($color: $default-color, $alpha: 0);
+          color: $link-color-hover;
           cursor: pointer;
           text-decoration: none;
         }
       }
     }
-    @each $type, $text, $hover, $color in $buttons {
+
+    @each $type, $text, $hover, $active, $color in $bs {
       &.btn-#{$type} {
-        border: 1px solid $color;
+        border: $b-border solid $color;
         background: $color;
         color: $text;
-        &:hover,
         &:focus {
-          border: 1px solid $color;
+          border: $b-border solid $color;
           background: $color;
           color: $text;
           text-decoration: none;
         }
-        &.active:not(.disabled):not(:disabled),
-        &:active:not(.disabled):not(:disabled),
-        &.active,
-        &:active {
-          border: 1px solid $hover;
-          background: $hover;
+        &:hover {
+          border: $b-border solid $color;
+          background: $color;
           color: $text;
           text-decoration: none;
-        }
-        @media screen and (min-width: $desktop) {
-          &:hover {
-            border: 1px solid $hover;
+          @media screen and (min-width: $desktop) {
+            border: $b-border solid $hover;
             background: $hover;
             color: $text;
             cursor: pointer;
             text-decoration: none;
           }
         }
+        &.active:not(.disabled):not(:disabled),
+        &:active:not(.disabled):not(:disabled),
+        &.active,
+        &:active {
+          border: $b-border solid $active;
+          background: $active;
+          color: $text;
+          text-decoration: none;
+        }
       }
     }
-    @each $type, $text, $hover, $color in $buttons {
+
+    @each $type, $text, $hover, $active, $color in $bs {
       &.btn-outline-#{$type} {
-        border: 1px solid $color;
-        background: rgba($color: $color-black, $alpha: 0);
+        border: $b-border solid $color;
+        background: rgba($color: $default-color, $alpha: 0);
         color: $color;
-        &:hover,
         &:focus {
-          border: 1px solid $color;
-          background: rgba($color: $color-black, $alpha: 0);
+          border: $b-border solid $color;
+          background: rgba($color: $default-color, $alpha: 0);
           color: $color;
           text-decoration: none;
         }
-        &.active:not(.disabled):not(:disabled),
-        &:active:not(.disabled):not(:disabled),
-        &.active,
-        &:active {
-          border: 1px solid $hover;
-          background: $hover;
-          color: $text;
+        &:hover {
+          border: $b-border solid $color;
+          background: rgba($color: $default-color, $alpha: 0);
+          color: $color;
           text-decoration: none;
-        }
-        @media screen and (min-width: $desktop) {
-          &:hover {
-            border: 1px solid $hover;
+          @media screen and (min-width: $desktop) {
+            border: $b-border solid $hover;
             background: $hover;
             color: $text;
             cursor: pointer;
             text-decoration: none;
           }
         }
+        &.active:not(.disabled):not(:disabled),
+        &:active:not(.disabled):not(:disabled),
+        &.active,
+        &:active {
+          border: $b-border solid $active;
+          background: $active;
+          color: $text;
+          text-decoration: none;
+        }
       }
     }
-    @each $key, $value in $button-heights {
+
+    @each $key, $value in $b-heights {
       &.btn-#{$key} {
-        height: map-get($map: $button-heights, $key: $key);
-        font-size: map-get($map: $button-font-sizes, $key: $key);
-        border-radius: map-get($map: $button-border-radiuses, $key: $key);
+        height: map-get($map: $b-heights, $key: $key);
+        font-size: map-get($map: $b-font-sizes, $key: $key);
+        border-radius: map-get($map: $b-border-radiuses, $key: $key);
       }
     }
   }

@@ -1,7 +1,7 @@
 /**
  * FancyBox плагин
  */
-export const DESKTOP_BREAK_POINT = 1200
+const _isMobile_ = /Android|webOS|iPhone|iPod|iPad|BlackBerry/.test(navigator.userAgent) && !window.MSStream
 
 export const settingsPopup = {
   default: {
@@ -15,7 +15,7 @@ export const settingsPopup = {
       beforeClose: function( instance, current ) {
         // Чтобы не дергался контент при открытии/закрытии попапа
         // на десктопе для фиксед элементов
-        if ($(window).width() >= DESKTOP_BREAK_POINT) {
+        if (!_isMobile_) {
           $('.body__global').removeClass('compensate-for-scrollbar')
         }
       }
@@ -23,7 +23,7 @@ export const settingsPopup = {
   }
 };
 
-export const popup = () => {
+export const popupInit = () => {
   /**
    * @extends [js-call-popup] - Инициализатор
    * @extends [data-popup] - ID попапа
@@ -78,7 +78,7 @@ export const popupMessage = ($message={ title: 'Default title', text: 'Lorem ips
       beforeClose: function( instance, current ) {
         // Чтобы не дергался контент при открытии/закрытии попапа
         // на десктопе для фиксед элементов
-        if ($(window).width() >= DESKTOP_BREAK_POINT) {
+        if (!_isMobile_) {
           $('.body__global').removeClass('compensate-for-scrollbar')
         }
       },

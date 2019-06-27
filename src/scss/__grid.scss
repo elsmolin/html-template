@@ -1,17 +1,39 @@
 /* Корректировка сетки проекта */
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+  display: flex;
+  &.scroll-disabled {
+    overflow: hidden;
+  }
+}
+
+.body_global {
+  height: auto;
+  flex: 0 0 100%;
+  max-width: 100%;
+  flex-direction: column;
+}
+.header_wrapper_global,
+.footer_wrapper_global {
+  flex: 0 0 auto;
+}
+.main_wrapper_global {
+  flex: 1 0 auto;
+}
+
 .container-fluid {
+  @media screen and (min-width: $tablet) {
+    // 
+  }
   @media screen and (min-width: $desktop) {
     max-width: $desktop;
   }
   @media screen and (min-width: $retina) {
     max-width: $retina;
   }
-}
-
-.col-auto {
-  flex: 0 0 auto;
-  width: auto;
-  max-width: 100%;
 }
 
 .d-xxl-none {

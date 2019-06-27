@@ -1,3 +1,5 @@
+@import './__my__vars.scss';
+
 /* Шрифты */
 $url_1: url('#{$font-path}_font.ttf');
 $url_1_eot: url('#{$font-path}_font.eot');
@@ -5,7 +7,7 @@ $url_1_eot_fix: url('#{$font-path}_font.eot?#iefix');
 $url_1_woff: url('#{$font-path}_font.woff');
 
 @font-face {
-	font-family: $font-name-1;
+	font-family: $font-main;
 	src: $url_1_eot format('embedded-opentype');
 	src: $url_1_eot_fix format('embedded-opentype'), $url_1_woff format('woff'), $url_1 format('truetype');
 	font-weight: 100;

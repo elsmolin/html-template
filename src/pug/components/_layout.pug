@@ -18,20 +18,22 @@ block local_vars
     ]
 
 <!DOCTYPE html>
-html(lang="ru").no-js
+html(lang="ru")
   head
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1")
     meta(name="format-detection" content="telephone=no")
     meta(http-equiv="X-UA-Compatible" content="ie=edge")
     meta(http-equiv="cache-control" content="no-cache")
-    link(rel="shortcut icon" href=`./img/favicon.png?v=${Date.now()}` type="image/png")
+    link(rel="shortcut icon" href=`./img/favicon.png` type="image/png")
     
     title NAME_PROJECT | #{title}
 
     <!-- <include_styles> -->
     
-  body.body_global(onload="" data-page-custom-type= pageType class= pageClass)
+  body.body_global(data-page-custom-type= pageType class= pageClass)
+    noscript
+      p JavaScript is not supported in the your browser, or are disabled! Check Settings
     block popups
       include ./popups.pug
     header.header_wrapper_global

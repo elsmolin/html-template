@@ -1,7 +1,7 @@
 /**
  * Карусели
  */
-export const carousel = () => {
+export const carouselInit = () => {
   // if ($('#carousel_main')[0]) {
   //   $('#carousel_main').slick({
   //     infinite: false,
@@ -25,3 +25,7 @@ export const carousel = () => {
   //   })
   // }
 };
+
+export const carousel = {
+  
+}

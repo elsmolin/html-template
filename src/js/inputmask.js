@@ -2,7 +2,7 @@
  * InputMask плагин
  */
 /* RegExp */
-export const regexNumberOnly = /\d+/g;
+const regexNumberOnly = /\d+/g;
 
 /**
  * @description Вырезает все символы кроме цифр и возвращает последние
@@ -12,7 +12,7 @@ export const regexNumberOnly = /\d+/g;
  * Зависит от маски
  * @default phoneLength 10
  */
-export const filterPhoneNumber = (inputValue, phoneLength=10) => {
+const filterPhoneNumber = (inputValue, phoneLength=10) => {
   const numbers = inputValue.trim().match(regexNumberOnly).join('')
   const startIndex = numbers.length - phoneLength
   const value = numbers.slice(startIndex, numbers.length)
@@ -20,7 +20,7 @@ export const filterPhoneNumber = (inputValue, phoneLength=10) => {
 };
 
 
-export const inputmask = () => {
+export const inputmaskInit = () => {
   $('[type="tel"]').inputmask({
     mask: "+7 (999) 999-99-99",
     onBeforeMask(initialValue) {
@@ -34,7 +34,10 @@ export const inputmask = () => {
   })
 };
 
-export const reInitInputMask = () => {
-  $('[type="tel"]').inputmask('remove').val('');
-  inputmask()
-};
+export const inputMask = {
+  reInitInputMask: () => {
+    $('[type="tel"]').inputmask('remove').val('');
+    inputmaskInit()
+    console.log('inputMask:[type="tel"] - перезапущен')
+  }
+}

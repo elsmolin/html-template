@@ -59,10 +59,6 @@ const ROLLUP_OPTIONS = {
     babel()
   ]
 }
-const PREFIXER_OPTIONS = {
-  browsers: ['last 2 versions'],
-  cascade: false
-}
 const PUG_OPTIONS = {
   pretty: true
 }
@@ -144,7 +140,7 @@ function js() {
 function sass() {
   return gulp.src(CONSTS.src.sass)
     .pipe(gulpSass())
-    .pipe(autoprefixer(PREFIXER_OPTIONS))
+    .pipe(autoprefixer())
     .pipe(gulp.dest(CONSTS.dist.css));
 };
 

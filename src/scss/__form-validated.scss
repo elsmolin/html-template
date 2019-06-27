@@ -1,13 +1,12 @@
-/* Стили для валидации формы */
 @import './__my__vars.scss';
 
+$f-valid-color: $color-success !default;;
+$f-valid-color-unchecked: darken($color: $color-success, $amount: 15%) !default;
+$f-invalid-color: $color-danger !default;
+$f-invalid-color-unchecked: darken($color: $color-danger, $amount: 15%) !default;
+$f-font-size: $font-size * .8 !default;
 
-$valid-color: $form-text-color-valid;
-$valid-color-unchecked: $form-text-color-unchecked-valid;
-$invalid-color: $form-text-color-invalid;
-$invalid-color-unchecked: $form-text-color-unchecked-invalid;
-$margin-top: $form-text-margin-top;
-$font-size: $form-text-font-size;
+/* Стили для валидации формы */
 
 // [novalidate]
 
@@ -18,7 +17,7 @@ $font-size: $form-text-font-size;
 // form-control, textarea.form-control :invalid
 .was-validated .form-control:invalid,
 .form-control.is-invalid {
-  border-color: $invalid-color;
+  border-color: $f-invalid-color;
   padding-right: calc(1.5em + .75rem);
   // background-image: url(../img/favicon.png);
   background-repeat: no-repeat;
@@ -29,7 +28,7 @@ $font-size: $form-text-font-size;
 // form-control, textarea.form-control :valid
 .was-validated .form-control:valid,
 .form-control.is-valid {
-  border-color: $valid-color;
+  border-color: $f-valid-color;
   padding-right: calc(1.5em + .75rem);
   // background-image: url(../img/favicon.png);
   background-repeat: no-repeat;
@@ -51,43 +50,43 @@ textarea.form-control.is-invalid {
 // custom-checkbox, custom-radio Текст :valid
 .custom-control-input.is-valid ~ .custom-control-label,
 .was-validated .custom-control-input:valid ~ .custom-control-label {
-  color: $valid-color;
+  color: $f-valid-color;
 }
 // custom-checkbox, custom-radio Плашка :valid
 .custom-control-input.is-valid ~ .custom-control-label::before,
 .was-validated .custom-control-input:valid ~ .custom-control-label::before {
-  border-color: $valid-color-unchecked;
+  border-color: $f-valid-color-unchecked;
 }
 // custom-checkbox, custom-radio Плашка, когда :checked:valid
 .custom-control-input.is-valid:checked ~ .custom-control-label::before,
 .was-validated .custom-control-input:valid:checked ~ .custom-control-label::before {
-  border-color: $valid-color;
-  background-color: $valid-color;
+  border-color: $f-valid-color;
+  background-color: $f-valid-color;
 }
 
 // custom-checkbox, custom-radio Текст :invalid
 .custom-control-input.is-invalid ~ .custom-control-label,
 .was-validated .custom-control-input:invalid ~ .custom-control-label {
-  color: $invalid-color;
+  color: $f-invalid-color;
 }
 // custom-checkbox, custom-radio Плашка :invalid
 .custom-control-input.is-invalid ~ .custom-control-label::before,
 .was-validated .custom-control-input:invalid ~ .custom-control-label::before {
-  border-color: $invalid-color;
+  border-color: $f-invalid-color;
 }
 
 
 // custom-select :invalid
 .custom-select.is-invalid,
 .was-validated .custom-select:invalid {
-  border-color: $invalid-color;
+  border-color: $f-invalid-color;
   padding-right: calc((1em + .75rem) * 3 / 4 + 1.75rem);
   // background: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e) no-repeat right .75rem center/8px 10px,url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc354…%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E) #fff no-repeat center right 1.75rem/calc(.75em + .375rem) calc(.75em + .375rem);
 }
 // custom-select :valid
 .custom-select.is-valid,
 .was-validated .custom-select:valid {
-  border-color: $valid-color;
+  border-color: $f-valid-color;
   padding-right: calc((1em + .75rem) * 3 / 4 + 1.75rem);
   // background: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e) no-repeat right .75rem center/8px 10px,url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc354…%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E) #fff no-repeat center right 1.75rem/calc(.75em + .375rem) calc(.75em + .375rem);
 }
@@ -96,12 +95,12 @@ textarea.form-control.is-invalid {
 // custom-file :valid
 .custom-file-input.is-valid ~ .custom-file-label,
 .was-validated .custom-file-input:valid ~ .custom-file-label {
-  border-color: $valid-color;
+  border-color: $f-valid-color;
 }
 // custom-file :invalid
 .custom-file-input.is-invalid ~ .custom-file-label,
 .was-validated .custom-file-input:invalid ~ .custom-file-label {
-  border-color: $invalid-color;
+  border-color: $f-invalid-color;
 }
 
 
@@ -117,7 +116,7 @@ textarea.form-control.is-invalid {
   font-size: .875rem;
   line-height: 1.5;
   color: $color-white;
-  background-color: rgba($color: $valid-color, $alpha: .9);
+  background-color: rgba($color: $f-valid-color, $alpha: .9);
   border-radius: .25rem;
 }
 .invalid-tooltip {
@@ -131,22 +130,22 @@ textarea.form-control.is-invalid {
   font-size: .875rem;
   line-height: 1.5;
   color: $color-white;
-  background-color: rgba($color: $invalid-color, $alpha: .9);
+  background-color: rgba($color: $f-invalid-color, $alpha: .9);
   border-radius: .25rem;
 }
 .valid-feedback {
   display: none;
   width: 100%;
-  margin-top: $margin-top;
-  font-size: $font-size;
-  color: $valid-color;
+  margin-top: 0;
+  font-size: $f-font-size;
+  color: $f-valid-color;
 }
 .invalid-feedback {
   display: none;
   width: 100%;
-  margin-top: $margin-top;
-  font-size: $font-size;
-  color: $invalid-color;
+  margin-top: 0;
+  font-size: $f-font-size;
+  color: $f-invalid-color;
 }
 
 .form-control.is-invalid ~ .invalid-feedback,

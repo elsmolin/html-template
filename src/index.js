@@ -1,29 +1,36 @@
-import { main } from './js/main'
-import { inputmask } from "./js/inputmask";
-import { tooltip } from "./js/tooltip";
-import { select } from "./js/select";
-import { popup } from "./js/popup";
-import { carousel } from "./js/carousel";
-import { form } from "./js/form";
-import { header } from "./js/header";
+import { mainInit } from './js/main'
+import { inputmaskInit, inputMask } from "./js/inputmask";
+import { tooltipInit, tooltip } from "./js/tooltip";
+import { selectInit, select } from "./js/select";
+import { popupInit } from "./js/popup";
+import { carouselInit, carousel } from "./js/carousel";
+import { formInit, form } from "./js/form";
+import { headerInit } from "./js/header";
 
-import { demo } from "./js/_demoJS";
+import { demoInit } from "./js/_demoJS";
 
-import './js/_reusableFuntions'
+// import './js/_reusableFuntions'
+window._custom_ = {
+  inputMask,
+  // form,
+  // tooltip,
+  // select,
+  // carousel,
+}
 
 $(document).ready(function(){
   /* Компоненты */
-  inputmask()
-  tooltip()
-  select()
-  popup()
-  carousel()
-  form()
-  header()
+  inputmaskInit()
+  // tooltipInit()
+  // selectInit()
+  // popupInit()
+  // carouselInit()
+  // formInit()
+  headerInit()
 
   /* Скрипты необходимые только на конкретной странице */
-  main()
+  // mainInit()
 
   /* delete this */
-  demo()
+  // demoInit()
 })

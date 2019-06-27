@@ -1,82 +1,61 @@
+@import './__my__vars.scss';
+
 /* Типография */
-$text-title-size-1: $title-size-1;
-$text-title-size-2: $title-size-2;
-$text-title-size-3: $title-size-3;
-$text-title-size-4: $title-size-4;
-$text-title-size-5: $title-size-5;
-$text-title-size-6: $title-size-6;
-$text-size: $font-size;
-$link-size: $font-size;
+$font-color: $color-default;
+$font-size: 16px;
 
-$text-title-color: $font-color;
-$text-color: $font-color;
-$text-link-color: $link-color;
-$text-link-color-hover: $link-color-hover;
+$link-color: $color-primary;
+$link-color-hover: darken($color: $color-primary, $amount: 10%);
 
+$title-color: $font-color;
+$title-weight: bold;
+
+$h6-size: $font-size * 1;
+$h5-size: $font-size * 1.2;
+$h4-size: $font-size * 1.4;
+$h3-size: $font-size * 1.6;
+$h2-size: $font-size * 1.8;
+$h1-size: $font-size * 2;
+$titles: (
+  $h1-size,
+  $h2-size,
+  $h3-size,
+  $h4-size,
+  $h5-size,
+  $h6-size,
+);
+
+.body_global {
+  font-family: $font;
+  font-size: $font-size;
+  color: $font-color;
+}
 
 .h1, .h2, .h3, .h4, .h5, .h6,
 h1, h2, h3, h4, h5, h6 {
-  font-weight: bold;
-  color: $text-title-color;
-  line-height: 1.5;
+  font-weight: $title-weight;
+  color: $title-color;
+  line-height: 1.35;
+  margin-bottom: 0;
 }
 
-.h1, h1 {
-  font-size: $title-size-1 * .8;
-  @media screen and (min-width: $desktop) {
-    font-size: $title-size-1;
-  }
-}
-
-.h2, h2 {
-  font-size: $title-size-2 * .8;
-  @media screen and (min-width: $desktop) {
-    font-size: $title-size-2;
-  }
-}
-
-.h3, h3 {
-  font-size: $title-size-3 * .8;
-  @media screen and (min-width: $desktop) {
-    font-size: $title-size-3;
-  }
-}
-
-.h4, h4 {
-  font-size: $title-size-4 * .8;
-  @media screen and (min-width: $desktop) {
-    font-size: $title-size-4;
-  }
-}
-
-.h5, h5 {
-  font-size: $title-size-5 * .8;
-  @media screen and (min-width: $desktop) {
-    font-size: $title-size-5;
-  }
-}
-
-.h6, h6 {
-  font-size: $title-size-6 * .8;
-  @media screen and (min-width: $desktop) {
-    font-size: $title-size-6;
+@each $title in $titles {
+  $i: index($titles, $title);
+  .h#{$i}, h#{$i} {
+    font-size: $title * .8;
+    @media screen and (min-width: $desktop) {
+      font-size: $title;
+    }
   }
 }
 
 a {
   font-size: inherit;
-  color: $text-link-color;
+  color: $link-color;
   user-select: none;
   text-decoration: underline;
   &:hover {
-    color: $text-link-color-hover;
+    color: $link-color-hover;
     text-decoration: none;
-  }
-}
-
-p {
-  font-size: inherit;
-  @media screen and (min-width: $desktop) {
-    font-size: inherit;
   }
 }

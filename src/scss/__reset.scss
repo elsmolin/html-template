@@ -1,0 +1,11 @@
+* {
+  outline: none !important;
+  &::after,
+  &::before,
+  &:hover,
+  &:focus,
+  &.active,
+  &:active {
+    outline: none !important;
+  }
+}

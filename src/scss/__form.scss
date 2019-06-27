@@ -1,11 +1,22 @@
 @import './__my__vars.scss';
-@import './__form-custom.scss';
-@import './__form-validated.scss';
+
+$f-background: $color-default !default;
+$f-height: 40px !default;
+$f-border: 1px !default;
+$f-border-color: lighten($color: $color-primary, $amount: 10%) !default;
+$f-border-color-focus: $color-primary !default;
+$f-radius: 6px !default;
+$f-padding-v: .375rem !default;
+$f-padding-h: 1.5rem !default;
+$f-font-size: $font-size !default;
+$f-text-color: $color-default !default;
+$f-text-muted: lighten($color: $color-default, $amount: 30%) !default;
+$f-text-weight: 400 !default;
+$f-placeholder-color: rgba($color: $color-default, $alpha: .5) !default;
+$f-placeholder-weight: 300 !default;
+$f-gutter: 20px !default;
 
 /* Стили для формы */
-$color: $form-text-color;
-$margin-top: $form-text-margin-top;
-$padding-column: $form-column-padding;
 
 // убираем возможность выделения текста
 label {
@@ -23,21 +34,22 @@ input[type=number] {
 }
 
 .form-row {
-  margin-left: -#{$padding-column};
-  margin-right: -#{$padding-column};
+  margin-left: -#{$f-gutter * .5};
+  margin-right: -#{$f-gutter * .5};
   > [class*=col-] {
-    padding-left: #{$padding-column};
-    padding-right: #{$padding-column};
+    padding-left: #{$f-gutter * .5};
+    padding-right: #{$f-gutter * .5};
   }
 }
 
 .form-text {
   display: block;
-  margin-top: $margin-top;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .text-muted {
-  color: $color !important;
+  color: $f-text-muted !important;
 }
 
 .form-group {
@@ -55,51 +67,50 @@ input[type=number] {
 
 .form-control {
   &.style-default {
-    height: 46px;
-    padding: .375rem 1.5rem;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: 400;
-    background-color: $form-background;
-    border: 1px solid $form-border-color;
-    color: $form-color;
+    height: $f-height;
+    padding: $f-padding-v $f-padding-h;
+    border-radius: $f-radius;
+    font-size: $f-font-size;
+    font-weight: $f-text-weight;
+    background-color: $f-background;
+    border: $f-border solid $f-border-color;
+    color: $f-text-color;
   
     &:focus {
-      border: 1px solid $form-border-color-focus;
+      border: $f-border solid $f-border-color-focus;
     }
   
     &:disabled,
     &.disabled {
       opacity: 0.5;
       pointer-events: none;
-      user-select: none;
     }
   
     &:read-only {
       pointer-events: none;
-      background: rgba($color: $form-background, $alpha: 0);
-      border: 1px solid rgba($color: $form-border-color, $alpha: 0);
+      background: rgba($color: $f-background, $alpha: 0.5);
+      border: $f-border solid rgba($color: $f-border-color, $alpha: 0.5);
     }
   
     &::placeholder {
-      color: $form-color-placeholder;
-      font-size: inherit;
-      font-weight: inherit;
+      color: $f-placeholder-color;
+      font-size: $f-font-size;
+      font-weight: $f-placeholder-weight;
     }
   }
+
   &.form-control-lg {
-    height: 60px;
-    padding: .375rem 1.5rem;
-    border-radius: 9px;
-    font-size: 16px;
-    font-weight: 300;
+    height: $f-height * 1.25;
+    padding: #{$f-padding-v * 1.25} #{$f-padding-h * 1.25};
+    border-radius: $f-radius * 1.25;
+    font-size: $f-font-size * 1.25;
   }
+
   &.form-control-sm {
-    height: 30px;
-    padding: .375rem 1.5rem;
-    border-radius: 3px;
-    font-size: 16px;
-    font-weight: 300;
+    height: $f-height * .75;
+    padding: #{$f-padding-v * .75} #{$f-padding-h * .75};
+    border-radius: $f-radius * .75;
+    font-size: $f-font-size * .75;
   }
 }
 
