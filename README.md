@@ -16,17 +16,25 @@
 # Доступные команды
 `yarn` или `npm install` - Установить все зависимости. [Yarn](https://yarnpkg.com/ru/docs/install "Скачать Yarn")  
 `yarn start` или `npm start` - Режим разработчика  
-`yarn build` или `npm run build` - Production (В основном для внедряющего)  
+`yarn build` или `npm run build` - Production (В основном для внедряющего. **Отличие:** *минификация изображений и разовая сборка*)  
 
 # Структура
-`./config.json` - Настройки проекта и порядок подключения файлов  
-`./dist/` - Папка с готовой сборкой  
-`./src/css/` - Стили сторонних библиотек  
+**`./config.json` - Настройки проекта и порядок подключения файлов**  
+`.browserslistrc` - Настройки AutoPrefixer  
+`.babelrc` - Настройки Babel  
+`./src/bootstrap_custom.scss` - Кастомная сборка Bootstrap  
+`./src/index.scss` - Точка входа SCSS для Gulp  
+`./src/index.js` - Точка входа JS для Gulp  
+`./src/css/` - CSS сторонних библиотек  
 `./src/fonts_icons/` - Бэкап для IcoMoon  
 `./src/scss/__archive.scss` - Стили которые могут пригодиться  
-`./src/js/third/` - Сторонние библиотеки  
+`./src/scss/bootstrap/` - SCSS исходники Bootstrap  
+`./src/js/third/` - JavaScript сторонних библиотек  
 `./src/js/_archive.js` - Функции которые могут пригодиться  
-`./src/js/_reusableFuntions.js` - Глобальные функции проекта  
+`./dist/` - Папка с готовой сборкой  
 
 # Мини документация
-ToDo...
+`window._custom_` - Объект с полезными функция, скомпанованные для каждого плагина в соответсвующий ключ объекта  
+`bootstrap.min.css` - Дефолтный Bootstrap  
+`bootstrap_custom.min.css` - Bootstrap с вырезанными стилями, которые не использовались в проекте.  
+Для добавления сущности раскомментировать нужный `@import` в `./src/bootstrap_custom.scss` и пересобрать (если использвалась команда `build`)  

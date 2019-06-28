@@ -12,14 +12,14 @@
     "popper.min.js",
     "bootstrap.min.js",
     "jquery.inputmask.bundle.js",
-    "index.js"
+    "index.min.js"
   ],
   "css": [
-    "bootstrap.min.css",
+    "bootstrap_custom.min.css",
     "index.css"
   ],
   "cssProd": [
-    "bootstrap.min.css",
-    "index.css"
+    "bootstrap_custom.min.css",
+    "index.min.css"
   ]
 }

@@ -5,12 +5,15 @@ import gulp from 'gulp'
 import gulpIf from 'gulp-if'
 import gulpPug from 'gulp-pug'
 import gulpSass from 'gulp-sass'
+import minifyCSS from 'gulp-clean-css'
+import minifyJS from 'gulp-uglify'
+import minifyIMG from 'gulp-imagemin'
+import gulpRename from 'gulp-rename'
 import autoprefixer from 'gulp-autoprefixer'
 import htmlBeautify from 'gulp-html-beautify'
 import { rollup } from 'rollup'
 import babel from 'rollup-plugin-babel'
 import clean from 'gulp-clean'
-import gulpImg from 'gulp-imagemin'
 import browser  from 'browser-sync';
 
 
@@ -21,12 +24,14 @@ const CONFIG_PATH = './config.json'
 let CONFIG = JSON.parse(fs.readFileSync(CONFIG_PATH).toString());
 const MAIN_JS = 'index.js'
 const MAIN_SCSS = 'index.scss'
+const BOOTSTRAP_SCSS = 'bootstrap_custom.scss'
 const REMOTE_PATH = './dist'
 const CONSTS = {
   src: {
     js: `./src/${MAIN_JS}`,
     jsLibs: './src/js/third/**',
     sass: `./src/${MAIN_SCSS}`,
+    bootstrap: `./src/${BOOTSTRAP_SCSS}`,
     css: './src/css/**',
     pug: './src/pug/*.pug',
     img: './src/img/**',
@@ -42,6 +47,7 @@ const CONSTS = {
   watch: {
     js: ['./src/js/*.js', `./src/${MAIN_JS}`],
     sass: ['./src/scss/*.scss', `./src/${MAIN_SCSS}`],
+    bootstrap: ['./src/scss/bootstrap/**/*.scss', `./src/${BOOTSTRAP_SCSS}`],
     pug: ['./src/pug/**/*.pug'],
     json: CONFIG_PATH
   }
@@ -86,6 +92,7 @@ function watchTask() {
   watch(CONSTS.watch.js).on('all', series(js, browser.reload));
   watch(CONSTS.watch.pug).on('all', series('buildHTML', browser.reload));
   watch(CONSTS.watch.sass).on('all', series(sass, browser.reload));
+  watch(CONSTS.watch.bootstrap).on('all', series(sass, browser.reload));
   watch(CONSTS.watch.json).on('all', series('buildHTML', browser.reload));
 
   watch(CONSTS.src.fonts).on('all', series(copyFonts, browser.reload));
@@ -123,7 +130,7 @@ function copyCSS() {
 
 function copyImgs() {
   return gulp.src(CONSTS.src.img)
-    .pipe(gulpIf(PRODUCTION, gulpImg()))
+    .pipe(gulpIf(PRODUCTION, minifyIMG()))
     .pipe(gulp.dest(CONSTS.dist.img));
 };
 
@@ -134,13 +141,30 @@ function js() {
         file: `${CONSTS.dist.js}/${MAIN_JS}`,
         format: 'umd',
       });
-    });
+    })
+    .then(() => {
+      gulp.src(`${CONSTS.dist.js}/${MAIN_JS}`)
+        .pipe(minifyJS({
+          compress: {
+            drop_console: true  // удаляем все console.log
+          }
+        }))
+        .pipe(gulpRename({
+          suffix: ".min"
+        }))
+        .pipe(gulp.dest(CONSTS.dist.js))
+    })
 };
 
 function sass() {
-  return gulp.src(CONSTS.src.sass)
+  return gulp.src([CONSTS.src.sass, CONSTS.src.bootstrap])
     .pipe(gulpSass())
     .pipe(autoprefixer())
+    .pipe(gulp.dest(CONSTS.dist.css))
+    .pipe(minifyCSS())
+    .pipe(gulpRename({
+      suffix: ".min"
+    }))
     .pipe(gulp.dest(CONSTS.dist.css));
 };
 
