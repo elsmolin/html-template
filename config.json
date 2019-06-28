@@ -5,7 +5,7 @@
     "popper.min.js",
     "bootstrap.min.js",
     "jquery.inputmask.bundle.js",
-    "index.js"
+    "index.min.js"
   ],
   "jsProd": [
     "jquery.min.js",
@@ -16,7 +16,7 @@
   ],
   "css": [
     "bootstrap_custom.min.css",
-    "index.css"
+    "index.min.css"
   ],
   "cssProd": [
     "bootstrap_custom.min.css",

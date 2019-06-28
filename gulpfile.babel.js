@@ -1,6 +1,6 @@
-import fs from 'fs';
-import yargs from 'yargs';
-import replace from 'gulp-replace';
+import fs from 'fs'
+import yargs from 'yargs'
+import replace from 'gulp-replace'
 import gulp from 'gulp'
 import gulpIf from 'gulp-if'
 import gulpPug from 'gulp-pug'
@@ -14,7 +14,8 @@ import htmlBeautify from 'gulp-html-beautify'
 import { rollup } from 'rollup'
 import babel from 'rollup-plugin-babel'
 import clean from 'gulp-clean'
-import browser  from 'browser-sync';
+import browser  from 'browser-sync'
+import removeCode from 'gulp-remove-code'
 
 
 const { task, series, watch } = gulp
@@ -144,9 +145,13 @@ function js() {
     })
     .then(() => {
       gulp.src(`${CONSTS.dist.js}/${MAIN_JS}`)
+        .pipe(removeCode({
+          production: PRODUCTION
+        }))
+        .pipe(gulp.dest(CONSTS.dist.js))
         .pipe(minifyJS({
           compress: {
-            drop_console: true  // удаляем все console.log
+            drop_console: PRODUCTION  // удаляем все console.log из production
           }
         }))
         .pipe(gulpRename({
