@@ -1,13 +1,13 @@
-nav.bread-crumbs
-  ul.list-unstyled.list-inline.bread-crumbs__list
+nav.bread_crumbs
+  ul.list-unstyled.list-inline.bread_crumbs-list
     each item, index in bread_crumbs
-      li.list-inline-item.bread-crumbs__item(itemprop="itemListElement" itemscope
-      itemtype="http://schema.org/ListItem" class=`${index == bread_crumbs.length - 1 ? 'bread-crumbs__current': ''}`)
+      li.list-inline-item.bread_crumbs-item(itemprop="itemListElement" itemscope
+      itemtype="http://schema.org/ListItem" class=`${index == bread_crumbs.length - 1 ? 'bread_crumbs-current': ''}`)
         if index === bread_crumbs.length - 1
-          span(itemprop="item").bread-crumbs__link
-            span(itemprop="name").bread-crumbs__name= item.text
+          span(itemprop="item").bread_crumbs-link
+            span(itemprop="name").bread_crumbs-name= item.text
         else
-          a(href= item.href itemprop="item").bread-crumbs__link
-            span(itemprop="name").bread-crumbs__name= item.text
+          a(href= item.href itemprop="item").bread_crumbs-link
+            span(itemprop="name").bread_crumbs-name= item.text
         meta(itemprop="position" content=`${index + 1}`)
-        span.bread-crumbs__decoration /
+        span.bread_crumbs-decoration /

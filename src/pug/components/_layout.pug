@@ -2,8 +2,8 @@ block global_vars
   include ./_global_vars.pug
 
 block local_vars
-  - var pageClass = "default__page"
   - var pageType = "default"
+  - var pageClass = `${pageType}_page`
   - var title = "default title"
   - 
     var bread_crumbs = [
@@ -13,7 +13,7 @@ block local_vars
       },
       {
         href: './main.html',
-        text: 'Главная'
+        text: title
       }
     ]
 
