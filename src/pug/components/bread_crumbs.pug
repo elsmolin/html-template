@@ -1,0 +1,14 @@
+.bread_crumbs-wrapper(class= breadCrumbsClass)
+  .container-fluid
+    nav.bread_crumbs
+      ul.bread_crumbs-list
+        each item, index in bread_crumbs
+          li.list-inline-item.bread_crumbs-item(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class=`${index == bread_crumbs.length - 1 ? '-current-': ''}`)
+            if index === bread_crumbs.length - 1
+              span(itemprop="item").bread_crumbs-link
+                span(itemprop="name").bread_crumbs-name= item.text
+            else
+              a(href= item.href itemprop="item").bread_crumbs-link
+                span(itemprop="name").bread_crumbs-name= item.text
+            meta(itemprop="position" content=`${index + 1}`)
+            span.bread_crumbs-divider /

@@ -12,20 +12,21 @@
 @import './scss/__form-custom.scss';
 @import './scss/__form-validated.scss';
 @import './scss/__tooltip.scss';
+@import './scss/__utilits.scss';
 
 /*---PLUGINS---*/
-@import './scss/__carousel.scss';
+@import './scss/__slick.scss';
 @import './scss/__datepicker.scss';
-@import './scss/__popup.scss';
+@import './scss/__fancybox.scss';
 @import './scss/__select.scss';
-@import './scss/__slider.scss';
+@import './scss/__rangeslider.scss';
 
 /*---CUSTOM_COMPONENTS---*/
 @import './scss/_header.scss';
 @import './scss/_footer.scss';
 @import './scss/_bread-crumbs.scss';
 @import './scss/_pagination.scss';
-@import './scss/_product.scss';
+@import './scss/_product_card.scss';
 
 /*---PAGES---*/
 @import './scss/index.scss';

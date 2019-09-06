@@ -1,14 +1,20 @@
 extends ./components/_layout.pug
 
 block local_vars
-  - var pageType = "index"
-  - var pageClass = "index__page"
+  //- - var headerClass = ``
+  //- - var contentClass = ``
+  //- - var footerClass = ``
+  //- - var breadCrumbsClass = ``
   - var title = "Список страниц"
   
 block bread_crumbs
   
 block content
   .container-fluid
-    ul.list-unstyled
+    ul.-default-
       li
         a(href="./main.html") Главная
+    hr.hr.-divider-
+    ul.-default-
+      li
+        a(href="./form.html") Формы

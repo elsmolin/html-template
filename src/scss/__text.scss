@@ -1,29 +1,11 @@
 @import './__my__vars.scss';
 
-/* Типография */
+/* text */
 $font-color: $color-default;
 $font-size: 16px;
 
 $link-color: $color-primary;
 $link-color-hover: darken($color: $color-primary, $amount: 10%);
-
-$title-color: $font-color;
-$title-weight: bold;
-
-$h6-size: $font-size * 1;
-$h5-size: $font-size * 1.2;
-$h4-size: $font-size * 1.4;
-$h3-size: $font-size * 1.6;
-$h2-size: $font-size * 1.8;
-$h1-size: $font-size * 2;
-$titles: (
-  $h1-size,
-  $h2-size,
-  $h3-size,
-  $h4-size,
-  $h5-size,
-  $h6-size,
-);
 
 .body_global {
   font-family: $font;
@@ -31,31 +13,42 @@ $titles: (
   color: $font-color;
 }
 
-.h1, .h2, .h3, .h4, .h5, .h6,
-h1, h2, h3, h4, h5, h6 {
-  font-weight: $title-weight;
-  color: $title-color;
-  line-height: 1.35;
-  margin-bottom: 0;
+h1, .h1 {
+  
 }
 
-@each $title in $titles {
-  $i: index($titles, $title);
-  .h#{$i}, h#{$i} {
-    font-size: $title * .8;
-    @media screen and (min-width: $desktop) {
-      font-size: $title;
-    }
-  }
+h2, .h2 {
+
+}
+
+h3, .h3 {
+
+}
+
+h4, .h4 {
+
+}
+
+h5, .h5 {
+
+}
+
+h6, .h6 {
+
+}
+
+p {
+  margin-bottom: 10px;
 }
 
 a {
   font-size: inherit;
   color: $link-color;
   user-select: none;
-  text-decoration: underline;
+  // text-decoration: underline;
   &:hover {
     color: $link-color-hover;
-    text-decoration: none;
+    // text-decoration: none;
   }
 }
+/* text */

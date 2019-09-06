@@ -1,9 +1,9 @@
 @import './__my__vars.scss';
 
-/* Кнопки */
+/* buttons */
 $b-height: 40px;
 $b-border-radius: 0;
-$b-font-size: $font-size !default;
+$b-font-size: $font-size;
 $b-disable: 0.5;
 $b-border: 1px;
 $b-padding-v: 0;
@@ -25,8 +25,8 @@ $b-font-sizes: (
   lg: $b-font-size * 1.25
 );
 
-$link-color: $link-color !default;
-$link-color-hover: $link-color-hover !default;
+$b-link-color: $link-color;
+$b-link-color-hover: $link-color-hover;
 
 $default-text: $color-white;
 $default-hover: lighten($color: $color-default, $amount: 10%);
@@ -174,7 +174,7 @@ $bs: zip($b-types, $b-texts, $b-hovers, $b-actives, $b-colors);
     &.btn-link {
       border: $b-border solid rgba($color: $default-color, $alpha: 0);
       background: rgba($color: $default-color, $alpha: 0);
-      color: $link-color;
+      color: $b-link-color;
       text-decoration: underline;
       &.active:not(.disabled):not(:disabled),
       &:active:not(.disabled):not(:disabled),
@@ -183,18 +183,18 @@ $bs: zip($b-types, $b-texts, $b-hovers, $b-actives, $b-colors);
       &:focus {
         border: $b-border solid rgba($color: $default-color, $alpha: 0);
         background: rgba($color: $default-color, $alpha: 0);
-        color: $link-color;
+        color: $b-link-color;
         text-decoration: underline;
       }
       &:hover {
         border: $b-border solid rgba($color: $default-color, $alpha: 0);
         background: rgba($color: $default-color, $alpha: 0);
-        color: $link-color;
+        color: $b-link-color;
         text-decoration: underline;
         @media screen and (min-width: $desktop) {
           border: $b-border solid rgba($color: $default-color, $alpha: 0);
           background: rgba($color: $default-color, $alpha: 0);
-          color: $link-color-hover;
+          color: $b-link-color-hover;
           cursor: pointer;
           text-decoration: none;
         }
@@ -282,3 +282,4 @@ $bs: zip($b-types, $b-texts, $b-hovers, $b-actives, $b-colors);
     }
   }
 }
+/* buttons */

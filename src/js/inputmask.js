@@ -38,6 +38,6 @@ export const inputMask = {
   reInitInputMask: () => {
     $('[type="tel"]').inputmask('remove').val('');
     inputmaskInit()
-    console.log('inputMask:[type="tel"] - перезапущен')
+    console.info('inputMask: [type="tel"] - перезапущен')
   }
 }

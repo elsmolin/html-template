@@ -1,10 +1,7 @@
-/**
- * Главная страница
- */
 export const mainInit = () => {
   let screenWidth = $(window).width()
 
-  /* Resize компонента main */
+  /* Resize компонента */
   $(window).resize(() => {
     if (screenWidth == $(window).width()) return
     
@@ -13,7 +10,7 @@ export const mainInit = () => {
     // ToDo...
   })
 
-  /* Scroll компонента main */
+  /* Scroll компонента */
   $(window).scroll(() => {
 
   })

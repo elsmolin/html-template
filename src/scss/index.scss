@@ -1,3 +1,10 @@
 @import './__my__vars.scss';
 
-/* Страница списка страниц */
+/* index */
+ul {
+  &.-default- {
+    padding: 0;
+    list-style: none;
+  }
+}
+/* index */

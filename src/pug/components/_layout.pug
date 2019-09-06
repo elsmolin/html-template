@@ -2,50 +2,54 @@ block global_vars
   include ./_global_vars.pug
 
 block local_vars
-  - var pageClass = "default__page"
-  - var pageType = "default"
+  //- - var headerClass = ``
+  //- - var contentClass = ``
+  //- - var footerClass = ``
+  //- - var breadCrumbsClass = ``
   - var title = "default title"
   - 
     var bread_crumbs = [
       {
-        href: './main.html',
-        text: 'Главная'
+        href: './',
+        text: 'Страницы'
       },
       {
         href: './main.html',
-        text: 'Главная'
+        text: title
       }
     ]
 
 <!DOCTYPE html>
-html(lang="ru")
+html(lang="ru" itemscope itemtype="http://schema.org/WebPage")
   head
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1")
     meta(name="format-detection" content="telephone=no")
     meta(http-equiv="X-UA-Compatible" content="ie=edge")
-    meta(http-equiv="cache-control" content="no-cache")
     link(rel="shortcut icon" href=`./img/favicon.png` type="image/png")
     
     title NAME_PROJECT | #{title}
 
     <!-- <include_styles> -->
     
-  body.body_global(data-page-custom-type= pageType class= pageClass)
+  body.body_global
     noscript
       p JavaScript is not supported in the your browser, or are disabled! Check Settings
+      p JavaScript не поддерживается вашим браузером или отключен! Проверьте настройки браузера
     block popups
       include ./popups.pug
-    header.header_wrapper_global
+    header.header_wrapper_global(class= headerClass)
       block navbar
         include ./header.pug
     block bread_crumbs
-      include ./bread-crumbs.pug
-    main.main_wrapper_global
+      include ./bread_crumbs.pug
+    main.main_wrapper_global(class= contentClass)
       block content
         h1 Default content
-    footer.footer_wrapper_global
+    footer.footer_wrapper_global(class= footerClass)
       block footer
         include ./footer.pug
 
     <!-- <include_scripts> -->
+    
+    block scripts

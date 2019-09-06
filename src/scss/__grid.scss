@@ -1,20 +1,17 @@
-/* Корректировка сетки проекта */
-
-html,
-body {
+/* Сетка проекта */
+html {
   height: 100%;
-  overflow-x: hidden;
-  display: flex;
-  &.scroll-disabled {
-    overflow: hidden;
-  }
 }
-
 .body_global {
+  display: flex;
   height: auto;
   flex: 0 0 100%;
   max-width: 100%;
+  min-height: 100%;
   flex-direction: column;
+  &.-scroll_off- {
+    overflow: hidden;
+  }
 }
 .header_wrapper_global,
 .footer_wrapper_global {
@@ -51,3 +48,4 @@ body {
     display: flex !important;
   }
 }
+/* Сетка проекта */

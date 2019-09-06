@@ -1,0 +1,40 @@
+@import './__my__vars.scss';
+
+/* fancybox */
+.fancybox {
+  &-slide--html {
+    padding: 15px;
+    @media screen and (min-width: $tablet) {
+      padding: 15px;
+    }
+  }
+  &-is-open {
+    .fancybox-bg {
+      // opacity: 0.3;
+    }
+  }
+  .fancybox-bg {
+    // background: #fff;
+  }
+}
+
+// Чтобы не дергался контент при открытии/закрытии попапа
+// на десктопе для фиксед элементов
+.body_global.compensate-for-scrollbar {
+  
+  .header_wrapper_global,
+  .main_wrapper_global,
+  .footer_wrapper_global {
+    @media screen and (min-width: $desktop) {
+      margin-right: inherit;
+    }
+  }
+
+  // Чтобы не было дыры на десктопе на месте скрола 
+  .fancybox-container.fancybox-is-open .fancybox-slide {
+    @media screen and (min-width: $desktop) {
+      overflow-y: scroll;
+    }
+  }
+}
+/* fancybox */

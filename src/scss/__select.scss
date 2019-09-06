@@ -1,52 +1,55 @@
 @import './__my__vars.scss';
 
-/* Кастомный селект */
+/* selectize */
 select::-ms-expand {
   display: none;
 }
 
-.selectize-control {
-  &.customselect {
-
-    .selectize-input {
-      
-      &::after {
+.selectize {
+  &-control {
+    &.-default- {
+  
+      .selectize-input {
         
-      }
-      &.not-full {
+        &::after {
+          
+        }
+        &.not-full {
+          > input {
+            
+          }
+        }
+        &.focus {
+          
+          &::after {
+            
+          }
+        }
+        &.input-active {
+  
+        }
+        &.dropdown-active {
+          &::after {
+            
+          }
+        }
         > input {
-          
+          &::placeholder {
+            
+          }
         }
       }
-      &.focus {
+      .selectize-dropdown {
         
-        &::after {
+        .option,
+        .optgroup-header {
           
-        }
-      }
-      &.input-active {
-
-      }
-      &.dropdown-active {
-        &::after {
-          
-        }
-      }
-      > input {
-        &::placeholder {
-          
-        }
-      }
-    }
-    .selectize-dropdown {
-      
-      .option,
-      .optgroup-header {
-        
-        &[data-selectable] {
-          
+          &[data-selectable] {
+            
+          }
         }
       }
     }
   }
 }
+/* selectize */

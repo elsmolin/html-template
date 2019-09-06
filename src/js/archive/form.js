@@ -1,8 +1,5 @@
-/**
- * Нативные формы
- */
 export const formInit = () => {
-  $('body').on('click', '[js-clear-input]', function () {
+  $('body').on('click', '.js-clear-input', function () {
     $(this).parent().find('input, textarea').val(undefined).addClass('is-empty-input')
   })
 };
@@ -22,6 +19,6 @@ export const form = {
         }
       })
     })
-    console.log("$('input, textarea') Маркировка пустых полей ввода на странице выполнена")
+    console.info("$('input, textarea') Маркировка пустых полей ввода на странице выполнена")
   }
 }

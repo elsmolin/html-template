@@ -1,0 +1,11 @@
+/* utilits */
+.hr, hr {
+  border: none;
+  border-top: 1px solid #dadada;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  &.-divider- {
+    border-top-style: dashed;
+  }
+}
+/* utilits */

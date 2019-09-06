@@ -1,12 +1,12 @@
 //- Попап по умолчанию
-.popup#popup_default(style={'display':'none'})
-  h1.h1 Default title
-  p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam dolor ipsam recusandae. Alias, quas culpa. Fugit perferendis eveniet beatae officiis.
+.fancybox_popup.-default-#fancybox_default(style={'display':'none'})
+  .h1.fancybox_title Default title
+  p.fancybox_text Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam dolor ipsam recusandae. Alias, quas culpa. Fugit perferendis eveniet beatae officiis.
 
 //- Попап сообщения с выбором действия
-.popup.popup_message#popup_message(style={'display':'none'})
-  .popup_message__title#popup_message__title
-  .popup_message__text#popup_message__text
-  .popup_message__wrapper
-    button(type="button")#popup_message__success.btn_custom.btn-primary Принять
-    button(type="button")#popup_message__reject.btn_custom.btn-default Отменить
+.fancybox_popup.-message-#fancybox_message(style={'display':'none'})
+  .h1.fancybox_title#fancybox_message-title Message title
+  p.fancybox_text#fancybox_message-text Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam dolor ipsam recusandae. Alias, quas culpa. Fugit perferendis eveniet beatae officiis.
+  .fancybox_message-wrapper
+    button(type="button")#fancybox_message-success.btn_custom.-primary- Принять
+    button(type="button")#fancybox_message-reject.btn_custom.-secondary- Отменить
