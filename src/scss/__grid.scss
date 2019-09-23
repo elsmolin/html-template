@@ -1,24 +1,17 @@
 /* Сетка проекта */
 html {
   height: 100%;
+  display: flex;
 }
 .body_global {
   display: flex;
   height: auto;
-  flex: 0 0 100%;
+  flex: 1 0 100%;
   max-width: 100%;
-  min-height: 100%;
   flex-direction: column;
   &.-scroll_off- {
     overflow: hidden;
   }
-}
-.header_wrapper_global,
-.footer_wrapper_global {
-  flex: 0 0 auto;
-}
-.main_wrapper_global {
-  flex: 1 0 auto;
 }
 
 .container-fluid {
