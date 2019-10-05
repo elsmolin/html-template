@@ -1,10 +1,10 @@
 @import './__my__vars.scss';
 
-$f-valid-color: $color-success !default;;
-$f-valid-color-unchecked: darken($color: $color-success, $amount: 15%) !default;
-$f-invalid-color: $color-danger !default;
-$f-invalid-color-unchecked: darken($color: $color-danger, $amount: 15%) !default;
-$f-font-size: $font-size * .8 !default;
+$f-valid-color: #28a745;
+$f-valid-color-unchecked: darken($color: #28a745, $amount: 15%);
+$f-invalid-color: #C3002F;
+$f-invalid-color-unchecked: darken($color: #C3002F, $amount: 15%);
+$f-font-size: 16px * .8;
 
 /* Стили для валидации формы */
 
@@ -115,7 +115,7 @@ textarea.form-control.is-invalid {
   margin-top: .1rem;
   font-size: .875rem;
   line-height: 1.5;
-  color: $color-white;
+  color: #fff;
   background-color: rgba($color: $f-valid-color, $alpha: .9);
   border-radius: .25rem;
 }
@@ -129,7 +129,7 @@ textarea.form-control.is-invalid {
   margin-top: .1rem;
   font-size: .875rem;
   line-height: 1.5;
-  color: $color-white;
+  color: #fff;
   background-color: rgba($color: $f-invalid-color, $alpha: .9);
   border-radius: .25rem;
 }

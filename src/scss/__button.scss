@@ -1,69 +1,56 @@
 @import './__my__vars.scss';
 
 /* buttons */
-$b-height: 40px;
-$b-border-radius: 0;
-$b-font-size: $font-size;
+$b-height: 48px;
+$b-height-sm: 40px;
+$b-height-xl: 56px;
+
+$b-border-radius: 5px;
+$b-font-size: 13px;
 $b-disable: 0.5;
 $b-border: 1px;
-$b-padding-v: 0;
+$b-padding-v: .25rem;
 $b-padding-h: .75rem;
 
-$b-heights: (
-  sm: $b-height * .75,
-  md: $b-height,
-  lg: $b-height * 1.25
-);
-$b-border-radiuses: (
-  sm: $b-border-radius * .75,
-  md: $b-border-radius,
-  lg: $b-border-radius * 1.25
-);
-$b-font-sizes: (
-  sm: $b-font-size * .75,
-  md: $b-font-size,
-  lg: $b-font-size * 1.25
-);
+$b-link-color: #C3002F;
+$b-link-color-hover: darken($color: #C3002F, $amount: 10%);
 
-$b-link-color: $link-color;
-$b-link-color-hover: $link-color-hover;
-
-$default-text: $color-white;
-$default-hover: lighten($color: $color-default, $amount: 10%);
-$default-active: lighten($color: $color-default, $amount: 15%);
-$default-color: $color-default;
-$primary-text: $color-white;
-$primary-hover: darken($color: $color-primary, $amount: 10%);
-$primary-active: darken($color: $color-primary, $amount: 15%);
-$primary-color: $color-primary;
-// $secondary-text: $color-secondary;
-// $secondary-hover: $color-secondary;
-// $secondary-active: $color-secondary;
-// $secondary-color: $color-secondary;
-// $success-text: $color-success;
-// $success-hover: $color-success;
-// $success-active: $color-success;
-// $success-color: $color-success;
-// $danger-text: $color-danger;
-// $danger-hover: $color-danger;
-// $danger-active: $color-danger;
-// $danger-color: $color-danger;
-// $warning-text: $color-warning;
-// $warning-hover: $color-warning;
-// $warning-active: $color-warning;
-// $warning-color: $color-warning;
-// $info-text: $color-info;
-// $info-hover: $color-info;
-// $info-active: $color-info;
-// $info-color: $color-info;
-// $light-text: $color-light;
-// $light-hover: $color-light;
-// $light-active: $color-light;
-// $light-color: $color-light;
-// $dark-text: $color-dark;
-// $dark-hover: $color-dark;
-// $dark-active: $color-dark;
-// $dark-color: $color-dark;
+$default-text: #fff;
+$default-color: #2f4045;
+$default-hover-text: #fff;
+$default-hover-color: darken($color: #2f4045, $amount: 10%);
+$primary-text: #fff;
+$primary-color: #C3002F;
+$primary-hover-text: #fff;
+$primary-hover-color: darken($color: #C3002F, $amount: 10%);
+// $secondary-text:
+// $secondary-color:
+// $secondary-hover-text:
+// $secondary-hover-color:
+// $success-text:
+// $success-color:
+// $success-hover-text:
+// $success-hover-color:
+// $danger-text:
+// $danger-color:
+// $danger-hover-text:
+// $danger-hover-color:
+// $warning-text:
+// $warning-color:
+// $warning-hover-text:
+// $warning-hover-color:
+// $info-text:
+// $info-color:
+// $info-hover-text:
+// $info-hover-color:
+// $light-text:
+// $light-color:
+// $light-hover-text:
+// $light-hover-color:
+// $dark-text:
+// $dark-color:
+// $dark-hover-text:
+// $dark-hover-color:
 
 $b-types: (
   'primary',
@@ -85,26 +72,6 @@ $b-texts: (
   // $light-text,
   // $dar-textk
 );
-$b-hovers: (
-  $primary-hover,
-  // $secondary-hover,
-  // $success-hover,
-  // $danger-hover,
-  // $warning-hover,
-  // $info-hover,
-  // $light-hover,
-  // $dark-hover
-);
-$b-actives: (
-  $primary-active,
-  // $secondary-active,
-  // $success-active,
-  // $danger-active,
-  // $warning-active,
-  // $info-active,
-  // $light-active,
-  // $dark-active
-);
 $b-colors: (
   $primary-color,
   // $secondary-color,
@@ -115,54 +82,59 @@ $b-colors: (
   // $light-color,
   // $dark-color
 );
+$b-hover-texts: (
+  $primary-hover-text,
+  // $secondary-hover-text,
+  // $success-hover-text,
+  // $danger-hover-text,
+  // $warning-hover-text,
+  // $info-hover-text,
+  // $light-hover-text,
+  // $dark-hover-text
+);
+$b-hover-colors: (
+  $primary-hover-color,
+  // $secondary-hover-color,
+  // $success-hover-color,
+  // $danger-hover-color,
+  // $warning-hover-color,
+  // $info-hover-color,
+  // $light-hover-color,
+  // $dark-hover-color
+);
 
 // zip - перемешать списки и образовать новые
-$bs: zip($b-types, $b-texts, $b-hovers, $b-actives, $b-colors);
+$bs: zip($b-types, $b-texts, $b-colors, $b-hover-texts, $b-hover-colors);
 
 
-[role="b-utton"] {
+[role="button"] {
   user-select: none;
 }
 
 .btn {
   &_custom {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     height: $b-height;
     font-size: $b-font-size;
     border-radius: $b-border-radius;
     padding: $b-padding-v $b-padding-h;
+    // line-height: 16px;
+    // letter-spacing: 0.15em;
+    // text-transform: uppercase;
+    // font-weight: bold;
     border: $b-border solid $default-color;
     background: $default-color;
     color: $default-text;
     text-decoration: none;
     user-select: none;
-    box-shadow: none !important;
-    &:focus {
-      border: $b-border solid $default-color;
-      background: $default-color;
-      color: $default-text;
-      text-decoration: none;
-    }
     &:hover {
       border: $b-border solid $default-color;
       background: $default-color;
       color: $default-text;
       text-decoration: none;
-      @media screen and (min-width: $desktop) {
-        border: $b-border solid $default-hover;
-        background: $default-hover;
-        color: $default-text;
-        cursor: pointer;
-        text-decoration: none;
-      }
-    }
-    &.active:not(.disabled):not(:disabled),
-    &:active:not(.disabled):not(:disabled),
-    &.active,
-    &:active {
-      border: $b-border solid $default-active;
-      background: $default-active;
-      color: $default-text;
-      text-decoration: none;
+      cursor: pointer;
     }
     
     &.disabled,
@@ -171,114 +143,69 @@ $bs: zip($b-types, $b-texts, $b-hovers, $b-actives, $b-colors);
       pointer-events: none;
     }
 
-    &.btn-link {
-      border: $b-border solid rgba($color: $default-color, $alpha: 0);
+    &.-link- {
+      border: none;
       background: rgba($color: $default-color, $alpha: 0);
-      color: $b-link-color;
+      color: inherit;
+      font-size: inherit;
+      line-height: inherit;
       text-decoration: underline;
-      &.active:not(.disabled):not(:disabled),
-      &:active:not(.disabled):not(:disabled),
-      &.active,
-      &:active
-      &:focus {
-        border: $b-border solid rgba($color: $default-color, $alpha: 0);
-        background: rgba($color: $default-color, $alpha: 0);
-        color: $b-link-color;
-        text-decoration: underline;
-      }
+      padding: 0;
       &:hover {
-        border: $b-border solid rgba($color: $default-color, $alpha: 0);
+        border: none;
         background: rgba($color: $default-color, $alpha: 0);
+        color: inherit;
+        text-decoration: none;
+      }
+      &.-default- {
+        height: auto;
+        text-transform: none;
+        letter-spacing: normal;
+        font-weight: inherit;
         color: $b-link-color;
-        text-decoration: underline;
-        @media screen and (min-width: $desktop) {
-          border: $b-border solid rgba($color: $default-color, $alpha: 0);
-          background: rgba($color: $default-color, $alpha: 0);
-          color: $b-link-color-hover;
-          cursor: pointer;
-          text-decoration: none;
+        &:hover {
+          color: $b-link-color;
         }
       }
     }
 
-    @each $type, $text, $hover, $active, $color in $bs {
-      &.btn-#{$type} {
+    @each $type, $text, $color, $hover-text, $hover-color in $bs {
+      &.-#{$type}- {
         border: $b-border solid $color;
         background: $color;
         color: $text;
-        &:focus {
-          border: $b-border solid $color;
-          background: $color;
-          color: $text;
-          text-decoration: none;
-        }
         &:hover {
-          border: $b-border solid $color;
-          background: $color;
-          color: $text;
-          text-decoration: none;
-          @media screen and (min-width: $desktop) {
-            border: $b-border solid $hover;
-            background: $hover;
-            color: $text;
-            cursor: pointer;
-            text-decoration: none;
-          }
-        }
-        &.active:not(.disabled):not(:disabled),
-        &:active:not(.disabled):not(:disabled),
-        &.active,
-        &:active {
-          border: $b-border solid $active;
-          background: $active;
-          color: $text;
+          border: $b-border solid $hover-color;
+          background: $hover-color;
+          color: $hover-text;
           text-decoration: none;
         }
       }
     }
 
-    @each $type, $text, $hover, $active, $color in $bs {
-      &.btn-outline-#{$type} {
+    @each $type, $text, $color, $hover-text, $hover-color in $bs {
+      &.-outline-#{$type}- {
         border: $b-border solid $color;
         background: rgba($color: $default-color, $alpha: 0);
         color: $color;
-        &:focus {
-          border: $b-border solid $color;
-          background: rgba($color: $default-color, $alpha: 0);
-          color: $color;
-          text-decoration: none;
-        }
         &:hover {
           border: $b-border solid $color;
-          background: rgba($color: $default-color, $alpha: 0);
-          color: $color;
-          text-decoration: none;
-          @media screen and (min-width: $desktop) {
-            border: $b-border solid $hover;
-            background: $hover;
-            color: $text;
-            cursor: pointer;
-            text-decoration: none;
-          }
-        }
-        &.active:not(.disabled):not(:disabled),
-        &:active:not(.disabled):not(:disabled),
-        &.active,
-        &:active {
-          border: $b-border solid $active;
-          background: $active;
-          color: $text;
+          background: $color;
+          color: $hover-text;
           text-decoration: none;
         }
       }
     }
+    
+    &.-round- {
+      border-radius: 50px;
+    }
 
-    @each $key, $value in $b-heights {
-      &.btn-#{$key} {
-        height: map-get($map: $b-heights, $key: $key);
-        font-size: map-get($map: $b-font-sizes, $key: $key);
-        border-radius: map-get($map: $b-border-radiuses, $key: $key);
-      }
+    &.-sm- {
+      height: $b-height-sm;
+    }
+    &.-xl- {
+      height: $b-height-xl;
     }
   }
 }

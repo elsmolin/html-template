@@ -1,4 +1,4 @@
-export const mainInit = () => {
+export const mainPage = () => {
   let screenWidth = $(window).width()
 
   /* Resize компонента */

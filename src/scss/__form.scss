@@ -3,16 +3,16 @@
 $f-background: #fff;
 $f-height: 40px;
 $f-border: 1px;
-$f-border-color: lighten($color: $color-primary, $amount: 10%);
-$f-border-color-focus: $color-primary;
+$f-border-color: lighten($color: #C3002F, $amount: 10%);
+$f-border-color-focus: #C3002F;
 $f-radius: 6px;
 $f-padding-v: .375rem;
 $f-padding-h: 1.5rem;
-$f-font-size: $font-size;
-$f-text-color: $color-default;
-$f-text-muted: lighten($color: $color-default, $amount: 30%);
+$f-font-size: 16px;
+$f-text-color: #2f4045;
+$f-text-muted: lighten($color: #2f4045, $amount: 30%);
 $f-text-weight: 400;
-$f-placeholder-color: rgba($color: $color-default, $alpha: .5);
+$f-placeholder-color: rgba($color: #2f4045, $alpha: .5);
 $f-placeholder-weight: 300;
 $f-gutter: 20px;
 

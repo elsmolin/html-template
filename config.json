@@ -1,5 +1,12 @@
 {
   "name_project": "Название проекта",
+  "jsTemp": [
+    "jquery.min.js",
+    "popper.min.js",
+    "bootstrap.min.js",
+    "jquery.inputmask.bundle.js",
+    "index.js"
+  ],
   "js": [
     "jquery.min.js",
     "popper.min.js",
@@ -14,12 +21,13 @@
     "jquery.inputmask.bundle.js",
     "index.min.js"
   ],
+  "jsBundle": [
+    "bundle.min.js"
+  ],
   "css": [
-    "bootstrap_custom.min.css",
     "index.min.css"
   ],
   "cssProd": [
-    "bootstrap_custom.min.css",
     "index.min.css"
   ]
 }

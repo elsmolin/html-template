@@ -21,23 +21,23 @@ html {
   @media screen and (min-width: $desktop) {
     max-width: $desktop;
   }
-  @media screen and (min-width: $retina) {
-    max-width: $retina;
+  @media screen and (min-width: $fullhd) {
+    max-width: $fullhd;
   }
 }
 
 .d-xxl-none {
-  @media (min-width: $retina) {
+  @media (min-width: $fullhd) {
     display: none !important;
   }
 }
 .d-xxl-block {
-  @media (min-width: $retina) {
+  @media (min-width: $fullhd) {
     display: block !important;
   }
 }
 .d-xxl-flex {
-  @media (min-width: $retina) {
+  @media (min-width: $fullhd) {
     display: flex !important;
   }
 }

@@ -2,6 +2,9 @@
 
 /* tooltip */
 .tooltip {
+  &_default {
+    pointer-events: none;
+  }
 
   .tooltip-inner {
     // box-shadow: 0 2px 6px 0 rgba(176, 186, 197, 0.6);

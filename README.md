@@ -10,13 +10,14 @@
 1. Установить [Visual Studio Build Tools 2017](https://docs.microsoft.com/ru-ru/visualstudio/msbuild/msbuild). Там должна быть ссылка [Скачать MSBuild без Visual Studio](https://visualstudio.microsoft.com/downloads/?q=build+tools), скачиваем и устанавливаем
 "Visual C++ Build Tools" (Основные настройки и "Пакет SDK для Windows 10 (x.x.x.x)")
 1. Открываем терминал под админом
-1. `npm rm gulp -g` - Удалить глобальную версию gulp
+1. `npm rm gulp -g` - Удалить глобальную версию gulp (если установлена)
 1. `npm install gulp-cli -g` - Нужен для Gulp v4+
 
 # Доступные команды
-`yarn` или `npm install` - Установить все зависимости. [Yarn](https://yarnpkg.com/ru/docs/install "Скачать Yarn")  
-`yarn start` или `npm start` - Режим разработчика  
-`yarn build` или `npm run build` - Production (В основном для внедряющего)  
+`npm install` - Установить все зависимости.  
+`npm start` - Режим разработчика  
+`npm run build` - Production (В основном для внедряющего)  
+`npm run bundle` - Production (Оптимизация по кол-ву обращений к файлам на сервере)  
 **Отличия `build` от `start` :** 
 1. Вырезается код из сборки, обернутый следующим образом: 
     ```
@@ -26,7 +27,10 @@
     ```
 1. Удаление всех `console.log()` сообщений из сборки
 1. Минификация изображений
-1. Разовая сборка без наблюдения за изменениями и LiveReload
+1. Разовая сборка без наблюдения за изменениями и LiveReload  
+
+**`bundle` (расширенная версия `build`):** 
+1. Все плагины и кастомный js собираются и минифицируются в одном файле `bundle.min.js`
 
 # Структура
 **`./config.json` - Настройки проекта и порядок подключения файлов**  
@@ -44,7 +48,7 @@
 `./dist/` - Папка с готовой сборкой  
 
 # Мини документация
-`window._custom_` - Объект с полезными функция, скомпанованные для каждого плагина в соответсвующий ключ объекта  
-`bootstrap.min.css` - Дефолтный Bootstrap  
-`bootstrap_custom.min.css` - Bootstrap с вырезанными стилями, которые не использовались в проекте.  
-Для добавления сущности раскомментировать нужный `@import` в `./src/bootstrap_custom.scss` и пересобрать (если использвалась команда `build`)  
+`window.elijah` - Объект с полезными функциями  
+<!-- `bootstrap.min.css` - Дефолтный Bootstrap   -->
+<!-- `bootstrap_custom.min.css` - Bootstrap с вырезанными стилями, которые не использовались в проекте.   -->
+<!-- Для добавления сущности раскомментировать нужный `@import` в `./src/bootstrap_custom.scss` и пересобрать (если использвалась команда `build`)   -->

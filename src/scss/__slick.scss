@@ -2,6 +2,11 @@
 
 /* slick */
 .slick {
-  
+  &_init {
+    display: none;
+    &.slick-initialized {
+      display: block;
+    }
+  }
 }
 /* slick */

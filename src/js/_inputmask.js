@@ -19,25 +19,26 @@ const filterPhoneNumber = (inputValue, phoneLength=10) => {
   return value
 };
 
+export const inputmaskPhone = () => {
+  const _inputmaskList = $('[type="tel"]')
 
-export const inputmaskInit = () => {
-  $('[type="tel"]').inputmask({
-    mask: "+7 (999) 999-99-99",
-    onBeforeMask(initialValue) {
-      if (initialValue.length < 10) return
-      return filterPhoneNumber(initialValue)
-    },
-    onBeforePaste(pastedValue) {
-      if (pastedValue.length < 10) return
-      return filterPhoneNumber(pastedValue)
-    }
-  })
-};
+  if (_inputmaskList.length) {
+    _inputmaskList.each(function() {
+      const _inputmask = $(this)
 
-export const inputMask = {
-  reInitInputMask: () => {
-    $('[type="tel"]').inputmask('remove').val('');
-    inputmaskInit()
-    console.info('inputMask: [type="tel"] - перезапущен')
+      _inputmask.inputmask({
+        mask: "+7 (999) 999-99-99",
+        onBeforeMask(initialValue) {
+          if (initialValue.length < 10) return
+          return filterPhoneNumber(initialValue)
+        },
+        onBeforePaste(pastedValue) {
+          if (pastedValue.length < 10) return
+          return filterPhoneNumber(pastedValue)
+        }
+      })
+    })
+
+    console.info('inputMask: [type="tel"] - runned')
   }
-}
+};

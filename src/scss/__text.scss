@@ -1,11 +1,11 @@
 @import './__my__vars.scss';
 
 /* text */
-$font-color: $color-default;
+$font-color: #2f4045;
 $font-size: 16px;
 
-$link-color: $color-primary;
-$link-color-hover: darken($color: $color-primary, $amount: 10%);
+$link-color: #C3002F;
+$link-color-hover: darken($color: #C3002F, $amount: 10%);
 
 .body_global {
   font-family: $font;
