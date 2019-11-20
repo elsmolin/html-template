@@ -1,7 +1,7 @@
 @import './__my__vars.scss';
 
-/* Стили для слайдера */
-.irs {
+/* rangeslider */
+.body_global .irs {
   &.irs--flat {
     .irs-bar,
     .irs-line {
@@ -33,3 +33,4 @@
     }
   }
 }
+/* rangeslider */

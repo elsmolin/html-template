@@ -6,13 +6,19 @@ $f-invalid-color: #C3002F;
 $f-invalid-color-unchecked: darken($color: #C3002F, $amount: 15%);
 $f-font-size: 16px * .8;
 
-/* Стили для валидации формы */
+/* form validation */
 
 // [novalidate]
 
 // This disables the browser default feedback
 // tooltips, but still provides access to the form validation
 // APIs in JavaScript
+
+.form_input.-is-invalid- {
+  ~ .form_error {
+    display: block;
+  }
+}
 
 // form-control, textarea.form-control :invalid
 .was-validated .form-control:invalid,
@@ -196,3 +202,4 @@ textarea.form-control.is-invalid {
 .was-validated .custom-file-input:valid ~ .valid-tooltip {
   display: block;
 }
+/* form validation */

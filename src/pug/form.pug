@@ -9,6 +9,12 @@ block local_vars
   - var title = "Главная страница"
 
 block bread_crumbs
+
+block scriptsOptional
+
+block stylesOptional
+
+block scripts
   
 block content
   .container-fluid
@@ -19,47 +25,33 @@ block content
             .col-md-6.col-xl-3
               fieldset
                 legend Текстовое поле
-                .form-group.-default-
-                  input.form-control.-default-(id="form_text_1" type="text" name="text")
-                  label.form-label(for="form_text_1") Фамилия
-                  //- small.form-text.-icon-
-                    span.icon.icon_custom.check
-                    span Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut voluptatum unde saepe impedit repudiandae harum, consequatur cum dicta quam et.
+                +form_group()
+                  +input({label:'Фамилия'})(type="text" name="text")
             .col-md-6.col-xl-3
               fieldset
                 legend Телефон
-                .form-group.-default-
-                  input.form-control.-default-(id="form_text_2" type="tel" name="text")
-                  label.form-label(for="form_text_2") Телефон
-                  //- small.form-text.-invalid-
-                    //- span.icon
-                    span Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut voluptatum unde saepe impedit repudiandae harum, consequatur cum dicta quam et.
+                +form_group()
+                  +input({label:'Телефон'})(type="tel" name="tel")
             .col-md-6.col-xl-3
               fieldset
                 legend Электронная почта
-                .form-group.-default-
-                  input.form-control.-default-(id="form_text_3" type="email" name="text" pattern="/[0-9]+/g")
-                  label.form-label(for="form_text_3") E-mail
-                  //- small.form-text.-invalid_tooltip-
-                    //- span.icon
-                    span Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut voluptatum unde saepe impedit repudiandae harum, consequatur cum dicta quam et.
+                +form_group()
+                  +input({label:'E-mail'})(type="email" name="email")
             .col-md-6.col-xl-3
               fieldset
                 legend Пароль
-                .form-group.-default-
-                  input.form-control.-default-(id="form_text_4" type="password" name="text" autocomplete="off" required)
-                  label.form-label(for="form_text_4") Пароль
+                +form_group()
+                  +input({label:'Пароль'})(type="password" name="password" required)
             .col-md-6.col-xl-3
               fieldset
                 legend Числовое поле
-                .form-group.-default-
-                  input.form-control.-default-(id="form_text_5" type="number" name="text" autocomplete="off" value="1" min="1")
-                  label.form-label(for="form_text_5") Кол-во товара
+                +form_group()
+                  +input({label:'Кол-во товара'})(type="number" name="number" value="1" min="1")
             .col-md-6.col-xl-3
               fieldset
                 legend Выпадающий список
-                .form-group.-default-
-                  select.form-control.-default-(id="form_text_6" name="text")
+                .form_group.-default-
+                  select.form_input.-default-(id="form_text_6" name="text")
                     option(value="") Номинал сертификата
                     - var num = 1000
                     option(value="1")= (num.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2, style: 'currency', currency: 'RUB'}))
@@ -67,81 +59,62 @@ block content
                     option(value="2")= (num.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2, style: 'currency', currency: 'RUB'}))
                     - var num = 3000
                     option(value="3")= (num.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2, style: 'currency', currency: 'RUB'}))
-                  label.form-label(for="form_text_6") Номинал сертификата
+                  label.form_label(for="form_text_6") Номинал сертификата
             .col-md-6.col-xl-3
               fieldset
                 legend Выбор даты
-                .form-group.-default-
-                  input.form-control.-default-.js-datepicker(id="form_text_7" type="text" name="text")
-                  label.form-label(for="form_text_7") Дата рождения
+                +form_group()
+                  +datepicker({label:'Дата рождения'})(name="datepicker")
             .col-md-6.col-xl-3
               fieldset
                 legend Прикрепить файл (множество)
-                .form-group.-default-
-                  .custom_item.-file-.-default-.js-custom-file()
-                    input(id="form_text_13" type="file" name="text")
-                    label.custom_item-label(for="form_text_13") Прикрепить файл
-                    .custom_item-value
-                      label(for="form_text_13")
-                        span Название файла
-                      button(type="button").custom_item-btn.icon_custom.check
-                  label.form-label(for="form_text_13") Резюме
+                +form_group()(class="-default- -inline-")
+                  +custom_item({label: 'Прикрепить файл'})(id="attach" type="file")
+                  label.form_label(for="attach") Сканер паспорта
             .col-md-6.col-xl-3
               fieldset
                 legend Радио и чекбокс кнопки
-                .custom_item.-checkbox-.-default-
-                  input(id="form_text_9" type="checkbox" name="text")
-                  label.custom_item-label(for="form_text_9") Кол-во товара
+                +form_group()(class="-default- -inline-")
+                  each input in formInlineInputs
+                    +custom_item(input)(type="checkbox" name="checkbox")
                 hr.hr.-divider-
-                .custom_item.-radio-.-default-
-                  input(id="form_text_10" type="radio" name="text")
-                  label.custom_item-label(for="form_text_10") Кол-во товара
-                .custom_item.-radio-.-default-
-                  input(id="form_text_11" type="radio" name="text")
-                  label.custom_item-label(for="form_text_11") Кол-во товара
+                +form_group()(class="-default- -inline-")
+                  each input in formInlineInputs
+                    +custom_item(input)(type="radio" name="radio")
                 hr.hr.-divider-
-                .custom_item.-file-.-default-.js-custom-file()
-                  input(id="form_text_12" type="file" name="text")
-                  label.custom_item-label(for="form_text_12") Прикрепить файл
-                  .custom_item-value
-                    label(for="form_text_12")
-                      span Название файла
-                    button(type="button").custom_item-btn.icon_custom.check
+                +form_group()(class="-default- -inline-")
+                  +custom_item({label: 'Прикрепить файл'})(type="file")
+                  +custom_item({label: 'Прикрепить файл'})(type="file")
+                  +custom_item({label: 'Прикрепить файл'})(type="file")
+                  label.form_label Сканер паспорта
+            .col-md-6.col-xl-3
+              fieldset
+                legend Текстовое поле (readonly)
+                +form_group()
+                  +input({label:'Фамилия'})(type="text" name="text" readonly value="Смолин")
+            .col-md-6.col-xl-3
+              fieldset
+                legend Текстовое поле (disabled)
+                +form_group()
+                  +input({label:'Фамилия'})(type="text" name="text" disabled)
             .col-12
-              button(type="submit") отправить
+              button(type="submit").btn_custom.-primary- отправить
         hr.hr.-divider-
         form(action="./", method="get").form
           .row
             .col-md-6.col-xl-3
               fieldset
                 legend С иконкой
-                .form-group.-default-
-                  input.form-control.-default-(id="form_text_validate_1" type="text" name="text" autocomplete="off")
-                  label.form-label(for="form_text_validate_1") Текстовое поле
-                  small.form-text.-icon-
-                    span.icon.icon_custom.check
-                    span Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut voluptatum unde saepe impedit repudiandae harum, consequatur cum dicta quam et.
+                +form_group('Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut voluptatum unde saepe impedit repudiandae harum, consequatur cum dicta quam et')
+                  +input({label:'Фамилия'})(type="text" name="text")
+                  .form_text Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, aspernatur.
             .col-md-6.col-xl-3
               fieldset
                 legend Невалидное сообщение
-                .form-group.-default-
-                  input.form-control.-default-(id="form_text_validate_2" type="text" name="text" autocomplete="off")
-                  label.form-label(for="form_text_validate_2") Текстовое поле
-                  small.form-text.-invalid-
-                    //- span.icon
-                    span Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut voluptatum unde saepe impedit repudiandae harum, consequatur cum dicta quam et.
+                +form_group('Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut voluptatum unde saepe impedit repudiandae harum, consequatur cum dicta quam et')
+                  +input({label:'Фамилия'})(type="text" name="text" class="-default- -is-invalid-")
             .col-md-6.col-xl-3
               fieldset
                 legend Невалидное сообщение облачком
-                .form-group.-default-
-                  input.form-control.-default-(id="form_text_validate_3" type="text" name="text" autocomplete="off")
-                  label.form-label(for="form_text_validate_3") Текстовое поле
-                  small.form-text.-invalid_tooltip-
-                    //- span.icon
-                    span Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut voluptatum unde saepe impedit repudiandae harum, consequatur cum dicta quam et.
-            .col-md-6.col-xl-3
-              fieldset
-                legend Невалидное сообщение облачком
-                .form-group.-default-
-                  input.form-control.-default-(id="form_text_validate_4" type="text" name="text" autocomplete="off")
-                  label.form-label(for="form_text_validate_4") Текстовое поле
+                +form_group('Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut voluptatum unde saepe impedit repudiandae harum, consequatur cum dicta quam et')(class="-default- -error-tooltip-")
+                  +input({label:'Фамилия'})(type="text" name="text" class="-default- -is-invalid-")

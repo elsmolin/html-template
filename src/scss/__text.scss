@@ -44,7 +44,6 @@ p {
 a {
   font-size: inherit;
   color: $link-color;
-  user-select: none;
   // text-decoration: underline;
   &:hover {
     color: $link-color-hover;

@@ -1,21 +1,20 @@
 export const tooltipDefault = () => {
-  const _tooltipList = $('[data-toggle="tooltip_default"]')
   const template = 
     '<div class="tooltip tooltip_default" role="tooltip">' + 
       '<div class="arrow"></div>' + 
       '<div class="tooltip-inner"></div>' + 
     '</div>'
 
-  if (_tooltipList.lenght) {
-    _tooltipList.each(function() {
-      const _tooltip = $(this)
+  $('body').on('mouseenter', '[data-toggle="tooltip_default"]', function() {
+    const _tooltip = $(this)
 
-      _tooltip.tooltip({
-        trigger: "hover",
-        template
-      })
+    _tooltip.tooltip({
+      trigger: "hover",
+      // html: true,
+      template,
+      // container
     })
 
-    console.info('Tooltip: [data-toggle="tooltip_default"] - runned')
-  }
+    _tooltip.tooltip("show")
+  })
 };

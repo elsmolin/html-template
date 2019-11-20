@@ -1,4 +1,4 @@
-/* Сетка проекта */
+/* grid */
 html {
   height: 100%;
   display: flex;
@@ -16,29 +16,49 @@ html {
 
 .container-fluid {
   @media screen and (min-width: $tablet) {
-    // 
+    
   }
   @media screen and (min-width: $desktop) {
     max-width: $desktop;
   }
-  @media screen and (min-width: $fullhd) {
-    max-width: $fullhd;
-  }
+  // @media screen and (min-width: $fullhd) {
+  //   max-width: $fullhd;
+  // }
 }
 
-.d-xxl-none {
-  @media (min-width: $fullhd) {
-    display: none !important;
-  }
-}
-.d-xxl-block {
-  @media (min-width: $fullhd) {
-    display: block !important;
-  }
-}
-.d-xxl-flex {
-  @media (min-width: $fullhd) {
-    display: flex !important;
-  }
-}
-/* Сетка проекта */
+// .d-xxl-none {
+//   @media (min-width: $fullhd) {
+//     display: none !important;
+//   }
+// }
+// .d-xxl-block {
+//   @media (min-width: $fullhd) {
+//     display: block !important;
+//   }
+// }
+// .d-xxl-flex {
+//   @media (min-width: $fullhd) {
+//     display: flex !important;
+//   }
+// }
+
+// $columns: 12;
+// $colWidth: 100% / 12 * 1;
+// @while $columns > 0 {
+//   .col-xxl-#{$columns} {
+//     padding: 0 15px;
+//     position: relative;
+//     width: 100%;
+//     @media (min-width: $fullhd) {
+//       flex: 0 0 #{$colWidth * $columns};
+//       max-width: $colWidth * $columns;
+//     }
+//   }
+//   .offset-xxl-#{$columns} {
+//     @media (min-width: $fullhd) {
+//       margin-left: $colWidth * $columns;
+//     }
+//   }
+//   $columns: $columns - 1;
+// }
+/* grid */

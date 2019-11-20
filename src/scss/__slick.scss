@@ -1,7 +1,7 @@
 @import './__my__vars.scss';
 
 /* slick */
-.slick {
+.body_global .slick {
   &_init {
     display: none;
     &.slick-initialized {

@@ -2,10 +2,11 @@ import { _isMobile_ } from './__helpfull';
 
 export const _fancyboxSettings = {
   default: {
-    src: '#fancybox_default',
-    type: 'inline',
+    src: '../popup_default.html',
+    type: 'ajax',
     opts: {
       touch: false,  // Убираем закрытие смахиванием
+      baseClass: 'fancybox_base',
       afterShow: function() {
         $('.body_global').addClass('-scroll_off-')
       },
@@ -48,21 +49,20 @@ export const fancyboxDefault = (_this) => {
  * @param {Function} _successFunc Callback подтверждения
  * @param {Function} _rejectFunc Callback отмены
  */
-export const fancyboxMessage = (_message = { title: 'Default title', text: 'Lorem ipsum dolor.', extendClass: undefined  }, _successFunc, _rejectFunc) => {
+export const fancyboxMessage = (_this, _message = { title: 'Default title', text: 'Lorem ipsum dolor.'}, _successFunc, _rejectFunc) => {
+  const _btn = $(_this)
+  const fancyboxSrc = _btn.data('popup')
+
   const fancyboxSettings = {
-    src: '#fancybox_message',
-    type: 'inline',
+    src: fancyboxSrc,
+    type: 'ajax',
     opts: {
       touch: false,  // Убираем закрытие смахиванием
+      baseClass: 'fancybox_base',
       afterShow: function() {
-        $('.body_global').addClass('-scroll_off-')
-      },
-      beforeShow: function () {
-        const { title, text, extendClass } = _message
+        const { title, text } = _message
 
-        if (extendClass) {
-          $('#fancybox_message').addClass(extendClass)
-        }
+        $('.body_global').addClass('-scroll_off-')
 
         if (_successFunc) {
           $('#fancybox_message').addClass('-success-')
@@ -89,9 +89,6 @@ export const fancyboxMessage = (_message = { title: 'Default title', text: 'Lore
         }
       },
       afterClose: function () {
-        const { extendClass } = _message
-        
-        $('#fancybox_message').removeClass(extendClass)
         $('#fancybox_message').removeClass('-reject- -success-')
         $('#fancybox_message-success').unbind()
         $('#fancybox_message-reject').unbind()

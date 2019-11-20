@@ -7,14 +7,18 @@ import {
   inputmaskPhone,
 } from "./js/_inputmask"
 import {
-  selectizeDefault,
-} from './js/_selectize';
-import {
   slickDefault,
 } from './js/_slick';
 import {
   tooltipDefault,
 } from './js/_tooltip';
+import {
+  datepickerDefault,
+} from './js/_datepicker';
+import {
+  markEmptyFields,
+  updFileInput
+} from './js/_form';
 
 import {
   headerComponent,
@@ -30,16 +34,16 @@ import {
 } from './js/demoJS';
 //endRemoveIf(production)
 
-window.elijah = {
+export default {
   _fancyboxSettings,
-  fancyboxDefault,  // запуск через вызов функции
-  fancyboxMessage,  // запуск через вызов функции
+  fancyboxDefault,
+  fancyboxMessage,
   inputmaskPhone,
-  selectizeDefault,
   slickDefault,
   tooltipDefault,
-  headerComponent,
-  mainPage,
+  markEmptyFields,
+  updFileInput,
+  datepickerDefault,
   //removeIf(production)
   demoFunc,
   //endRemoveIf(production)
@@ -55,9 +59,9 @@ function initFunc() {
   
     /* Плагины */
     inputmaskPhone()
-    selectizeDefault()
     slickDefault()
     tooltipDefault()
+    datepickerDefault()
   
     //removeIf(production)
     /* То что должно быть вырезано на проде. Начало */

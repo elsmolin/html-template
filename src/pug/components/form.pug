@@ -1,0 +1,79 @@
+//- form group
+mixin form_group(error='Default error text!')
+  .form_group(class= `${attributes.class ? attributes.class : '-default-'}`)
+    if block
+      block
+    .form_error= error
+
+//- checkbox & radio & file
+mixin custom_item({label='Default label text!', required, disabled})
+  label.custom_item(class= `-${attributes.type}- ${attributes.class ? attributes.class : '-default-'}`)
+    if attributes.type === 'file'
+      input.form_input.-is-empty-(
+        onchange="elijah.markEmptyFields(this);elijah.updFileInput(this)"
+        id= attributes.id
+        type= attributes.type
+        name= attributes.name
+        required= required || attributes.required
+        disabled= disabled || attributes.disabled
+      )&attributes(attributes)
+      .custom_item-value(for= attributes.id)
+        .custom_item-text= label
+    else
+      input.form_input(
+        id= attributes.id
+        type= attributes.type
+        name= attributes.name
+        required= required || attributes.required
+        disabled= disabled || attributes.disabled
+      )&attributes(attributes)
+
+    .custom_item-label(for= attributes.id)
+      .custom_item-text= label
+      if block
+        block
+
+//- datepicker
+mixin datepicker({label='Default label text!', placeholder, required, disabled})
+  input.form_input.-datepicker-.-is-empty-.js-datepicker(
+    type="text"
+    autocomplete="off"
+    readonly
+    onchange="elijah.markEmptyFields(this)"
+    placeholder= placeholder || attributes.placeholder
+    required= required || attributes.required
+    disabled= disabled || attributes.disabled
+    class= `${attributes.class ? attributes.class : '-default-'}`
+  )&attributes(attributes)
+  label.form_label(for= attributes.id)= label
+
+//- text & number & email & tel & password
+mixin input({label='Default label text!', placeholder, required, disabled, readonly})
+  input.form_input.-is-empty-(
+    type= attributes.type
+    autocomplete="off"
+    readonly= readonly || attributes.readonly
+    onchange="elijah.markEmptyFields(this)"
+    placeholder= placeholder || attributes.placeholder
+    required= required || attributes.required
+    disabled= disabled || attributes.disabled
+    class= `${attributes.class ? attributes.class : '-default-'}`
+  )&attributes(attributes)
+  label.form_label(for= attributes.id)= label
+
+//- textarea
+mixin textarea({label='Default label text!', placeholder, required, disabled, readonly})
+  textarea.form_input.-textarea-.-is-empty-(
+    autocomplete="off"
+    readonly= readonly || attributes.readonly
+    onchange="elijah.markEmptyFields(this)"
+    placeholder= placeholder || attributes.placeholder
+    required= required || attributes.required
+    disabled= disabled || attributes.disabled
+    class= `${attributes.class ? attributes.class : '-default-'}`
+  )&attributes(attributes)
+  label.form_label(for= attributes.id)= label
+
+//- select
+
+//- range

@@ -2,23 +2,39 @@
 
 /* bread_crumbs */
 .bread_crumbs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  max-width: 100%;
   &-wrapper {
 
   }
-  &-list {
-
-  }
   &-item {
-
+    display: inline-flex;
+    flex: 0 0 auto;
+    max-width: 100%;
+    width: auto;
+    line-height: 1.2;
+    &:last-child,
+    &.-current- {
+      .bread_crumbs-divider {
+        display: none;
+      }
+    }
+  }
+  &-divider,
+  &-link,
+  &-name {
+    display: inline-block;
+    line-height: inherit;
   }
   &-link {
 
   }
   &-name {
-    
+
   }
   &-divider {
-
+    margin: 0 5px;
   }
 }
 /* bread_crumbs */

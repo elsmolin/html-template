@@ -1,15 +1,6 @@
-.pagination_custom-wrapper
-  nav.pagination_custom
-    a(href="#").btn_custom.-outline-primary-.pagination_custom-prev.style-one
-      span Назад
-    a(href="#").btn_custom.-outline-primary-.pagination_custom-prev
-      span.icon-chevrons-left
-    a(href="#").pagination_custom-page.active 1
-    a(href="#").pagination_custom-page 2
-    a(href="#").pagination_custom-page 3
-    a(href="#").pagination_custom-page 4
-    //- a(href="#").pagination_custom-page 5
-    a(href="#").btn_custom.-outline-primary-.pagination_custom-next
-      span.icon-chevrons-right
-    a(href="#").btn_custom.-outline-primary-.pagination_custom-next.style-one
-      span Вперед
+nav.pagination_custom
+  each page, index in [1,2,3,4,5]
+    .pagination_custom-page(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class=`${page === 2 ? '-current-': ''}`)
+      a(href="#" itemprop="item").pagination_custom-link
+        span.pagination_custom-name(itemprop="name") 1
+      meta(itemprop="position" content= page)

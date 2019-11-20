@@ -8,17 +8,6 @@
     "index.js"
   ],
   "js": [
-    "jquery.min.js",
-    "popper.min.js",
-    "bootstrap.min.js",
-    "jquery.inputmask.bundle.js",
-    "index.min.js"
-  ],
-  "jsProd": [
-    "jquery.min.js",
-    "popper.min.js",
-    "bootstrap.min.js",
-    "jquery.inputmask.bundle.js",
     "index.min.js"
   ],
   "jsBundle": [
@@ -27,7 +16,67 @@
   "css": [
     "index.min.css"
   ],
-  "cssProd": [
-    "index.min.css"
-  ]
+  "plugins": {
+    "jquery":{
+      "csstop": false,
+      "order": 0,
+      "enable": true,
+      "js":[
+        "jquery.min.js"
+      ],
+      "css":[]
+    },
+    "bootstrap":{
+      "csstop": false,
+      "order": 1,
+      "enable": true,
+      "js":[
+        "popper.min.js",
+        "bootstrap.min.js"
+      ],
+      "css":[]
+    },
+    "inputmask":{
+      "csstop": false,
+      "order": 2,
+      "enable": true,
+      "js":[
+        "jquery.inputmask.bundle.js"
+      ],
+      "css":[]
+    },
+    "slick":{
+      "csstop": false,
+      "order": 3,
+      "enable": true,
+      "js":[
+        "slick.min.js"
+      ],
+      "css":[
+        "slick.css"
+      ]
+    },
+    "fancybox":{
+      "csstop": false,
+      "order": 4,
+      "enable": true,
+      "js":[
+        "jquery.fancybox.min.js"
+      ],
+      "css":[
+        "jquery.fancybox.min.css"
+      ]
+    },
+    "index": {
+      "csstop": true,
+      "order": 5,
+      "enable": true,
+      "js":[
+        "index.min.js"
+      ],
+      "css":[
+        "index.min.css"
+      ]
+    }
+  }
 }

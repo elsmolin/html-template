@@ -16,7 +16,7 @@ import babel from 'rollup-plugin-babel'
 import clean from 'gulp-clean'
 import browser  from 'browser-sync'
 import removeCode from 'gulp-remove-code'
-import concat from 'gulp-concat';
+// import concat from 'gulp-concat';
 
 
 const { task, series, watch } = gulp
@@ -26,27 +26,33 @@ const CONFIG_PATH = './config.json'
 let CONFIG = JSON.parse(fs.readFileSync(CONFIG_PATH).toString());
 const MAIN_JS = 'index.js'
 const MAIN_SCSS = 'index.scss'
+// const BOOTSTRAP_SCSS = 'bootstrap_custom.scss'
 const REMOTE_PATH = './dist'
 const CONSTS = {
   src: {
     js: `./src/${MAIN_JS}`,
     jsLibs: './src/js/third/**',
     sass: `./src/${MAIN_SCSS}`,
+    // bootstrap: `./src/${BOOTSTRAP_SCSS}`,
+    plugins: './src/plugins/**',
     pug: './src/pug/*.pug',
     img: './src/img/**',
     fonts: './src/fonts/**',
   },
   dist: {
     js: `${REMOTE_PATH}/js`,
-    jsTemp: `${REMOTE_PATH}/jsTemp`,
+    plugins: `${REMOTE_PATH}/plugins`,
+    // jsTemp: `${REMOTE_PATH}/jsTemp`,
     css: `${REMOTE_PATH}/css`,
-    html: `${REMOTE_PATH}`,
+    html: PRODUCTION ? `${REMOTE_PATH}/html` : `${REMOTE_PATH}`,
     img: `${REMOTE_PATH}/img`,
     fonts: `${REMOTE_PATH}/fonts`,
   },
   watch: {
+    plugins: ['./src/plugins/**'],
     js: ['./src/js/*.js', `./src/${MAIN_JS}`],
     sass: ['./src/scss/*.scss', `./src/${MAIN_SCSS}`],
+    // // bootstrap: ['./src/scss/bootstrap/**/*.scss', `./src/${BOOTSTRAP_SCSS}`],
     pug: ['./src/pug/**/*.pug'],
     json: CONFIG_PATH
   }
@@ -74,36 +80,27 @@ const CLEAN_OPTIONS = {
 
 
 /* Main Tasks */
-task('copyfiles', series(copyJS, copyFonts, copyImgs, function(done) {
-  // ToDo...
-  done()
-}));
-
-task('copyfilesBundle', series(copyTempJS, copyFonts, copyImgs, function(done) {
+task('copyfiles', series(copyPlugins, copyFonts, copyImgs, function(done) {
   // ToDo...
   done()
 }));
 
 task('buildHTML', series(pug, injectFiles));
 
-task('buildHTMLBundle', series(pug, injectFilesBundle));
-
-task('build', series(clearDist, 'copyfiles', sass, js, 'buildHTML'));
-
-task('bundle', series(clearDist, 'copyfilesBundle', sass, jsBundle, jsConcat, 'buildHTMLBundle', clearTemp));
+task('build', series(clearDist, 'copyfiles', sass, js, 'buildHTML', clearTemp));
 
 task('default', series('build', server, watchTask));
 
 
 /* Sub Tasks */
 function watchTask() {
-  watch(CONSTS.watch.js).on('all', series(js, browser.reload));
+  watch(CONSTS.watch.js).on('all', series(js, clearTemp, browser.reload));
   watch(CONSTS.watch.pug).on('all', series('buildHTML', browser.reload));
   watch(CONSTS.watch.sass).on('all', series(sass, browser.reload));
   watch(CONSTS.watch.json).on('all', series('buildHTML', browser.reload));
 
   watch(CONSTS.src.fonts).on('all', series(copyFonts, browser.reload));
-  watch(CONSTS.src.jsLibs).on('all', series(copyJS, browser.reload));
+  watch(CONSTS.src.plugins).on('all', series(copyPlugins, browser.reload));
   watch(CONSTS.src.img).on('all', series(copyImgs, browser.reload));
 }
 
@@ -124,14 +121,9 @@ function clearTemp() {
     .pipe(clean())
 };
 
-function copyJS() {
-  return gulp.src(CONSTS.src.jsLibs)
-    .pipe(gulp.dest(CONSTS.dist.js));
-};
-
-function copyTempJS() {
-  return gulp.src(CONSTS.src.jsLibs)
-    .pipe(gulp.dest(CONSTS.dist.jsTemp));
+function copyPlugins() {
+  return gulp.src(CONSTS.src.plugins)
+    .pipe(gulp.dest(CONSTS.dist.plugins));
 };
 
 function copyFonts() {
@@ -139,18 +131,45 @@ function copyFonts() {
     .pipe(gulp.dest(CONSTS.dist.fonts));
 };
 
+function copyCSS() {
+  return gulp.src(CONSTS.src.css)
+    .pipe(gulp.dest(CONSTS.dist.css));
+};
+
 function copyImgs() {
   return gulp.src(CONSTS.src.img)
-    .pipe(gulpIf(PRODUCTION, minifyIMG()))
+    // .pipe(gulpIf(PRODUCTION, minifyIMG()))
     .pipe(gulp.dest(CONSTS.dist.img));
 };
+
+// function jsConcat() {
+//   const srcList = []
+
+//   CONFIG['jsBundle'].forEach(jsLib => {
+//     srcList.push(`./dist/jsTemp/${jsLib}`)
+//   });
+
+//   return gulp.src(srcList)
+//     .pipe(concat('bundle.js'))
+//     .pipe(gulp.dest(CONSTS.dist.js))
+//     .pipe(minifyJS({
+//       compress: {
+//         drop_console: PRODUCTION  // удаляем все console.log из production
+//       }
+//     }))
+//     .pipe(gulpRename({
+//       suffix: ".min"
+//     }))
+//     .pipe(gulp.dest(CONSTS.dist.js))
+// };
 
 function js() {
   return rollup(ROLLUP_OPTIONS)
     .then(bundle => {
       return bundle.write({
         file: `${CONSTS.dist.js}/${MAIN_JS}`,
-        format: 'umd',
+        format: 'iife',
+        name: 'elijah'
       });
     })
     .then(() => {
@@ -158,7 +177,6 @@ function js() {
         .pipe(removeCode({
           production: PRODUCTION
         }))
-        .pipe(gulp.dest(CONSTS.dist.js))
         .pipe(minifyJS({
           compress: {
             drop_console: PRODUCTION  // удаляем все console.log из production
@@ -171,46 +189,8 @@ function js() {
     })
 };
 
-function jsBundle() {
-  return rollup(ROLLUP_OPTIONS)
-    .then(bundle => {
-      return bundle.write({
-        file: `${CONSTS.dist.jsTemp}/${MAIN_JS}`,
-        format: 'umd',
-      });
-    })
-    .then(() => {
-      gulp.src(`${CONSTS.dist.jsTemp}/${MAIN_JS}`)
-        .pipe(removeCode({
-          production: PRODUCTION
-        }))
-        .pipe(gulp.dest(CONSTS.dist.jsTemp))
-    })
-};
-
-function jsConcat() {
-  const srcList = []
-
-  CONFIG['jsTemp'].forEach(jsLib => {
-    srcList.push(`./dist/jsTemp/${jsLib}`)
-  });
-
-  return gulp.src(srcList)
-    .pipe(concat('bundle.js'))
-    .pipe(gulp.dest(CONSTS.dist.js))
-    .pipe(minifyJS({
-      compress: {
-        drop_console: PRODUCTION  // удаляем все console.log из production
-      }
-    }))
-    .pipe(gulpRename({
-      suffix: ".min"
-    }))
-    .pipe(gulp.dest(CONSTS.dist.js))
-};
-
 function sass() {
-  return gulp.src([CONSTS.src.sass])
+  return gulp.src([CONSTS.src.sass/* , CONSTS.src.bootstrap */])
     .pipe(gulpSass())
     .pipe(autoprefixer())
     .pipe(gulp.dest(CONSTS.dist.css))
@@ -230,31 +210,11 @@ function pug() {
 
 function injectFiles() {
   let styles = ''
-  let scripts = ''
-  CONFIG = JSON.parse(fs.readFileSync(CONFIG_PATH).toString())
-
-  CONFIG[PRODUCTION ? 'cssProd' : 'css'].forEach(cssLib => {
-    styles += `<link rel="stylesheet" href="./css/${cssLib}">`
-  });
-
-  CONFIG[PRODUCTION ? 'jsProd' : 'js'].forEach(jsLib => {
-    scripts += `<script src="./js/${jsLib}"></script>`
-  });
-
-  return gulp.src(`${REMOTE_PATH}/*.html`)
-    .pipe(replace('NAME_PROJECT', CONFIG.name_project))
-    .pipe(replace('<!-- <include_styles> -->', styles))
-    .pipe(replace('<!-- <include_scripts> -->', scripts))
-    .pipe(gulp.dest(CONSTS.dist.html));
-}
-
-function injectFilesBundle() {
-  let styles = ''
   // let styles_noscript = ''
   let scripts = ''
   CONFIG = JSON.parse(fs.readFileSync(CONFIG_PATH).toString())
 
-  CONFIG[PRODUCTION ? 'cssProd' : 'css'].forEach(cssLib => {
+  CONFIG['css'].forEach(cssLib => {
     styles += `<link rel="stylesheet" href="./css/${cssLib}">`
     // styles += `<link rel="stylesheet" href="./css/${cssLib}" media="none" onload="if(media!=='all')media='all'">`
   });
@@ -263,14 +223,14 @@ function injectFilesBundle() {
   //   styles_noscript += `<link rel="stylesheet" href="./css/${cssLib}">`
   // });
 
-  CONFIG['jsBundle'].forEach(jsLib => {
+  CONFIG['js'].forEach(jsLib => {
     scripts += `<script defer src="./js/${jsLib}"></script>`
   });
 
-  return gulp.src(`${REMOTE_PATH}/*.html`)
+  return gulp.src(PRODUCTION ? `${REMOTE_PATH}/html/*.html` : `${REMOTE_PATH}/*.html`)
     .pipe(replace('NAME_PROJECT', CONFIG.name_project))
     .pipe(replace('<!-- <include_styles> -->', styles))
     // .pipe(replace('<!-- <include_styles_noscript> -->', styles_noscript))
-    .pipe(replace('<!-- <include_scripts> -->', scripts))
+    .pipe(replace('<!-- <include_index> -->', scripts))
     .pipe(gulp.dest(CONSTS.dist.html));
 }

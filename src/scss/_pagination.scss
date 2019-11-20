@@ -1,7 +1,35 @@
 @import './__my__vars.scss';
 
 /* pagination */
-.pagination {
-  
+.pagination_custom {
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  @media screen and (min-width: $tablet) {
+    margin-top: 30px;
+  }
+  &-page {
+    display: inline-flex;
+    flex: 0 0 auto;
+    max-width: 100%;
+    width: auto;
+    line-height: 1.2;
+    &.-current- {
+      .pagination_custom-link {
+
+      }
+    }
+  }
+  &-link,
+  &-name {
+    display: inline-block;
+    line-height: inherit;
+  }
+  &-link {
+
+  }
+  &-name {
+
+  }
 }
 /* pagination */

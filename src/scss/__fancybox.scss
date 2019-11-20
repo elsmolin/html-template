@@ -1,20 +1,63 @@
 @import './__my__vars.scss';
 
 /* fancybox */
-.fancybox {
-  &-slide--html {
-    padding: 15px;
-    @media screen and (min-width: $tablet) {
-      padding: 15px;
-    }
-  }
-  &-is-open {
-    .fancybox-bg {
-      // opacity: 0.3;
-    }
-  }
+.fancybox_base {
   .fancybox-bg {
     // background: #fff;
+  }
+  .fancybox {
+    &-slide--html {
+      padding: 15px;
+      @media screen and (min-width: $tablet) {
+        // padding: 15px;
+      }
+    }
+    &_title {
+      text-align: center;
+      font-size: 20px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 30px;      
+    }
+    &_text {
+      
+    }
+    &_footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      .btn_custom {
+        flex: 0 0 270px;
+        max-width: 270px;
+        margin: 0 10px;
+      }
+    }
+    &_popup {
+      &.-default- {
+        padding: 20px;
+        width: 750px;
+        .fancybox-button.fancybox-close-small,
+        #fancybox_message-success,
+        #fancybox_message-reject {
+          display: none;
+        }
+      }
+      &.-success- {
+        #fancybox_message-success {
+          display: inline-flex;
+        }
+      }
+      &.-reject- {
+        #fancybox_message-reject {
+          display: inline-flex;
+        }
+      }
+    }
+  }
+  &.fancybox-is-open {
+    .fancybox-bg {
+      // opacity: 0.5;
+    }
   }
 }
 

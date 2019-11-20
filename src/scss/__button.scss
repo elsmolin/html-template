@@ -1,121 +1,83 @@
 @import './__my__vars.scss';
 
 /* buttons */
-$b-height: 48px;
-$b-height-sm: 40px;
-$b-height-xl: 56px;
-
-$b-border-radius: 5px;
-$b-font-size: 13px;
-$b-disable: 0.5;
 $b-border: 1px;
 $b-padding-v: .25rem;
 $b-padding-h: .75rem;
 
+$b-height: 40px;
+$b-font-size: 13px;
+$b-border-radius: 5px;
+
+$b-height-sm: 30px;
+$b-font-size-sm: 10px;
+$b-border-radius-sm: 2px;
+
+$b-height-xl: 50px;
+$b-font-size-xl: 16px;
+$b-border-radius-xl: 8px;
+
 $b-link-color: #C3002F;
 $b-link-color-hover: darken($color: #C3002F, $amount: 10%);
+
+$disabled-text: #aab0b4;
+$disabled-color: #f9f9f9;
 
 $default-text: #fff;
 $default-color: #2f4045;
 $default-hover-text: #fff;
 $default-hover-color: darken($color: #2f4045, $amount: 10%);
+
 $primary-text: #fff;
 $primary-color: #C3002F;
 $primary-hover-text: #fff;
 $primary-hover-color: darken($color: #C3002F, $amount: 10%);
-// $secondary-text:
-// $secondary-color:
-// $secondary-hover-text:
-// $secondary-hover-color:
-// $success-text:
-// $success-color:
-// $success-hover-text:
-// $success-hover-color:
-// $danger-text:
-// $danger-color:
-// $danger-hover-text:
-// $danger-hover-color:
-// $warning-text:
-// $warning-color:
-// $warning-hover-text:
-// $warning-hover-color:
-// $info-text:
-// $info-color:
-// $info-hover-text:
-// $info-hover-color:
-// $light-text:
-// $light-color:
-// $light-hover-text:
-// $light-hover-color:
-// $dark-text:
-// $dark-color:
-// $dark-hover-text:
-// $dark-hover-color:
+
+// secondary
+// success
+// danger
+// warning
+// info
+// light
+// dark
 
 $b-types: (
   'primary',
-  // 'secondary',
-  // 'success',
-  // 'danger',
-  // 'warning',
-  // 'info',
-  // 'light',
-  // 'dark'
 );
 $b-texts: (
   $primary-text,
-  // $secondary-text,
-  // $success-text,
-  // $danger-text,
-  // $warning-text,
-  // $info-text,
-  // $light-text,
-  // $dar-textk
 );
 $b-colors: (
   $primary-color,
-  // $secondary-color,
-  // $success-color,
-  // $danger-color,
-  // $warning-color,
-  // $info-color,
-  // $light-color,
-  // $dark-color
 );
 $b-hover-texts: (
   $primary-hover-text,
-  // $secondary-hover-text,
-  // $success-hover-text,
-  // $danger-hover-text,
-  // $warning-hover-text,
-  // $info-hover-text,
-  // $light-hover-text,
-  // $dark-hover-text
 );
 $b-hover-colors: (
   $primary-hover-color,
-  // $secondary-hover-color,
-  // $success-hover-color,
-  // $danger-hover-color,
-  // $warning-hover-color,
-  // $info-hover-color,
-  // $light-hover-color,
-  // $dark-hover-color
 );
 
 // zip - перемешать списки и образовать новые
 $bs: zip($b-types, $b-texts, $b-colors, $b-hover-texts, $b-hover-colors);
 
-
+button,
 [role="button"] {
   user-select: none;
+  cursor: pointer;
 }
 
 .btn {
+  &_reset {
+    background: rgba(0, 0, 0, 0);
+    padding: 0;
+    border: none;
+  }
+
   &_custom {
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     height: $b-height;
     font-size: $b-font-size;
     border-radius: $b-border-radius;
@@ -127,45 +89,27 @@ $bs: zip($b-types, $b-texts, $b-colors, $b-hover-texts, $b-hover-colors);
     border: $b-border solid $default-color;
     background: $default-color;
     color: $default-text;
-    text-decoration: none;
-    user-select: none;
     &:hover {
       border: $b-border solid $default-color;
       background: $default-color;
       color: $default-text;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    
-    &.disabled,
-    &:disabled {
-      opacity: $b-disable;
-      pointer-events: none;
     }
 
     &.-link- {
       border: none;
-      background: rgba($color: $default-color, $alpha: 0);
-      color: inherit;
+      background: rgba(0,0,0,0);
+      color: $b-link-color;
       font-size: inherit;
-      line-height: inherit;
       text-decoration: underline;
-      padding: 0;
       &:hover {
         border: none;
-        background: rgba($color: $default-color, $alpha: 0);
-        color: inherit;
+        background: rgba(0,0,0,0);
+        color: $b-link-color-hover;
         text-decoration: none;
       }
       &.-default- {
         height: auto;
-        text-transform: none;
-        letter-spacing: normal;
-        font-weight: inherit;
-        color: $b-link-color;
-        &:hover {
-          color: $b-link-color;
-        }
+        padding: 0;
       }
     }
 
@@ -178,7 +122,6 @@ $bs: zip($b-types, $b-texts, $b-colors, $b-hover-texts, $b-hover-colors);
           border: $b-border solid $hover-color;
           background: $hover-color;
           color: $hover-text;
-          text-decoration: none;
         }
       }
     }
@@ -186,26 +129,41 @@ $bs: zip($b-types, $b-texts, $b-colors, $b-hover-texts, $b-hover-colors);
     @each $type, $text, $color, $hover-text, $hover-color in $bs {
       &.-outline-#{$type}- {
         border: $b-border solid $color;
-        background: rgba($color: $default-color, $alpha: 0);
+        background: rgba(0,0,0,0);
         color: $color;
         &:hover {
           border: $b-border solid $color;
           background: $color;
           color: $hover-text;
-          text-decoration: none;
         }
       }
+    }
+
+    &.-sm- {
+      height: $b-height-sm;
+      font-size: $b-font-size-sm;
+      border-radius: $b-border-radius-sm;
+    }
+    &.-xl- {
+      height: $b-height-xl;
+      font-size: $b-font-size-xl;
+      border-radius: $b-border-radius-xl;
+    }
+
+    &.-auto- {
+      height: auto;
     }
     
     &.-round- {
       border-radius: 50px;
     }
-
-    &.-sm- {
-      height: $b-height-sm;
-    }
-    &.-xl- {
-      height: $b-height-xl;
+    
+    &.-disabled-,
+    &:disabled {
+      background: $disabled-color;
+      border: $b-border solid $disabled-color;
+      color: $disabled-text;
+      pointer-events: none;
     }
   }
 }

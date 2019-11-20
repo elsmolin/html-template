@@ -10,13 +10,14 @@ $f-text-color: #2f4045;
 $f-text-color-active: #2f4045;
 $f-text-color-checked: #2f4045;
 
+/* form custom */
 .custom {
   &_item {
     position: relative;
     display: inline-block;
     margin-bottom: .5em;
     line-height: 1;
-    // margin-right: 1em;
+    margin-right: 1em;
     input {
       width: 0;
       height: 0;
@@ -43,6 +44,7 @@ $f-text-color-checked: #2f4045;
       font-size: .8em;
       line-height: 1.35;
       margin-bottom: 0;
+      cursor: pointer;
       &::before,
       &::after {
         content: "";
@@ -67,19 +69,13 @@ $f-text-color-checked: #2f4045;
       display: inline-block;
       position: relative;
       line-height: 1;
-      label {
-        margin-bottom: 0;
-        padding: 10px 15px;
-        padding-right: 50px;
-        background: #f1f1f1;
-        border-radius: 16px;
-        font-size: 0.9em;
-        line-height: 1.2;
-        span {
-          font-size: inherit;
-          line-height: inherit;
-        }
-      }
+      margin-bottom: 0;
+      padding: 10px 15px;
+      padding-right: 50px;
+      background: #f1f1f1;
+      border-radius: 16px;
+      font-size: 0.9em;
+      line-height: 1.2;
     }
     &-btn {
       position: absolute;
@@ -124,12 +120,24 @@ $f-text-color-checked: #2f4045;
       display: inline-flex;
       align-items: center;
       .custom_item-label {
+        display: none;
         padding-left: 0;
         &::before,
         &::after {
           display: none;
         }
       }
+      input {
+        &.-is-empty- {
+          ~ .custom_item-value {
+            display: none;
+          }
+          ~ .custom_item-label {
+            display: inline-block;
+          }
+        }
+      }
     }
   }
 }
+/* form custom */

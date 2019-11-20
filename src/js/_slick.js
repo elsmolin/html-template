@@ -26,9 +26,7 @@ export const slickDefault = () => {
     _slickList.each(function() {
       const _slickItem = $(this)
 
-      if (_slickItem.hasClass('slick-initialized')) {
-        _slickItem.slick('unslick')
-      }
+      if (_slickItem.hasClass('slick-initialized')) return
 
       const _wrap = _slickItem.parent()
       const _settingKey = _slickItem.data('slick') || "about"

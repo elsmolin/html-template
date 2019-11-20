@@ -1,6 +1,11 @@
 block global_vars
   include ./_global_vars.pug
 
+block mixins
+  //- +product_card(item)
+  include ./product_card.pug
+  include ./form.pug
+
 block local_vars
   //- - var headerClass = ``
   //- - var contentClass = ``
@@ -31,14 +36,15 @@ html(lang="ru" itemscope itemtype="http://schema.org/WebPage")
     
     title NAME_PROJECT | #{title}
 
+    noscript
+      <!-- <include_styles_noscript> -->
+    
     <!-- <include_styles> -->
     
   body.body_global
     noscript
       p JavaScript is not supported in the your browser, or are disabled! Check Settings
       p JavaScript не поддерживается вашим браузером или отключен! Проверьте настройки браузера
-    block popups
-      include ./popups.pug
     header.header_wrapper_global(class= headerClass)
       block navbar
         include ./header.pug
@@ -51,6 +57,24 @@ html(lang="ru" itemscope itemtype="http://schema.org/WebPage")
       block footer
         include ./footer.pug
 
-    <!-- <include_scripts> -->
-    
     block scripts
+
+    block stylesMain
+      link(rel="stylesheet", href="./plugins/datepicker.min.css"  media="nope!" onload="this.media='all'")
+      link(rel="stylesheet", href="./plugins/jquery.fancybox.min.css"  media="nope!" onload="this.media='all'")
+      //- link(rel="stylesheet", href="./plugins/slick.css"  media="nope!" onload="this.media='all'")
+
+    block stylesOptional
+
+    block scriptsMain
+      //- <!-- <include_scripts> -->
+      script(defer src="./plugins/jquery.min.js")
+      script(defer src="./plugins/popper.min.js")
+      script(defer src="./plugins/bootstrap.min.js")
+      script(defer src="./plugins/jquery.inputmask.bundle.js")
+      script(defer src="./plugins/datepicker.min.js")
+      script(defer src="./plugins/jquery.fancybox.min.js")
+    
+    block scriptsOptional
+
+    <!-- <include_index> -->
