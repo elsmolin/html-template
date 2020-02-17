@@ -1,5 +1,6 @@
 block global_vars
   include ./_global_vars.pug
+  //- - var isLoader = true
 
 block mixins
   //- +product_card(item)
@@ -36,15 +37,80 @@ html(lang="ru" itemscope itemtype="http://schema.org/WebPage")
     
     title NAME_PROJECT | #{title}
 
+    if isLoader
+      style.
+        @-webkit-keyframes pulse {
+          0% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+          }
+          50% {
+            -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+          }
+          100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+          }
+        }
+        @keyframes pulse {
+          0% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+          }
+          50% {
+            -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+          }
+          100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+          }
+        }
+        .loader_global {
+          position: fixed;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          left: 0;
+          background: #fff;
+          pointer-events: none;
+          opacity: 0;
+          z-index: 10;
+          -webkit-transition: all 1s ease-in-out;
+          transition: all 1s ease-in-out;
+        }
+        .loader_global .img-wrapper {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+        }
+        .loader_global .img {
+          display: inline-block;
+          -webkit-animation: pulse 1.4s infinite linear;
+          animation: pulse 1.4s infinite linear;
+        }
+        .body_global.-loading- .loader_global {
+          opacity: 1;
+          pointer-events: all;
+          z-index: 99999;
+        }
+
     noscript
       <!-- <include_styles_noscript> -->
     
     <!-- <include_styles> -->
     
-  body.body_global
+  body.body_global(class= (isLoader ? '-loading-' : ''))
     noscript
       p JavaScript is not supported in the your browser, or are disabled! Check Settings
       p JavaScript не поддерживается вашим браузером или отключен! Проверьте настройки браузера
+    if isLoader
+      .loader_global
+        .img-wrapper
+          img.img(src="./img/favicon.png", alt="logo")
     header.header_wrapper_global(class= headerClass)
       block navbar
         include ./header.pug
@@ -56,6 +122,12 @@ html(lang="ru" itemscope itemtype="http://schema.org/WebPage")
     footer.footer_wrapper_global(class= footerClass)
       block footer
         include ./footer.pug
+
+    if isLoader
+      script.
+        window.onload = function () {
+          document.body.classList.remove('-loading-')
+        }
 
     block scripts
 

@@ -17,7 +17,7 @@ block stylesOptional
 block scripts
   script.
     function security(_this) {
-      elijah.fancyboxMessage(_this, { title: 'У вас есть действующий полис страхования?'}, function() { alert("ДА"); }, function() { alert("НЕТ"); })
+      elijah.fancyboxDefault(_this, { title: 'У вас есть действующий полис страхования?'}, function() { alert("ДА"); }, function() { alert("НЕТ"); })
     }
   
 block content

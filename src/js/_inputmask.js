@@ -38,7 +38,5 @@ export const inputmaskPhone = () => {
         }
       })
     })
-
-    console.info('inputMask: [type="tel"] - runned')
   }
 };

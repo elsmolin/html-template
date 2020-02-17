@@ -58,7 +58,54 @@ export const slickDefault = () => {
 
       _slickItem.slick(_settings)
     })
+  }
+}
 
-    console.info('SlickCarousel: .js-slick - runned')
+/**
+ * Адаптивное выставление slidesToShow исходя из ширины
+ * https://github.com/kenwheeler/slick/issues/1071
+ * 
+ * autoSlidesToShow: true - доп. опция, когда
+ * infinite: false
+ * variableWidth: true
+ */
+export const slickExtend = () => {
+  if ($.fn.slick && $('.js-slick').length) {
+    //create temporal object to get slick object
+    var getSlick = function() {
+      var $tmp = $('.js-slick').slick();
+      var _slick = $tmp[0].slick.constructor;
+      $tmp.slick('unslick');
+      return _slick;
+    };
+
+    var Slick = getSlick();
+    if (Slick) {
+      //hook checkResponsive method
+      var checkResponsiveOrig = Slick.prototype.checkResponsive;
+      Slick.prototype.checkResponsive = function(initial, forceUpdate) {
+        var _ = this;
+        setTimeout(() => {
+          if (_.options.autoSlidesToShow && !_.options.infinite && _.options.variableWidth) {
+            var sliderWidth = _.$slider.width();
+            var width = 0, length = _.$slides.length;
+            for (var i = 0; i < length; i++) {
+              width += $(_.$slides[i]).outerWidth();
+            }
+            _.averageSlidesWidth = width / length;
+            _.options.slidesToShow = Math.floor(sliderWidth / _.averageSlidesWidth) || 1;
+            //force update arrows
+            if (_.lastSlidesToShow !== _.options.slidesToShow) {
+              _.lastSlidesToShow = _.options.slidesToShow;
+              if (initial === true) {
+                _.currentSlide = _.options.initialSlide;
+              }
+              _.refresh(initial);
+            }
+          }
+        }, 100);
+        return checkResponsiveOrig.apply(this, arguments);
+      };
+    }
   }
 }

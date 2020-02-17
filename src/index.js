@@ -1,7 +1,6 @@
 import {
   _fancyboxSettings,
   fancyboxDefault,
-  fancyboxMessage,
 } from './js/_fancybox';
 import {
   inputmaskPhone,
@@ -20,24 +19,23 @@ import {
   updFileInput
 } from './js/_form';
 
-import {
-  headerComponent,
-} from './js/headerComponent';
+// import {
+//   headerComponent,
+// } from './js/headerComponent';
 
-import {
-  mainPage,
-} from './js/mainPage';
+// import {
+//   mainPage,
+// } from './js/mainPage';
 
 //removeIf(production)
 import {
-  demoFunc
+  // demoFunc
 } from './js/demoJS';
 //endRemoveIf(production)
 
 export default {
   _fancyboxSettings,
   fancyboxDefault,
-  fancyboxMessage,
   inputmaskPhone,
   slickDefault,
   tooltipDefault,
@@ -45,17 +43,17 @@ export default {
   updFileInput,
   datepickerDefault,
   //removeIf(production)
-  demoFunc,
+  // demoFunc,
   //endRemoveIf(production)
 }
 
 function initFunc() {
   $(document).ready(function () {
     /* Скрипты необходимые только на конкретной странице */
-    mainPage()
+    // mainPage()
   
     /* Компоненты */
-    headerComponent()
+    // headerComponent()
   
     /* Плагины */
     inputmaskPhone()
@@ -65,7 +63,7 @@ function initFunc() {
   
     //removeIf(production)
     /* То что должно быть вырезано на проде. Начало */
-    demoFunc()
+    // demoFunc()
     /* То что должно быть вырезано на проде. Конец */
     //endRemoveIf(production)
   })
