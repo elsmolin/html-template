@@ -13,3 +13,7 @@ $font-rub: ALSRubl;
 $font-secondary: sans-serif;
 
 $font: $font-main, $font-secondary;
+
+@function safe-rgba($color, $alpha: 1.0) {
+  @return unquote("rgba(#{red($color)}, #{green($color)}, #{blue($color)}, #{$alpha})");
+}

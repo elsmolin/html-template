@@ -4,11 +4,11 @@
     width: 4px;
   }
   &::-webkit-scrollbar-track {  // Главная
-    background-color: green;
+    background: green;
     // border: 4px solid green;
   }
   &::-webkit-scrollbar-thumb {  // Ползунок
-    background-color: blue;
+    background: blue;
     border-radius: 5px;
   }
 }
@@ -68,7 +68,7 @@
   }
   .spinner_wrapper__front {
     transform: rotateY(0);
-    background-color: #fff;
+    background: #fff;
     // @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     //   /* IE10+ CSS styles go here */
     //   z-index: 1;
@@ -85,7 +85,7 @@
   }
   .spinner_wrapper__back {
     transform: rotateY(180deg);
-    background-color: #fff;
+    background: #fff;
     // @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     //   /* IE10+ CSS styles go here */
     //   z-index: -1;

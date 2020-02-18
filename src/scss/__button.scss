@@ -4,21 +4,13 @@
 $b-border: 1px;
 $b-padding-v: .25rem;
 $b-padding-h: .75rem;
-
 $b-height: 40px;
 $b-font-size: 13px;
 $b-border-radius: 5px;
 
-$b-height-sm: 30px;
-$b-font-size-sm: 10px;
-$b-border-radius-sm: 2px;
-
-$b-height-xl: 50px;
-$b-font-size-xl: 16px;
-$b-border-radius-xl: 8px;
-
-$b-link-color: #C3002F;
-$b-link-color-hover: darken($color: #C3002F, $amount: 10%);
+$b-link-color: #b3b3b3;
+$b-link-color-hover: #f47921;
+$b-link-color-active: #ff391c;
 
 $disabled-text: #aab0b4;
 $disabled-color: #f9f9f9;
@@ -27,11 +19,13 @@ $default-text: #fff;
 $default-color: #2f4045;
 $default-hover-text: #fff;
 $default-hover-color: darken($color: #2f4045, $amount: 10%);
+$default-active-color: darken($color: #2f4045, $amount: 10%);
 
 $primary-text: #fff;
 $primary-color: #C3002F;
 $primary-hover-text: #fff;
 $primary-hover-color: darken($color: #C3002F, $amount: 10%);
+$primary-active-color: darken($color: #C3002F, $amount: 10%);
 
 // secondary
 // success
@@ -56,9 +50,12 @@ $b-hover-texts: (
 $b-hover-colors: (
   $primary-hover-color,
 );
+$b-active-colors: (
+  $primary-active-color,
+);
 
 // zip - перемешать списки и образовать новые
-$bs: zip($b-types, $b-texts, $b-colors, $b-hover-texts, $b-hover-colors);
+$bs: zip($b-types, $b-texts, $b-colors, $b-hover-texts, $b-hover-colors, $b-active-colors);
 
 button,
 [role="button"] {
@@ -67,8 +64,38 @@ button,
 }
 
 .btn {
+  &_group {
+    display: flex;
+    &.-default- {
+      .btn_custom {
+        flex-grow: 1;
+        max-width: 100%;
+        margin-left: 1px;
+        border-radius: 0;
+        &:first-child {
+          margin-left: 0;
+          border-bottom-left-radius: $b-border-radius;
+          border-top-left-radius: $b-border-radius;
+        }
+        &:last-child {
+          border-bottom-right-radius: $b-border-radius;
+          border-top-right-radius: $b-border-radius;
+        }
+      }
+    }
+    // &.-single- {
+    //   .btn_custom {
+    //     flex-grow: 1;
+    //     max-width: 100%;
+    //   }
+    // }
+    // .btn_custom {
+    //   flex-grow: 1;
+    //   max-width: 100%;
+    // }
+  }
   &_reset {
-    background: rgba(0, 0, 0, 0);
+    background: safe-rgba(#000, 0);
     padding: 0;
     border: none;
   }
@@ -97,23 +124,36 @@ button,
 
     &.-link- {
       border: none;
-      background: rgba(0,0,0,0);
+      background: safe-rgba(#000, 0);
       color: $b-link-color;
       font-size: inherit;
       text-decoration: underline;
       &:hover {
         border: none;
-        background: rgba(0,0,0,0);
+        background: safe-rgba(#000, 0);
         color: $b-link-color-hover;
-        text-decoration: none;
+        text-decoration: underline;
       }
-      &.-default- {
+      &:active {
+        border: none;
+        background: safe-rgba(#000, 0);
+        color: $b-link-color-active;
+        text-decoration: underline;
+      }
+      &.-simple- {
         height: auto;
         padding: 0;
       }
+      &.-native- {
+        text-decoration: underline;
+        &:active,
+        &:hover {
+          text-decoration: none;
+        }
+      }
     }
 
-    @each $type, $text, $color, $hover-text, $hover-color in $bs {
+    @each $type, $text, $color, $hover-text, $hover-color, $active-color in $bs {
       &.-#{$type}- {
         border: $b-border solid $color;
         background: $color;
@@ -126,10 +166,10 @@ button,
       }
     }
 
-    @each $type, $text, $color, $hover-text, $hover-color in $bs {
+    @each $type, $text, $color, $hover-text, $hover-color, $active-color in $bs {
       &.-outline-#{$type}- {
         border: $b-border solid $color;
-        background: rgba(0,0,0,0);
+        background: safe-rgba(#000, 0);
         color: $color;
         &:hover {
           border: $b-border solid $color;
@@ -140,14 +180,14 @@ button,
     }
 
     &.-sm- {
-      height: $b-height-sm;
-      font-size: $b-font-size-sm;
-      border-radius: $b-border-radius-sm;
+      height: 30px;
+      font-size: 12px;
+      border-radius: 4px;
     }
     &.-xl- {
-      height: $b-height-xl;
-      font-size: $b-font-size-xl;
-      border-radius: $b-border-radius-xl;
+      height: 50px;
+      font-size: 18px;
+      border-radius: 8px;
     }
 
     &.-auto- {
@@ -155,7 +195,7 @@ button,
     }
     
     &.-round- {
-      border-radius: 50px;
+      border-radius: $b-height * .5;
     }
     
     &.-disabled-,

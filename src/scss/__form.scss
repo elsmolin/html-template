@@ -2,17 +2,21 @@
 
 $f-background: #fff;
 $f-height: 40px;
+$f-height-xl: 56px;
 $f-border: 1px;
-$f-border-color: lighten($color: #C3002F, $amount: 10%);
-$f-border-color-focus: #2f4045;
-$f-radius: 6px;
+$f-border-color: #dbdbdb;
+$f-border-color-focus: #dbdbdb;
+$f-radius: 4px;
 $f-padding-v: .375rem;
-$f-padding-h: 1.5rem;
-$f-font-size: 16px;
-$f-text-color: #2f4045;
-$f-text-muted: lighten($color: #2f4045, $amount: 30%);
+$f-padding-h: 16px;
+$f-font-size: 0.875em;
+$f-font-size-xl: 1.125em;
+$f-text-color: #737a80;
+$f-text-color-hover: #242b31;
+$f-text-color-focus: #242b31;
+$f-text-muted: #737a80;
 $f-text-weight: 400;
-$f-placeholder-color: rgba($color: #2f4045, $alpha: .5);
+$f-placeholder-color: #b3b3b3;
 $f-placeholder-weight: 300;
 $f-gutter: 20px;
 
@@ -34,112 +38,99 @@ input[type=number] {
 }
 
 .form {
-  &-row {
-    margin-left: -#{$f-gutter * .5};
-    margin-right: -#{$f-gutter * .5};
-    > [class*=col-] {
-      padding-left: #{$f-gutter * .5};
-      padding-right: #{$f-gutter * .5};
-    }
-  }
-  &_error {
-    width: 100%;
-    max-width: 100%;
-    margin-top: 10px;
-    display: none;
-    background: rgb(250, 0, 0);
-    color: #fff;
-    padding: 4px 8px;
-    border-radius: 4px;
-    margin-top: .5em;
-    margin-bottom: 0;
-    font-size: 0.8em;
-    line-height: 1.3;
-    text-align: center;
+  &_icon {
+    height: $f-height;
+    width: $f-height;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    color: $f-placeholder-color;
+    font-size: 1.125em;
+    border-left: 1px solid $f-border-color;
   }
   &_text {
     display: block;
     margin-top: .5em;
     margin-bottom: 0;
-    font-size: 0.8em;
+    font-size: 0.75em;
     line-height: 1.3;
-    color: lighten($color: $f-text-color, $amount: 30%);
-    // span {
-    //   line-height: inherit;
-    //   font-size: inherit;
-    //   &.icon {
-    //     height: #{($font-size * 0.8) * 1.3};
-    //     margin-right: 10px;
-    //     font-size: 1em;
-    //   }
-    // }
-    // &.-icon- {
-    //   display: flex;
-    //   align-items: baseline;
-    // }
+    color: $f-text-muted;
   }
   &_label {
     margin-bottom: .5em;
-    font-size: 0.9em;
+    font-size: 0.75em;
   }
   &_group {
-    margin-bottom: 0;
-    position: relative;
     &.-default- {
-      display: flex;
-      align-items: flex-start;
-      flex-direction: column;
-      max-width: 100%;
       margin-bottom: 10px;
       @media screen and (min-width: $tablet) {
         margin-bottom: 15px;
       }
-      > .form_label {
-        order: -1;
-      }
     }
-    &.-inline- {
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: row;
-      > .form_label {
-        width: 100%;
-        max-width: 100%;
-      }
+    &.-xl- {
+      margin-bottom: 25px;
     }
-    &.-error-tooltip- {
-      > .form_error {
-        opacity: 0.8;
-        position: absolute;
-        left: 0;
-        top: 100%;
-        z-index: 1;
-      }
+    &.-last- {
+      margin-bottom: 40px;
     }
   }
   &_input {
+    font-size: $f-font-size;
+    height: $f-height;
+    &-wrapper {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      max-width: 100%;
+      width: auto;
+      position: relative;
+      flex-grow: 1;
+      margin-bottom: 0;
+      > .form_label {
+        order: -1;
+      }
+      &.-datepicker- {
+        cursor: pointer;
+      }
+      &.-disabled- {
+        pointer-events: none;
+      }
+    }
     &.-default- {
-      height: $f-height;
       padding: $f-padding-v $f-padding-h;
       border-radius: $f-radius;
-      font-size: $f-font-size;
       font-weight: $f-text-weight;
-      background-color: $f-background;
+      background: $f-background;
       border: $f-border solid $f-border-color;
       color: $f-text-color;
       width: 100%;
-      
+      box-shadow: inset 0 3px 7px 0 rgba($color: #000, $alpha: .08);
+     
+      &:hover {
+        color: $f-text-color-hover;
+      }
+
       &:focus {
+        color: $f-text-color-focus;
         border: $f-border solid $f-border-color-focus;
       }
       
       &:disabled,
-      &.disabled {
-        background: #f9f9f9;
-        border: $f-border solid #f9f9f9;
-        pointer-events: none;
+      &.-disabled- {
+        background: #f9f9f9  !important;
+        border: $f-border solid #f9f9f9  !important;
+        pointer-events: none !important;
         ~ .form_label {
-          color: #5b6770;
+          color: #d6d6d6 !important;
+        }
+        ~ .form_btn {
+          border: none;
+          color: #d6d6d6;
         }
       }
       
@@ -163,7 +154,7 @@ input[type=number] {
       
       &::placeholder {
         color: $f-placeholder-color;
-        font-size: $f-font-size;
+        font-size: 1em;
         font-weight: $f-placeholder-weight;
       }
     }
@@ -173,21 +164,81 @@ input[type=number] {
     }
 
     &.-datepicker- {
+      pointer-events: none;
       cursor: pointer;
+      padding-right: 55px;
       &:read-only {
         user-select: none;
-        pointer-events: all;
+        pointer-events: none;
         color: $f-text-color;
         background: $f-background;
         border: $f-border solid  $f-border-color;
       }
+      &:hover {
+        // color: $f-text-muted;
+        ~ .form_btn {
+          color: #fff;
+          border: $f-border solid #d0043c;
+          background: #d0043c;
+        }
+      }
+      &.-datepicker_opened-,
+      &:focus {
+        // color: $f-text-muted;
+        ~ .form_btn {
+          color: #fff;
+          border: $f-border solid  $f-border-color-focus;
+          background: #d0043c;
+        }
+      }
+      &.-without_label- {
+        ~ .form_btn {
+          top: 0;
+        }
+      }
+      &.-is-invalid- {
+        color: #d0043c;
+        ~ .form_btn {
+          border: $f-border solid #d0043c;
+        }
+        &.-datepicker_opened-,
+        &:focus {
+          ~ .form_btn {
+            border: $f-border solid #d0043c;
+          }
+        }
+        ~ .form_label {
+          color: #d0043c;
+        }
+      }
+      ~ .form_btn {
+        color: #647886;
+        pointer-events: none;
+        right: 0;
+        top: 21px;
+        height: 40px;
+        width: 40px;
+        border-radius: 0 4px 4px 0;
+        position: absolute;
+        border: $f-border solid  $f-border-color;
+      }
     }
-    
+
+    &.-form_icon- {
+      padding-right: $f-height + $f-padding-h;
+    }
+
     &.-xl- {
-      height: $f-height * 1.25;
-      padding: #{$f-padding-v * 1.25} #{$f-padding-h * 1.25};
-      border-radius: $f-radius * 1.25;
-      font-size: $f-font-size * 1.25;
+      height: $f-height-xl;
+      font-size: $f-font-size-xl;
+      & ~ .form_label {
+        font-size: 1em;
+      }
+      & ~ .form_icon {
+        font-size: 1.5em;
+        height: $f-height-xl;
+        width: $f-height-xl;
+      }
     }
     
     &.-sm- {
@@ -195,6 +246,44 @@ input[type=number] {
       padding: #{$f-padding-v * .75} #{$f-padding-h * .75};
       border-radius: $f-radius * .75;
       font-size: $f-font-size * .75;
+    }
+  }
+  &_counter {
+    display: flex;
+    flex-grow: 1;
+    max-width: 100%;
+    width: auto;
+    &-divider {
+      margin: 0 10px;
+      align-self: center;
+    }
+    &-btn {
+      flex: 0 0 40px;
+      max-width: 40px;
+      border-radius: 4px 0 0 4px;
+      border: $f-border solid $f-border-color;
+      color: #2f4045;
+      font-size: 18px;
+      &:last-child {
+        border-radius: 0 4px 4px 0;
+      }
+      &:hover {
+        // border: $f-border solid $f-border-color-focus;
+        background: #fdfdfd;
+      }
+      &:active {
+        background: #fcfcfc;
+        box-shadow: inset 0 2px 6px 0 rgba($color: #000, $alpha: .1);
+      }
+    }
+    .form_input {
+      padding: 0;
+      border-radius: 0;
+      flex: 0 0 100%;
+      max-width: calc(100% - 40px * 2);
+      box-shadow: inset 0 2px 6px 0 rgba($color: #000, $alpha: .1);
+      border-right: none !important;
+      border-left: none !important;
     }
   }
 }
