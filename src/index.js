@@ -19,9 +19,9 @@ import {
   updFileInput
 } from './js/_form';
 
-// import {
-//   headerComponent,
-// } from './js/headerComponent';
+import {
+  headerComponent,
+} from './js/headerComponent';
 
 // import {
 //   mainPage,
@@ -53,7 +53,7 @@ function initFunc() {
     // mainPage()
   
     /* Компоненты */
-    // headerComponent()
+    headerComponent()
   
     /* Плагины */
     inputmaskPhone()

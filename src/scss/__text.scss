@@ -55,21 +55,6 @@ h3, .h3 {
   font-size: 18px;
 }
 
-.-icon- {
-  font-family: $font-icons;
-  &.-tooltip- {
-    color: #b1bbc2;
-    margin-left: 2px;
-    font-size: 0.8em;
-    &:hover {
-      color: #2f4045;
-    }
-  }
-  &.-secondary- {
-    font-family: $font-icons-secondary;
-  }
-}
-
 .text_p,
 p {
   margin-bottom: 10px;
