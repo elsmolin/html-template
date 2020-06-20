@@ -1,6 +1,7 @@
-nav.pagination_custom
-  each page, index in [1,2,3,4,5]
-    .pagination_custom-page(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class=`${page === 2 ? '-current-': ''}`)
-      a(href="#" itemprop="item").pagination_custom-link
-        span.pagination_custom-name(itemprop="name") 1
-      meta(itemprop="position" content= page)
+mixin pagination()
+  nav.pagination_custom
+    each page, index in [1,2,3,4,5]
+      .pagination_custom-page(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class=`${page === 2 ? '-current-': ''}`)
+        a(href="#" itemprop="item").pagination_custom-link
+          span.pagination_custom-name(itemprop="name")= page
+        meta(itemprop="position" content= page)

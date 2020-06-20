@@ -1,13 +1,13 @@
 @import './__my__vars.scss';
 
 /* fonts */
-$url_rub: url('#{$font-path}ALSRubl.ttf');
+$url_rub: url('#{$font-path}ALSRubl-Regular.woff');
 $url_1: url('#{$font-path}_font.ttf');
 // $url_1_woff: url('#{$font-path}_font.woff');
 
 @font-face {
 	font-family: $font-rub;
-	src: $url_rub format('truetype');
+	src: $url_rub format('woff');
 	font-weight: normal;
 	font-style: normal;
 	font-display: block;
