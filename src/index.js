@@ -5,15 +5,15 @@ import {
 import {
   inputmaskPhone,
 } from "./js/_inputmask"
-import {
-  slickDefault,
-} from './js/_slick';
-import {
-  tooltipDefault,
-} from './js/_tooltip';
-import {
-  datepickerDefault,
-} from './js/_datepicker';
+// import {
+//   slickDefault,
+// } from './js/_slick';
+// import {
+//   tooltipster,
+// } from './js/_tooltip';
+// import {
+//   datepickerDefault,
+// } from './js/_datepicker';
 import {
   markEmptyFields,
   updFileInput
@@ -28,20 +28,20 @@ import {
 // } from './js/mainPage';
 
 //removeIf(production)
-import {
-  // demoFunc
-} from './js/demoJS';
+// import {
+//   demoFunc
+// } from './js/demoJS';
 //endRemoveIf(production)
 
 export default {
   _fancyboxSettings,
   fancyboxDefault,
   inputmaskPhone,
-  slickDefault,
-  tooltipDefault,
+  // slickDefault,
+  // tooltipster,
   markEmptyFields,
   updFileInput,
-  datepickerDefault,
+  // datepickerDefault,
   //removeIf(production)
   // demoFunc,
   //endRemoveIf(production)
@@ -57,9 +57,9 @@ function initFunc() {
   
     /* Плагины */
     inputmaskPhone()
-    slickDefault()
-    tooltipDefault()
-    datepickerDefault()
+    // slickDefault()
+    // tooltipster()
+    // datepickerDefault()
   
     //removeIf(production)
     /* То что должно быть вырезано на проде. Начало */

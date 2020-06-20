@@ -7,18 +7,25 @@ block local_vars
   //- - var breadCrumbsClass = ``
   //- - var isLogin = true
   - var title = "Список страниц"
+  //- - 
+    var bread_crumbs = [
+      {
+        href: './',
+        text: 'Страницы'
+      },
+      {
+        href: './main.html',
+        text: title
+      }
+    ]
 
-block bread_crumbs
+//- block bread_crumbs
 
 block scriptsOptional
 
 block stylesOptional
 
 block scripts
-  script.
-    function security(_this) {
-      elijah.fancyboxDefault(_this, { title: 'У вас есть действующий полис страхования?'}, function() { alert("ДА"); }, function() { alert("НЕТ"); })
-    }
   
 block content
   .container-fluid
@@ -26,8 +33,48 @@ block content
       li
         a(href="./main.html") Главная
     hr.hr.-divider-
-    ul.-default-
-      li
-        a(href="./form.html") Формы
+    button(type="button" onclick="elijah.fancyboxDefault(this)" data-popup="./popup_default.html").btn_custom.-primary-.-no-height- У вас есть действующий полис страхования?
     hr.hr.-divider-
-    button(type="button" onclick="security(this)" data-popup="./popup_message.html").btn_custom.-primary-.-no-height- У вас есть действующий полис страхования?
+  .container-fluid
+    +input_inline('input inline')(type="checkbox" name="checkbox")
+    +input_inline('input inline ')(type="checkbox" name="checkbox")
+      a(href="") link
+  .container-fluid
+    +input_inline('input inline')(type="radio" name="radio")
+    +input_inline('input inline')(type="radio" name="radio")
+  .container-fluid
+    .row.-md-
+      .col-xl-4.col-md-6
+        +input('label tel')(type="tel" placeholder="tel")
+      .col-xl-4.col-md-6
+        +input('label email')(type="email" placeholder="email")
+      .col-xl-4.col-md-6
+        +input('label password')(type="password" placeholder="password")
+      .col-xl-4.col-md-6
+        +input('label text required icon-left', null, 'icon-placemark')(class="-left-" type="text" placeholder="text required icon-left" required)
+      .col-xl-4.col-md-6
+        +input('label text icon', null, 'icon-placemark')(type="text" placeholder="text icon")
+      .col-xl-4.col-md-6
+        +datepicker('label datepicker', null, 'icon-datepicker')(type="text" placeholder="datepicker")
+      .col-xl-4.col-md-6
+        +select('label select native')
+      .col-xl-4.col-md-6
+        +input('label text disabled')(type="text" placeholder="text disabled" disabled value="disabled")
+      .col-xl-4.col-md-6
+        +input('label text readonly')(type="text" placeholder="text readonly" readonly value="readonly")
+      .col-xl-4.col-md-6
+        +textarea('label textarea')
+        .form_input-text Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, amet!
+  .container-fluid
+    .row.-md-
+      .col-xl-4
+        +input('label text valid', '-is-valid-')(type="text" placeholder="text" value="error")
+      .col-xl-4
+        +input('label text invalid', '-is-invalid-')(type="text" placeholder="text" value="error")
+        .form_input-text Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, amet!
+      .col-xl-4
+        +datepicker('label datepicker', '-is-invalid-', 'icon-datepicker')(type="text" placeholder="datepicker" value="error")
+      .col-md-6
+        +input_dropdown('label input dropdown')(type="text" placeholder="input dropdown")
+      .col-md-6
+        +input_dropdown('label input dropdown')(class="-opened-" type="text" placeholder="input dropdown")

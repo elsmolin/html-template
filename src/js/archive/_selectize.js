@@ -1,17 +1,14 @@
 export const selectizeDefault = () => {
-  const _selectizeList = $('.js-selectize')
+  const _selectizeList = $('select.js-selectize')
 
   if (_selectizeList.length) {
     _selectizeList.each(function() {
-      const _selectize = $(this)
-  
-      if (_selectize.hasClass('selectized')) {
-        _selectize.destroy()
+      const _selectizeItem = $(this)
+
+      if (!_selectizeItem.hasClass('selectized')) {
+        _selectizeItem.selectize()
       }
-  
-      _selectize.selectize()
+
     })
-  
-    console.info('selectize: .js-selectize - перезапущен')
   }
 };

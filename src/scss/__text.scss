@@ -2,7 +2,8 @@
 
 /* text */
 $font-color: #242b31;
-$font-size: 18px;
+$font-size: 16px;
+$font-weight: 400;
 
 $link-color: #b3b3b3;
 $link-color-hover: #f47921;
@@ -17,30 +18,10 @@ $link-color-hover: #f47921;
 h1, .h1,
 h2, .h2,
 h3, .h3 {
-  font-weight: 400;
-  line-height: 1.2;
-  color: #2f4045;
-  margin-bottom: 0;
-  &.-grey- {
-    color: #647886;
-  }
-  &.-lightgrey- {
-    color: #b1bbc2;
-  }
-  &.-light- {
-    font-weight: 300;
-  }
-  &.-link- {
-    &:hover {
-      color: $link-color-hover;
-      text-decoration: none;
-    }
-  }
-  &.-nowrap- {
-    white-space: nowrap;
-    overflow: hidden;
-    max-width: 100%;
-  }
+  font-weight: $font-weight;
+  line-height: 1.3;
+  color: $font-color;
+  margin-bottom: 10px;
 }
 
 h1, .h1 {
@@ -55,111 +36,106 @@ h3, .h3 {
   font-size: 18px;
 }
 
-.-icon- {
-  font-family: $font-icons;
-  &.-tooltip- {
-    color: #b1bbc2;
-    margin-left: 2px;
-    font-size: 0.8em;
-    &:hover {
-      color: #2f4045;
-    }
-  }
-  &.-secondary- {
-    font-family: $font-icons-secondary;
-  }
-}
-
 .text_p,
 p {
   margin-bottom: 10px;
-  font-size: 1em;
-  font-weight: 400;
-  &.-value- {
-    font-weight: 300;
-    font-size: 36px;
-    color: #2f4045;
-    line-height: 1.2;
-    &.-sm- {
-      line-height: 1.5;
-      font-size: 24px;
-    }
-  }
-  &.-last- {
-    margin-bottom: 30px;
-  }
-  &.-m_5- {
-    margin-bottom: 5px;
-  }
-  &.-dark- {
-    color: #2f4045;
-  }
-  &.-grey- {
-    color: #737a80;
-  }
-  &.-lightgrey- {
-    color: #b1bbc2;
-  }
-  &.-lightengrey- {
-    color: #d6d6d6;
-  }
-  &.-light- {
-    font-weight: 300;
-  }
-  &.-italic- {
-    font-style: italic;
-  }
-  &.-sm- {
-    font-size: 12px;
-  }
-  &.-xl- {
-    font-size: 1.5em;
-  }
-  &.-link- {
-    &:hover {
-      color: $link-color-hover;
-      text-decoration: none;
-    }
-  }
-  &.-max-,
-  &.-min- {
-    position: relative;
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: -5px;
-      height: 4px;
-      width: 4px;
-      border-radius: 10px;
-    }
-  }
-  &.-max- {
-    &::after {
-      background: #33b2cf;
-    }
-  }
-  &.-min- {
-    &::after {
-      background: #d43a45;
-    }
-  }
+  font-size: $font-size;
+  font-weight: $font-weight;
+  // &.-sm- {
+  //   font-size: 12px;
+  // }
+  // &.-xl- {
+  //   font-size: 1.5em;
+  // }
 }
 
+// .text_ul,
+// ul {}
+
+// .text_ol,
+// ol {}
+
+// .text_dl,
+// dl {}
+
+// .text_blockquote,
+// blockquote {}
+
+// .text_table,
+// table {}
+
 a {
-  user-select: none;
+  // user-select: none;
   font-size: inherit;
   color: inherit;
-  // text-decoration: underline;
   &:hover {
     color: $link-color-hover;
     text-decoration: none;
   }
   &.-native- {
-    text-decoration: underline;
+    color: $link-color;
+    &:hover {
+      color: $link-color-hover;
+    }
+  }
+  &.-td_native- {
     &:hover {
       text-decoration: underline;
     }
   }
+  &.-td_reverse- {
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 /* text */
+
+
+/* text modificators */
+.-fsi- {
+  font-style: italic !important;
+}
+.-ttu- {
+  text-transform: uppercase !important;
+}
+.-ttl- {
+  text-transform: lowercase !important;
+}
+.-fw300- {
+  font-weight: 300 !important;
+}
+.-fw500- {
+  font-weight: 500 !important;
+}
+.-fw600- {
+  font-weight: 600 !important;
+}
+.-fw700- {
+  font-weight: 700 !important;
+}
+.-fw800- {
+  font-weight: 800 !important;
+}
+/* text modificators */
+
+
+/* static text block */
+// .text_static {
+//   font-family: $font;
+//   font-size: $font-size;
+//   color: $font-color;
+//   line-height: 1.3;
+//   h1 {}
+//   h2 {}
+//   h3 {}
+//   a {}
+//   p {}
+//   ul {}
+//   ol {}
+//   dl {}
+//   blockquote {}
+//   table {}
+// }
+/* static text block */

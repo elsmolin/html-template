@@ -1,79 +1,109 @@
 //- form group
-mixin form_group(error='Default error text!')
-  .form_group(class= `${attributes.class ? attributes.class : '-default-'}`)
+mixin input_inner(label, iconClassName)
+  span.form_input-label
+    span.form_input-label-text= label
     if block
       block
-    .form_error= error
+  if iconClassName
+    span.form_input-icon(class= iconClassName)
+  span.form_input-error Текст ошибки. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam, exercitationem?
 
-//- checkbox & radio & file
-mixin custom_item({label='Default label text!', required, disabled})
-  label.custom_item(class= `-${attributes.type}- ${attributes.class ? attributes.class : '-default-'}`)
-    if attributes.type === 'file'
-      input.form_input.-is-empty-(
-        onchange="elijah.markEmptyFields(this);elijah.updFileInput(this)"
-        id= attributes.id
-        type= attributes.type
-        name= attributes.name
-        required= required || attributes.required
-        disabled= disabled || attributes.disabled
-      )&attributes(attributes)
-      .custom_item-value(for= attributes.id)
-        .custom_item-text= label
-    else
-      input.form_input(
-        id= attributes.id
-        type= attributes.type
-        name= attributes.name
-        required= required || attributes.required
-        disabled= disabled || attributes.disabled
-      )&attributes(attributes)
+//- checkbox & radio
+mixin input_inline(label, validClassName)
+  label.form_input_inline-wrapper(class= attributes.class)
+    input.form_input_inline.-is-empty-(
+      class= validClassName
+      onchange="elijah.markEmptyFields(this)"
+    )&attributes(attributes)
+    span.form_input_inline-label
+      span.form_input_inline-label-text= label
+      if block
+        block
 
-    .custom_item-label(for= attributes.id)
-      .custom_item-text= label
+//- text & number & email & tel & password
+mixin input(label, validClassName, iconClassName)
+  label.form_input-wrapper(class= attributes.class)
+    input.form_input.-is-empty-(
+      class= `${validClassName}${iconClassName ? ' -icon-' : ''}`
+      autocomplete="off"
+      onchange="elijah.markEmptyFields(this)"
+      onkeyup="elijah.markEmptyFields(this)"
+    )&attributes(attributes)
+    +input_inner(label, iconClassName)
       if block
         block
 
 //- datepicker
-mixin datepicker({label='Default label text!', placeholder, required, disabled})
-  input.form_input.-datepicker-.-is-empty-.js-datepicker(
-    type="text"
-    autocomplete="off"
-    readonly
-    onchange="elijah.markEmptyFields(this)"
-    placeholder= placeholder || attributes.placeholder
-    required= required || attributes.required
-    disabled= disabled || attributes.disabled
-    class= `${attributes.class ? attributes.class : '-default-'}`
-  )&attributes(attributes)
-  label.form_label(for= attributes.id)= label
-
-//- text & number & email & tel & password
-mixin input({label='Default label text!', placeholder, required, disabled, readonly})
-  input.form_input.-is-empty-(
-    type= attributes.type
-    autocomplete="off"
-    readonly= readonly || attributes.readonly
-    onchange="elijah.markEmptyFields(this)"
-    placeholder= placeholder || attributes.placeholder
-    required= required || attributes.required
-    disabled= disabled || attributes.disabled
-    class= `${attributes.class ? attributes.class : '-default-'}`
-  )&attributes(attributes)
-  label.form_label(for= attributes.id)= label
+mixin datepicker(label, validClassName, iconClassName)
+  label.form_input-wrapper(class= attributes.class)
+    input.form_input.-datepicker-.-is-empty-.js-datepicker(
+      readonly
+      class= `${validClassName}${iconClassName ? ' -icon-' : ''}`
+      autocomplete="off"
+      onchange="elijah.markEmptyFields(this)"
+      onkeyup="elijah.markEmptyFields(this)"
+    )&attributes(attributes)
+    +input_inner(label, iconClassName)
+      if block
+        block
 
 //- textarea
-mixin textarea({label='Default label text!', placeholder, required, disabled, readonly})
-  textarea.form_input.-textarea-.-is-empty-(
-    autocomplete="off"
-    readonly= readonly || attributes.readonly
-    onchange="elijah.markEmptyFields(this)"
-    placeholder= placeholder || attributes.placeholder
-    required= required || attributes.required
-    disabled= disabled || attributes.disabled
-    class= `${attributes.class ? attributes.class : '-default-'}`
-  )&attributes(attributes)
-  label.form_label(for= attributes.id)= label
+mixin textarea(label, validClassName, iconClassName)
+  label.form_input-wrapper(class= attributes.class)
+    textarea.form_input.-textarea-.-is-empty-(
+      class= `${validClassName}${iconClassName ? ' -icon-' : ''}`
+      autocomplete="off"
+      onchange="elijah.markEmptyFields(this)"
+      onkeyup="elijah.markEmptyFields(this)"
+    )&attributes(attributes)
+    +input_inner(label, iconClassName)
+      if block
+        block
 
-//- select
+//- select native
+mixin select(label, validClassName, iconClassName)
+  label.form_input-wrapper(class= attributes.class)
+    select.form_input.-select-.-icon-.-is-empty-(
+      class= `${validClassName}${iconClassName ? ' -icon-' : ''}`
+      onchange="elijah.markEmptyFields(this)"
+    )&attributes(attributes)
+      option(disabled selected) Выберите время
+      option(value="1") с 8 до 10
+      option(value="2") с 10 до 12
+      option(value="3") с 12 до 14
+      option(value="4") с 14 до 16
+      option(value="5") с 16 до 18
+    span.form_input-icon.icon-chevron_down
+    +input_inner(label, false)
+      if block
+        block
 
-//- range
+//- input dropdown (livesearch)
+mixin input_dropdown(label, validClassName, iconClassName)
+  label.form_input-wrapper(class= attributes.class)
+    input.form_input.-dropdown-.-icon-.-is-empty-(
+      class= `${validClassName}${iconClassName ? ' -icon-' : ''}`
+      autocomplete="off"
+      onchange="elijah.markEmptyFields(this)"
+      onkeyup="elijah.markEmptyFields(this)"
+    )&attributes(attributes)
+    span.form_input-dropdown
+      .form_input-option-list
+        span.form_input-option.-hovered-.-focused- Москва, ул.Пушкина, 1
+        span.form_input-option Москва, ул.Пушкина, 2
+        span.form_input-option.active Москва, ул.Пушкина, 3
+        span.form_input-option Москва, ул.Пушкина, 4
+        span.form_input-option Москва, ул.Пушкина, 5
+        span.form_input-option Москва, ул.Пушкина, 6
+        span.form_input-option Москва, ул.Пушкина, 7
+        span.form_input-option Москва, ул.Пушкина, 8
+        span.form_input-option Москва, ул.Пушкина, 9
+        span.form_input-option Москва, ул.Пушкина, 10
+    span.form_input-icon.icon-chevron_down
+    +input_inner(label, false)
+      if block
+        block
+
+//- counter
+
+//- rating

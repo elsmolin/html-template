@@ -7,8 +7,19 @@ block local_vars
   //- - var breadCrumbsClass = ``
   //- - var isLogin = true
   - var title = "Главная страница"
+  //- - 
+    var bread_crumbs = [
+      {
+        href: './',
+        text: 'Страницы'
+      },
+      {
+        href: './main.html',
+        text: title
+      }
+    ]
 
-block bread_crumbs
+//- block bread_crumbs
 
 block scriptsOptional
 

@@ -1,7 +1,7 @@
 import { _isMobile_ } from './__helpfull';
 
 export const _fancyboxSettings = {
-  default(_message, _successFunc, _rejectFunc) {
+  default(_message) {
     return {
       src: '../popup_default.html',
       type: 'ajax',
@@ -12,23 +12,35 @@ export const _fancyboxSettings = {
   
           $('.body_global').addClass('-scroll_off-')
   
-          if (_successFunc) {
-            $('#fancybox_message').addClass('-success-')
-            $('#fancybox_message-success').on('click', function () {
-              _successFunc()
-            })
-          }
-          if (_rejectFunc) {
-            $('#fancybox_message').addClass('-reject-')
-            $('#fancybox_message-reject').on('click', function () {
-              _rejectFunc()
-            })
-          }
           if (_message) {
-            const { title, text } = _message
+            const {
+              title,
+              text,
+              successFunc,
+              rejectFunc,
+              successText,
+              rejectText,
+            } = _message
   
-            $('#fancybox_message-title').text(title)
-            $('#fancybox_message-text').text(text)
+            $('.js-fancybox-title').text(title)
+            $('.js-fancybox-text').text(text)
+
+            if (successFunc) {
+              $('.js-fancybox').addClass('-success-')
+              $('.js-fancybox-success')
+                .text(successText)
+                .on('click', function () {
+                  successFunc()
+                })
+            }
+            if (rejectFunc) {
+              $('.js-fancybox').addClass('-reject-')
+              $('.js-fancybox-reject')
+                .text(rejectText)
+                .on('click', function () {
+                  rejectFunc()
+                })
+            }
           }
         },
         beforeClose: function () {
@@ -40,9 +52,9 @@ export const _fancyboxSettings = {
           }
         },
         afterClose: function () {
-          $('#fancybox_message').removeClass('-reject- -success-')
-          $('#fancybox_message-success').unbind()
-          $('#fancybox_message-reject').unbind()
+          $('.js-fancybox').removeClass('-reject- -success-')
+          $('.js-fancybox-success').unbind()
+          $('.js-fancybox-reject').unbind()
         }
       }
     }
@@ -50,28 +62,50 @@ export const _fancyboxSettings = {
 };
 
 /**
- * @param {Object} _message Объект с ключями { title, text }
- * @param {Function} _successFunc Callback подтверждения
- * @param {Function} _rejectFunc Callback отмены
+ * @param {Element} _this Строка или jQuery объект 
+ * @param {Object} _messageData Объект с ключями 
+ * { title, text, successFunc, successText, rejectFunc, rejectText }
+ * @param {Object} _settings Объект настроек попапа, переопределяет совпавшие 
  * @extends [data-popup] - ID попапа
  * @extends [data-popup-type] - Type попапа
  * @extends [data-popup-setting] - Настройки попапа. Не обязательно, тогда
  * применятся дефолтные настройки (_fancyboxSettings.default)
  */
-export const fancyboxDefault = (_this, _message = { title: 'Default title', text: 'Lorem ipsum dolor.'}, _successFunc, _rejectFunc) => {
+export const fancyboxDefault = (
+  _this,
+  _messageData = {
+    title: 'Пример заголовка',
+    text: 'Пример описания. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia, aliquid!',
+    successFunc: function() {
+      alert('successFunc Run')
+    },
+    successText: 'ДА',
+    rejectFunc: function() {
+      alert('rejectFunc Run')
+    },
+    rejectText: 'НЕТ',
+  },
+  _settings=false,
+) => {
   const _btn = $(_this)
   const fancyboxSrc = _btn.data('popup')
   const fancyboxType = _btn.data('popup-type') || 'ajax'
   const currentSetting = _btn.data('popup-setting') || 'default'
-  let fancyboxSettings = _fancyboxSettings[currentSetting](_message, _successFunc, _rejectFunc)
+  let fancyboxSettings = _fancyboxSettings[currentSetting](_messageData)
 
   if (!fancyboxSettings) {
     fancyboxSettings = _fancyboxSettings.default
     console.error('Нет таких настроек для попа. Проверьте значение [data-popup-setting]. Были применены настройки "default"')
   }
 
-  fancyboxSettings.src = fancyboxSrc
-  fancyboxSettings.type = fancyboxType
+  if (_settings) {
+    fancyboxSettings = Object.assign({}, fancyboxSettings, _settings)
+    fancyboxSettings.src = fancyboxSrc
+    fancyboxSettings.type = fancyboxType
+  } else {
+    fancyboxSettings.src = fancyboxSrc
+    fancyboxSettings.type = fancyboxType
+  }
 
   $.fancybox.open(fancyboxSettings)
 };

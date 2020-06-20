@@ -5,17 +5,23 @@ const expandBlockClass = '-expanded-'
 /**
  * Разворачивание/сворачивание блоков гармошкой
  * @param {ThisType} _this Context
- * @param {Boolean} isReverse Берёт предыдущий элемент, если true
+ * @param {Number} duration Длительность анимации
+ * @extends [data-reverse] Берёт предыдущий элемент, если true
+ * @extends [data-target] html элемент
  */
-export const expandBlock = (_this, isReverse) => {
+export const expandBlock = (_this, duration) => {
   const _btn = $(_this)
+  const _target = _btn.data('target') || false
+  const isReverse = _btn.data('reverse') || false
 
   _btn.toggleClass(expandBlockClass)
 
-  if (isReverse) {
-    _btn.prev().slideToggle()
+  if (_target) {
+    $(_target).slideToggle(duration)
+  } else if (isReverse) {
+    _btn.prev().slideToggle(duration)
   } else {
-    _btn.next().slideToggle()
+    _btn.next().slideToggle(duration)
   }
 };
 
@@ -32,11 +38,21 @@ export const expandBlockResize = () => {
     if (sreenWidth === newSreenWidth) return
 
     if (newSreenWidth < 768) {
-      $('[onclick="elijah.expandBlock(this)"]').removeClass(expandBlockClass)
-      $('[onclick="elijah.expandBlock(this, true)"]').removeClass(expandBlockClass)
-
-      $('[onclick="elijah.expandBlock(this)"]').next().slideUp()
-      $('[onclick="elijah.expandBlock(this, true)"]').prev().slideUp()
+      $('[data-expandblock-close-resize]').each(function() {
+        const _btn = $(this)
+        const _target = _btn.data('target') || false
+        const isReverse = _btn.data('reverse') || false
+      
+        _btn.toggleClass(expandBlockClass)
+      
+        if (_target) {
+          $(_target).slideToggle(0)
+        } else if (isReverse) {
+          _btn.prev().slideToggle(0)
+        } else {
+          _btn.next().slideToggle(0)
+        }
+      })
     }
 
     sreenWidth = newSreenWidth
@@ -64,6 +80,9 @@ export const toggleBlocks = (_this) => {
   const _btn = $(_this)
   const _target = _btn.data('target')
   const _group = _btn.data('group')
+
+  $(`[data-group="${_group}"]`).removeClass('active')
+  _btn.addClass('active')
 
   $(_group).hide()
   $(`${_group}${_target}`).fadeIn()
@@ -146,12 +165,18 @@ export const toggleFontSize = (_this) => {
  * Плавный скролл к якорю
  * @param {Event} event 
  * @param {ThisType} _this Context
+ * @param {Boolean} isFixedHeader Если .header_wrapper_global position:fixed
  */
-export const smoothScroll = (event, _this) => {
+export const smoothScroll = (event, _this, isFixedHeader) => {
   event.preventDefault()
 
   const _anchor = $(_this).attr('href')
-  const scrollTop = $(_anchor).offset().top
+  let scrollTop = $(_anchor).offset().top + 20
+
+  if (isFixedHeader) {
+    const heightHeader = $('.header_wrapper_global').outerHeight()
+    scrollTop += heightHeader
+  }
 
   $('body, html').animate({
     scrollTop
@@ -210,5 +235,80 @@ function indeterminateCheckSiblings(el, checked) {
       checked: false
     })
   }
+}
 
+/**
+ * Генерация рандомного числа
+ * @param {Number} max В каком диапазоне от нуля генерировать число
+ * @param {Boolean} isPlusOrMinus Генерировать ли отрицательные числа
+ */
+export const randomValue = (max = 1700, isPlusOrMinus) => {
+  if (isPlusOrMinus) {
+    const plusOrMinus = Math.random() < 0.5 ? -1 : 1;
+    max = max * plusOrMinus
+  }
+  const value = Math.round(Math.random() * max)
+  return value
+}
+
+/**
+ * Генерация цветовой палитры из основных
+ * @param {Number} count Кол-во генерируемых цветов
+ * @param {Array} colors Список основных цветов в HEX формате
+ */
+export const generateColorset = (count=6, colors) => {
+  const defaultColorset = colors
+  const newColorset = []
+
+  if (count > defaultColorset.length) {
+    newColorset.push(...defaultColorset)
+    count = count - defaultColorset.length + 1  // +1 - компенсация кол-ва цветов
+    
+    while (count > 0) {
+      let _lengthList = newColorset.length
+      let _length = count > _lengthList ? _lengthList : count
+
+      for (let i = 1, j = 0; i < _length; i++, j++) {
+        const colorHexFirst = newColorset[i + j - 1];
+        const colorHexSecond = newColorset[i + j];
+        
+        // ToDo: new color
+        const rgb1 = hexToRgb(colorHexFirst)
+        const rgb2 = hexToRgb(colorHexSecond)
+        let newR = Math.round((rgb1.r + rgb2.r) * 0.5)
+        let newG = Math.round((rgb1.g + rgb2.g) * 0.5)
+        let newB = Math.round((rgb1.b + rgb2.b) * 0.5)
+        let colorNew = rgbToHex(newR, newG, newB)
+        
+        newColorset.splice( i + j, 0, colorNew )
+      }
+
+      count = count - _lengthList + 1
+    }
+  } else {
+    for (let i = 0; i < count; i++) {
+      const color = defaultColorset[i];
+      newColorset.push(color)
+    }
+  }
+
+  return newColorset
+}
+
+function hexToRgb(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : null;
+}
+
+function componentToHex(c) {
+  var hex = c.toString(16);
+  return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(r, g, b) {
+  return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }

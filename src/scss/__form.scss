@@ -5,20 +5,25 @@ $f-height: 40px;
 $f-height-xl: 56px;
 $f-border: 1px;
 $f-border-color: #dbdbdb;
-$f-border-color-focus: #dbdbdb;
+$f-border-color-focus: #737a80;
 $f-radius: 4px;
 $f-padding-v: .375rem;
 $f-padding-h: 16px;
-$f-font-size: 0.875em;
+$f-font-size: 16px;
 $f-font-size-xl: 1.125em;
-$f-text-color: #737a80;
-$f-text-color-hover: #242b31;
-$f-text-color-focus: #242b31;
-$f-text-muted: #737a80;
+$f-text-color: #242b31;
+$f-text-description: #737a80;
 $f-text-weight: 400;
 $f-placeholder-color: #b3b3b3;
 $f-placeholder-weight: 300;
-$f-gutter: 20px;
+
+$f-invalid-text-color: #fff;
+$f-invalid-color: #ff391c;
+$f-invalid-background: #fffbfa;
+
+$f-valid-text-color: #fff;
+$f-valid-color: #7BB51C;
+$f-valid-background: #fafffa;
 
 /* form */
 
@@ -38,50 +43,146 @@ input[type=number] {
 }
 
 .form {
-  &_icon {
-    height: $f-height;
-    width: $f-height;
-    pointer-events: none;
-    position: absolute;
-    right: 0;
-    transform: translateY(-50%);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-    color: $f-placeholder-color;
-    font-size: 1.125em;
-    border-left: 1px solid $f-border-color;
-  }
-  &_text {
-    display: block;
-    margin-top: .5em;
-    margin-bottom: 0;
-    font-size: 0.75em;
-    line-height: 1.3;
-    color: $f-text-muted;
-  }
-  &_label {
-    margin-bottom: .5em;
-    font-size: 0.75em;
-  }
-  &_group {
-    &.-default- {
-      margin-bottom: 10px;
-      @media screen and (min-width: $tablet) {
-        margin-bottom: 15px;
+  &_input_inline {
+    &-wrapper {
+      position: relative;
+      margin-bottom: 8px;
+    }
+    &[type="checkbox"],
+    &[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+      &:checked ~ .form_input_inline-label {
+        &::after {
+          display: flex;
+        }
+      }
+      & ~ .form_input_inline-label {
+        position: static;
+        font-size: 16px;
+        line-height: 20px;
+        color: #333E48;
+        padding-left: 32px;
+        cursor: pointer;
+        &::before,
+        &::after {
+          content: "";
+          border: 1px solid #AFB6BD;
+          background: #fff;
+          border-radius: 4px;
+          width: 20px;
+          height: 20px;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+        &::after {
+          display: none;
+          content: $icon-check;
+          font-family: icomoon;
+          font-size: 14px;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid #C3002F;
+          background: #C3002F;
+          color: #fff;
+        }
+        [href] {
+          color: #C3002F;
+        }
       }
     }
-    &.-xl- {
-      margin-bottom: 25px;
-    }
-    &.-last- {
-      margin-bottom: 40px;
+    &[type="radio"] {
+      & ~ .form_input_inline-label {
+        &::before,
+        &::after {
+          content: "";
+          border-radius: 100%;
+          border: 4px solid #D5DADB;
+          background: #fff;
+        }
+        &::after {
+          border: 4px solid #C3002F;
+          background: #fff;
+        }
+      }
     }
   }
   &_input {
     font-size: $f-font-size;
     height: $f-height;
+    padding: $f-padding-v $f-padding-h;
+    border-radius: $f-radius;
+    font-weight: $f-text-weight;
+    background: $f-background;
+    border: $f-border solid $f-border-color;
+    color: $f-text-color;
+    width: 100%;
+    box-shadow: none;
+    &-text {
+      font-size: 12px;
+      color: $f-text-description;
+      margin-bottom: 8px;
+    }
+    &-icon {
+      position: absolute;
+      width: $f-height;
+      height: $f-height;
+      right: 0;
+      top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      font-size: 20px;
+    }
+    &-label {
+      white-space: nowrap;
+      font-size: 12px;
+      color: $f-text-color;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+    &-error {
+      max-width: 100%;
+      display: none;
+      margin-top: .5em;
+      margin-bottom: 0;
+      font-size: 12px;
+      line-height: 1.3;
+    }
+    &-dropdown {
+      position: absolute;
+      top: #{$f-height + 20px - 1px};
+      left: 0;
+      right: 0;
+      border: $f-border solid $f-border-color-focus;
+      border-bottom-left-radius: $f-radius;
+      border-bottom-right-radius: $f-radius;
+      background: #fff;
+      z-index: 1;
+      opacity: 0;
+      pointer-events: none;
+    }
+    &-option {
+      display: flex;
+      width: 100%;
+      padding: 6px $f-padding-h;
+      font-size: $f-font-size;
+      line-height: 1.3;
+      &:hover,
+      &.-hovered- {
+        background: #dbdbdb;
+      }
+      &.active {
+        background: #737a80;
+      }
+      &-list {
+        overflow: auto;
+        max-height: ($f-font-size * 1.3 + 6px * 2) * 5;
+      }
+    }
     &-wrapper {
       display: flex;
       align-items: flex-start;
@@ -90,162 +191,116 @@ input[type=number] {
       width: auto;
       position: relative;
       flex-grow: 1;
-      margin-bottom: 0;
-      > .form_label {
+      margin-bottom: 8px;
+      > .form_input-label {
         order: -1;
       }
-      &.-datepicker- {
-        cursor: pointer;
-      }
-      &.-disabled- {
-        pointer-events: none;
+    }
+    
+    &::placeholder {
+      color: $f-placeholder-color;
+      font-size: 1em;
+      font-weight: $f-placeholder-weight;
+    }
+
+    &:focus {
+      border: $f-border solid $f-border-color-focus;
+    }
+    
+    &:required {
+      ~ .form_input-label .form_input-label-text {
+        &::after {
+          content: "*";
+          color: rgb(255, 0, 0);
+        }
       }
     }
-    &.-default- {
-      padding: $f-padding-v $f-padding-h;
-      border-radius: $f-radius;
-      font-weight: $f-text-weight;
-      background: $f-background;
-      border: $f-border solid $f-border-color;
-      color: $f-text-color;
-      width: 100%;
-      box-shadow: inset 0 3px 7px 0 rgba($color: #000, $alpha: .08);
-     
-      &:hover {
-        color: $f-text-color-hover;
+    
+    &:read-only {
+      background: darken($color: #f9f9f9, $amount: 30%);
+      border: $f-border solid darken($color: #f9f9f9, $amount: 30%);
+      color: #fff;
+      ~ .form_input-label {
+        color: #5b6770;
       }
-
-      &:focus {
-        color: $f-text-color-focus;
-        border: $f-border solid $f-border-color-focus;
-      }
-      
-      &:disabled,
-      &.-disabled- {
-        background: #f9f9f9  !important;
-        border: $f-border solid #f9f9f9  !important;
-        pointer-events: none !important;
-        ~ .form_label {
-          color: #d6d6d6 !important;
-        }
-        ~ .form_btn {
-          border: none;
-          color: #d6d6d6;
-        }
-      }
-      
-      &:required {
-        ~ .form_label {
-          &::after {
-            content: "*";
-            color: rgb(255, 0, 0);
-          }
-        }
-      }
-      
-      &:read-only {
-        background: darken($color: #f9f9f9, $amount: 30%);
-        border: $f-border solid darken($color: #f9f9f9, $amount: 30%);
-        color: #fff;
-        ~ .form_label {
-          color: #5b6770;
-        }
-      }
-      
-      &::placeholder {
-        color: $f-placeholder-color;
-        font-size: 1em;
-        font-weight: $f-placeholder-weight;
+    }
+    
+    &:disabled,
+    &.-disabled- {
+      background: #f9f9f9  !important;
+      border: $f-border solid #f9f9f9  !important;
+      pointer-events: none !important;
+      color: #737a80 !important;
+      ~ .form_input-label {
+        color: #d6d6d6 !important;
       }
     }
 
     &.-textarea- {
-      height: auto;
+      min-height: 80px;
     }
-
     &.-datepicker- {
-      pointer-events: none;
+      // pointer-events: none;
       cursor: pointer;
-      padding-right: 55px;
       &:read-only {
         user-select: none;
-        pointer-events: none;
+        // pointer-events: none;
         color: $f-text-color;
         background: $f-background;
         border: $f-border solid  $f-border-color;
       }
-      &:hover {
-        // color: $f-text-muted;
-        ~ .form_btn {
-          color: #fff;
-          border: $f-border solid #d0043c;
-          background: #d0043c;
-        }
-      }
       &.-datepicker_opened-,
       &:focus {
-        // color: $f-text-muted;
+        border: $f-border solid  $f-border-color-focus;
         ~ .form_btn {
           color: #fff;
           border: $f-border solid  $f-border-color-focus;
           background: #d0043c;
         }
       }
-      &.-without_label- {
-        ~ .form_btn {
-          top: 0;
-        }
+    }
+    &.-select- {
+      appearance: none;
+      ~ .form_input-icon {
+        font-size: 12px;
       }
-      &.-is-invalid- {
-        color: #d0043c;
-        ~ .form_btn {
-          border: $f-border solid #d0043c;
-        }
-        &.-datepicker_opened-,
-        &:focus {
-          ~ .form_btn {
-            border: $f-border solid #d0043c;
-          }
-        }
-        ~ .form_label {
-          color: #d0043c;
-        }
-      }
-      ~ .form_btn {
-        color: #647886;
-        pointer-events: none;
-        right: 0;
-        top: 21px;
-        height: 40px;
-        width: 40px;
-        border-radius: 0 4px 4px 0;
-        position: absolute;
+      &:read-only {
+        user-select: none;
+        color: $f-text-color;
+        background: $f-background;
         border: $f-border solid  $f-border-color;
       }
     }
-
-    &.-form_icon- {
-      padding-right: $f-height + $f-padding-h;
+    &.-dropdown- {
+      ~ .form_input-icon {
+        font-size: 12px;
+      }
+      &.-opened- {
+        border: $f-border solid $f-border-color-focus;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        ~ .form_input-icon {
+          &::before {
+            display: inline-flex;
+            transform: rotateX(180deg);
+          }
+        }
+        ~ .form_input-dropdown {
+          pointer-events: all;
+          opacity: 1;
+        }
+      }
     }
 
-    &.-xl- {
-      height: $f-height-xl;
-      font-size: $f-font-size-xl;
-      & ~ .form_label {
-        font-size: 1em;
+    &.-icon- {
+      padding-right: $f-height;
+      &.-left- {
+        padding-left: $f-height;
+        ~ .form_input-icon {
+          right: auto;
+          left: 0;
+        }
       }
-      & ~ .form_icon {
-        font-size: 1.5em;
-        height: $f-height-xl;
-        width: $f-height-xl;
-      }
-    }
-    
-    &.-sm- {
-      height: $f-height * .75;
-      padding: #{$f-padding-v * .75} #{$f-padding-h * .75};
-      border-radius: $f-radius * .75;
-      font-size: $f-font-size * .75;
     }
   }
   &_counter {
@@ -287,29 +342,39 @@ input[type=number] {
     }
   }
 }
-/* form */
 
-/* form page */
-.form {
-  width: 100%;
-  padding-top: 20px;
-  fieldset {
-    padding: 10px;
-    border: 1px solid #f1f1f1;
-    border-radius: 4px;
-    position: relative;
-    margin-bottom: 25px;
+.form_input {
+  &.-is-valid- {
+    border: 1px solid $f-valid-color !important;
+    color: $f-valid-color !important;
+    background: $f-valid-background !important;
+    ~ .form_input-icon,
+    ~ .form_input-label {
+      color: $f-valid-color !important;
+    }
+    ~ .form_input-icon {
+      border-color: $f-valid-color !important;
+    }
+    ~ .form_input-error {
+      color: $f-valid-color !important;
+      display: block !important;
+    }
   }
-  legend {
-    position: absolute;
-    background: #fff;
-    padding: 2px 6px;
-    top: 0;
-    left: 10px;
-    transform: translateY(-50%);
-    font-size: 0.6em;
-    display: inline-block;
-    width: auto;
+  &.-is-invalid- {
+    border: 1px solid $f-invalid-color !important;
+    color: $f-invalid-color !important;
+    background: $f-invalid-background !important;
+    ~ .form_input-icon,
+    ~ .form_input-label {
+      color: $f-invalid-color !important;
+    }
+    ~ .form_input-icon {
+      border-color: $f-invalid-color !important;
+    }
+    ~ .form_input-error {
+      color: $f-invalid-color !important;
+      display: block !important;
+    }
   }
 }
-/* form page */
+/* form */

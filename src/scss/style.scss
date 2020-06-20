@@ -3,18 +3,18 @@
 @font-face {
   font-family: '#{$icomoon-font-family}';
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?xyhbgo') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?xyhbgo') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?xyhbgo##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?htw7y1') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?htw7y1') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?htw7y1##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
-	font-display: optional;
+  font-display: block;
 }
 
-.icon_custom {
+[class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: '#{$icomoon-font-family}' !important;
-  speak: none;
+  speak: never;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -26,9 +26,124 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.check {
+.icon-clock {
   &:before {
-    content: $check; 
+    content: $icon-clock; 
+  }
+}
+.icon-datepicker {
+  &:before {
+    content: $icon-datepicker; 
+  }
+}
+.icon-placemark {
+  &:before {
+    content: $icon-placemark; 
+  }
+}
+.icon-online {
+  &:before {
+    content: $icon-online; 
+  }
+}
+.icon-card {
+  &:before {
+    content: $icon-card; 
+  }
+}
+.icon-cash {
+  &:before {
+    content: $icon-cash; 
+  }
+}
+.icon-check_double {
+  &:before {
+    content: $icon-check_double; 
+  }
+}
+.icon-close {
+  &:before {
+    content: $icon-close; 
+  }
+}
+.icon-check {
+  &:before {
+    content: $icon-check; 
+  }
+}
+.icon-file {
+  &:before {
+    content: $icon-file; 
+  }
+}
+.icon-help {
+  &:before {
+    content: $icon-help; 
+  }
+}
+.icon-minus {
+  &:before {
+    content: $icon-minus; 
+  }
+}
+.icon-plus {
+  &:before {
+    content: $icon-plus; 
+  }
+}
+.icon-print {
+  &:before {
+    content: $icon-print; 
+  }
+}
+.icon-selfdelivery {
+  &:before {
+    content: $icon-selfdelivery; 
+  }
+}
+.icon-now_goods {
+  &:before {
+    content: $icon-now_goods; 
+  }
+}
+.icon-later_goods {
+  &:before {
+    content: $icon-later_goods; 
+  }
+}
+.icon-all_goods {
+  &:before {
+    content: $icon-all_goods; 
+  }
+}
+.icon-cart_later {
+  &:before {
+    content: $icon-cart_later; 
+  }
+}
+.icon-chevron {
+  &:before {
+    content: $icon-chevron; 
+  }
+}
+.icon-chevron_down {
+  &:before {
+    content: $icon-chevron_down; 
+  }
+}
+.icon-delete {
+  &:before {
+    content: $icon-delete; 
+  }
+}
+.icon-loyalty {
+  &:before {
+    content: $icon-loyalty; 
+  }
+}
+.icon-loyalty_vip {
+  &:before {
+    content: $icon-loyalty_vip; 
   }
 }
 

@@ -4,28 +4,35 @@
 $b-border: 1px;
 $b-padding-v: .25rem;
 $b-padding-h: .75rem;
+
 $b-height: 40px;
 $b-font-size: 13px;
 $b-border-radius: 5px;
 
+$b-height-sm: 40px;
+$b-font-size-sm: 13px;
+$b-border-radius-sm: 5px;
+
+$b-height-xl: 40px;
+$b-font-size-xl: 13px;
+$b-border-radius-xl: 5px;
+
 $b-link-color: #b3b3b3;
 $b-link-color-hover: #f47921;
-$b-link-color-active: #ff391c;
 
 $disabled-text: #aab0b4;
 $disabled-color: #f9f9f9;
 
+// styles
 $default-text: #fff;
 $default-color: #2f4045;
 $default-hover-text: #fff;
 $default-hover-color: darken($color: #2f4045, $amount: 10%);
-$default-active-color: darken($color: #2f4045, $amount: 10%);
 
 $primary-text: #fff;
 $primary-color: #C3002F;
 $primary-hover-text: #fff;
 $primary-hover-color: darken($color: #C3002F, $amount: 10%);
-$primary-active-color: darken($color: #C3002F, $amount: 10%);
 
 // secondary
 // success
@@ -50,12 +57,9 @@ $b-hover-texts: (
 $b-hover-colors: (
   $primary-hover-color,
 );
-$b-active-colors: (
-  $primary-active-color,
-);
 
 // zip - перемешать списки и образовать новые
-$bs: zip($b-types, $b-texts, $b-colors, $b-hover-texts, $b-hover-colors, $b-active-colors);
+$bs: zip($b-types, $b-texts, $b-colors, $b-hover-texts, $b-hover-colors);
 
 button,
 [role="button"] {
@@ -64,36 +68,6 @@ button,
 }
 
 .btn {
-  &_group {
-    display: flex;
-    &.-default- {
-      .btn_custom {
-        flex-grow: 1;
-        max-width: 100%;
-        margin-left: 1px;
-        border-radius: 0;
-        &:first-child {
-          margin-left: 0;
-          border-bottom-left-radius: $b-border-radius;
-          border-top-left-radius: $b-border-radius;
-        }
-        &:last-child {
-          border-bottom-right-radius: $b-border-radius;
-          border-top-right-radius: $b-border-radius;
-        }
-      }
-    }
-    // &.-single- {
-    //   .btn_custom {
-    //     flex-grow: 1;
-    //     max-width: 100%;
-    //   }
-    // }
-    // .btn_custom {
-    //   flex-grow: 1;
-    //   max-width: 100%;
-    // }
-  }
   &_reset {
     background: safe-rgba(#000, 0);
     padding: 0;
@@ -109,17 +83,13 @@ button,
     font-size: $b-font-size;
     border-radius: $b-border-radius;
     padding: $b-padding-v $b-padding-h;
-    // line-height: 16px;
-    // letter-spacing: 0.15em;
-    // text-transform: uppercase;
-    // font-weight: bold;
     border: $b-border solid $default-color;
     background: $default-color;
     color: $default-text;
     &:hover {
-      border: $b-border solid $default-color;
-      background: $default-color;
-      color: $default-text;
+      border: $b-border solid $default-hover-color;
+      background: $default-hover-color;
+      color: $default-hover-text;
     }
 
     &.-link- {
@@ -128,32 +98,23 @@ button,
       color: $b-link-color;
       font-size: inherit;
       text-decoration: underline;
+      height: auto;
+      padding: 0;
       &:hover {
         border: none;
         background: safe-rgba(#000, 0);
         color: $b-link-color-hover;
-        text-decoration: underline;
+        text-decoration: none;
       }
-      &:active {
-        border: none;
-        background: safe-rgba(#000, 0);
-        color: $b-link-color-active;
-        text-decoration: underline;
-      }
-      &.-simple- {
-        height: auto;
-        padding: 0;
-      }
-      &.-native- {
-        text-decoration: underline;
-        &:active,
+      &.-td_native- {
+        text-decoration: none;
         &:hover {
-          text-decoration: none;
+          text-decoration: underline;
         }
       }
     }
 
-    @each $type, $text, $color, $hover-text, $hover-color, $active-color in $bs {
+    @each $type, $text, $color, $hover-text, $hover-color in $bs {
       &.-#{$type}- {
         border: $b-border solid $color;
         background: $color;
@@ -166,36 +127,17 @@ button,
       }
     }
 
-    @each $type, $text, $color, $hover-text, $hover-color, $active-color in $bs {
+    @each $type, $text, $color, $hover-text, $hover-color in $bs {
       &.-outline-#{$type}- {
         border: $b-border solid $color;
         background: safe-rgba(#000, 0);
         color: $color;
         &:hover {
-          border: $b-border solid $color;
-          background: $color;
+          border: $b-border solid $hover-color;
+          background: $hover-color;
           color: $hover-text;
         }
       }
-    }
-
-    &.-sm- {
-      height: 30px;
-      font-size: 12px;
-      border-radius: 4px;
-    }
-    &.-xl- {
-      height: 50px;
-      font-size: 18px;
-      border-radius: 8px;
-    }
-
-    &.-auto- {
-      height: auto;
-    }
-    
-    &.-round- {
-      border-radius: $b-height * .5;
     }
     
     &.-disabled-,
@@ -204,6 +146,33 @@ button,
       border: $b-border solid $disabled-color;
       color: $disabled-text;
       pointer-events: none;
+      &:hover {
+        background: $disabled-color;
+        border: $b-border solid $disabled-color;
+        color: $disabled-text;
+      }
+    }
+    
+    &.-round- {
+      border-radius: $b-height * .5;
+    }
+
+    &.-sm- {
+      height: $b-height-sm;
+      font-size: $b-font-size-sm;
+      border-radius: $b-border-radius-sm;
+      &.-round- {
+        border-radius: $b-height-sm * .5;
+      }
+    }
+
+    &.-xl- {
+      height: $b-height-xl;
+      font-size: $b-font-size-xl;
+      border-radius: $b-border-radius-xl;
+      &.-round- {
+        border-radius: $b-height-xl * .5;
+      }
     }
   }
 }

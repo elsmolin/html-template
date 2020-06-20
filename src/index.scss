@@ -18,10 +18,7 @@
 @import './scss/__text.scss';
 @import './scss/__button.scss';
 @import './scss/__form.scss';
-@import './scss/__form-custom.scss';
-@import './scss/__form-validated.scss';
 @import './scss/__tooltip.scss';
-@import './scss/__utilits.scss';
 
 /*---PLUGINS---*/
 @import './scss/__slick.scss';
@@ -36,6 +33,7 @@
 @import './scss/_bread-crumbs.scss';
 @import './scss/_pagination.scss';
 @import './scss/_product_card.scss';
+@import './scss/_components.scss';
 
 /*---PAGES---*/
 @import './scss/index.scss';

@@ -1,13 +1,29 @@
-.bread_crumbs-wrapper(class= breadCrumbsClass)
-  .container-fluid
-    nav.bread_crumbs
-      each item, index in bread_crumbs
-        .bread_crumbs-item(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class=`${index == bread_crumbs.length - 1 ? '-current-': ''}`)
-          if index === bread_crumbs.length - 1
-            span(itemprop="item").bread_crumbs-link
-              span(itemprop="name").bread_crumbs-name= item.text
-          else
-            a(href= item.href itemprop="item").bread_crumbs-link
-              span(itemprop="name").bread_crumbs-name= item.text
-          meta(itemprop="position" content=`${index + 1}`)
-          span.bread_crumbs-divider /
+mixin bread_crumbs(list=[])
+  if list.length
+    .bread_crumbs-wrapper&attributes(attributes)
+      .container-fluid
+        nav.bread_crumbs
+          each item,index in list
+            .bread_crumbs-item(class=`${index == list.length - 1 ? '-current-': ''}`)
+              if index === list.length - 1
+                span.bread_crumbs-link
+                  span.bread_crumbs-name= item.text
+              else
+                a(href= item.href).bread_crumbs-link
+                  span.bread_crumbs-name= item.text
+              span.bread_crumbs-divider /
+
+//- mixin bread_crumbs_old(list)
+  .bread_crumbs-wrapper&attributes(attributes)
+    .container-fluid
+      nav.bread_crumbs
+        each item, index in bread_crumbs
+          .bread_crumbs-item(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class=`${index == bread_crumbs.length - 1 ? '-current-': ''}`)
+            if index === bread_crumbs.length - 1
+              span(itemprop="item").bread_crumbs-link
+                span(itemprop="name").bread_crumbs-name= item.text
+            else
+              a(href= item.href itemprop="item").bread_crumbs-link
+                span(itemprop="name").bread_crumbs-name= item.text
+            meta(itemprop="position" content=`${index + 1}`)
+            span.bread_crumbs-divider /

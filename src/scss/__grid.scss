@@ -19,11 +19,11 @@ html {
     
   }
   @media screen and (min-width: $desktop) {
-    max-width: $desktop;
+    max-width: $container_max_desktop;
   }
-  // @media screen and (min-width: $fullhd) {
-  //   max-width: $fullhd;
-  // }
+  @media screen and (min-width: $fullhd) {
+    max-width: $container_max_fullhd;
+  }
 }
 
 .row {
@@ -52,13 +52,11 @@ html {
     }
   }
   &.-no_gutter- {
-    @media screen and (min-width: $tablet) {
-      margin-left: 0;
-      margin-right: 0;
-      & > [class*="col"] {
-        padding-left: 0;
-        padding-right: 0;
-      }
+    margin-left: 0;
+    margin-right: 0;
+    & > [class*="col"] {
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 }

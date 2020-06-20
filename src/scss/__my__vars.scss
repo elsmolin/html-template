@@ -6,13 +6,18 @@ $mobile_max: $tablet - 1px;
 $tablet_max: $desktop - 1px;
 $desktop_max: $fullhd - 1px;
 
+$container_max_desktop: 1200px;
+$container_max_fullhd: 1200px;
+
 $icomoon-font-path: "../fonts" !global;
 $font-path: "../fonts/";
 $font-main: Arial;
-$font-rub: ALSRubl;
 $font-secondary: sans-serif;
+$font-rub: ALSRubl;
 
-$font: $font-main, $font-secondary;
+$font: $font-main;
+$font2: $font-secondary;
+$fontCurrency: $font-rub;
 
 @function safe-rgba($color, $alpha: 1.0) {
   @return unquote("rgba(#{red($color)}, #{green($color)}, #{blue($color)}, #{$alpha})");

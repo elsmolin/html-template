@@ -1,4 +1,10 @@
-//- Попап по умолчанию
-.fancybox_popup.-default-(style={'display':'none'})
-  .h1.fancybox_title Default title
-  p.fancybox_text Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam dolor ipsam recusandae. Alias, quas culpa. Fugit perferendis eveniet beatae officiis.
+extends ./components/_layout.pug
+
+block html
+  //- Попап по умолчанию
+  .fancybox_popup.js-fancybox(style={'display':'none'})
+    .h1.-ttu-.text-center.js-fancybox-title Пример заголовка
+    .text_p.text-center.js-fancybox-text Пример описания. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia, aliquid!
+    .fancybox_footer
+      button(type="button").js-fancybox-success.btn_custom.-primary- ДА
+      button(type="button").js-fancybox-reject.btn_custom.-secondary- НЕТ
