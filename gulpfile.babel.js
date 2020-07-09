@@ -43,7 +43,7 @@ const CONSTS = {
   dist: {
     js: `${REMOTE_PATH}/js`,
     plugins: `${REMOTE_PATH}/plugins`,
-    other: `${REMOTE_PATH}/other`,
+    other: `${REMOTE_PATH}`,
     // jsTemp: `${REMOTE_PATH}/jsTemp`,
     css: `${REMOTE_PATH}/css`,
     html: PRODUCTION ? `${REMOTE_PATH}/html` : `${REMOTE_PATH}`,
