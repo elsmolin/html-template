@@ -35,6 +35,7 @@ const CONSTS = {
     sass: `./src/${MAIN_SCSS}`,
     // bootstrap: `./src/${BOOTSTRAP_SCSS}`,
     plugins: './src/plugins/**',
+    other: './src/other/**',
     pug: './src/pug/*.pug',
     img: './src/img/**',
     fonts: './src/fonts/**',
@@ -42,6 +43,7 @@ const CONSTS = {
   dist: {
     js: `${REMOTE_PATH}/js`,
     plugins: `${REMOTE_PATH}/plugins`,
+    other: `${REMOTE_PATH}/other`,
     // jsTemp: `${REMOTE_PATH}/jsTemp`,
     css: `${REMOTE_PATH}/css`,
     html: PRODUCTION ? `${REMOTE_PATH}/html` : `${REMOTE_PATH}`,
@@ -50,6 +52,7 @@ const CONSTS = {
   },
   watch: {
     plugins: ['./src/plugins/**'],
+    other: ['./src/other/**'],
     js: ['./src/js/*.js', `./src/${MAIN_JS}`],
     sass: ['./src/scss/*.scss', `./src/${MAIN_SCSS}`],
     // // bootstrap: ['./src/scss/bootstrap/**/*.scss', `./src/${BOOTSTRAP_SCSS}`],
@@ -80,7 +83,7 @@ const CLEAN_OPTIONS = {
 
 
 /* Main Tasks */
-task('copyfiles', series(copyPlugins, copyFonts, copyImgs, function(done) {
+task('copyfiles', series(copyPlugins, copyOther, copyFonts, copyImgs, function(done) {
   // ToDo...
   done()
 }));
@@ -101,6 +104,7 @@ function watchTask() {
 
   watch(CONSTS.src.fonts).on('all', series(copyFonts, browser.reload));
   watch(CONSTS.src.plugins).on('all', series(copyPlugins, browser.reload));
+  watch(CONSTS.src.other).on('all', series(copyOther, browser.reload));
   watch(CONSTS.src.img).on('all', series(copyImgs, browser.reload));
 }
 
@@ -124,6 +128,11 @@ function clearTemp() {
 function copyPlugins() {
   return gulp.src(CONSTS.src.plugins)
     .pipe(gulp.dest(CONSTS.dist.plugins));
+};
+
+function copyOther() {
+  return gulp.src(CONSTS.src.other)
+    .pipe(gulp.dest(CONSTS.dist.other));
 };
 
 function copyFonts() {
